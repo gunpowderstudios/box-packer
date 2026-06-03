@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gunpowder Studios Postage Calculator</title>
+  <title>Gunpowder Studios Postage & Customs Calculator</title>
   <style>
     :root {
       --bg: #151515;
@@ -48,15 +48,15 @@
     }
 
     .wrap {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 22px;
       display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
+      grid-template-columns: 1.28fr 0.82fr;
       gap: 20px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .wrap { grid-template-columns: 1fr; padding: 14px; }
     }
 
@@ -66,12 +66,19 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      margin-bottom: 18px;
     }
 
     h2 {
       margin: 0 0 14px;
       color: var(--gold);
       font-size: 21px;
+    }
+
+    h3 {
+      margin: 12px 0 8px;
+      color: var(--gold);
+      font-size: 17px;
     }
 
     table {
@@ -96,25 +103,31 @@
 
     td small { color: var(--muted); }
 
-    input[type="number"] {
-      width: 76px;
+    input[type="number"], input[type="text"], select {
+      width: 100%;
       padding: 9px;
       border: 1px solid #555;
       background: #111;
       color: var(--text);
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
+    }
+
+    .qty-input {
+      width: 76px !important;
+      font-size: 16px !important;
     }
 
     .controls {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin: 0 0 18px;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 760px) {
       .controls { grid-template-columns: 1fr; }
+      .hide-mobile { display:none; }
     }
 
     label {
@@ -132,10 +145,6 @@
       padding: 12px;
     }
 
-    .control-box input {
-      width: 100%;
-    }
-
     button {
       border: 0;
       border-radius: 10px;
@@ -149,6 +158,7 @@
     }
 
     button.secondary { background: #4b4b4b; color: white; }
+    button.danger { background: #803535; color: white; }
 
     .result-card {
       background: #181818;
@@ -214,51 +224,126 @@
       color: #e9e2d2;
       font-size: 13px;
       display: none;
+      overflow-x: auto;
+    }
+
+    .custom-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.75fr 0.6fr 1fr 1fr 0.85fr auto;
+      gap: 8px;
+      align-items: end;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .custom-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .custom-grid button {
+      margin: 0;
+      padding: 9px 12px;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .summary-line {
+      border-bottom: 1px solid #333;
+      padding: 7px 0;
+    }
+
+    .summary-line:last-child { border-bottom: 0; }
+
+    .pill {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 8px;
+      margin: 3px 4px 3px 0;
+      background: #242424;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      header, .left, .result-card:not(.printable), button { display:none !important; }
+      .wrap { display:block; padding:0; }
+      .panel { box-shadow:none; border:0; background:white; color:black; }
+      .print-area { display:block !important; background:white; color:black; border:0; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Gunpowder Studios Postage Calculator</h1>
-    <p>Mix and match products, add packaging, and check if the packed order stays under 2kg.</p>
+    <h1>Gunpowder Studios Postage & Customs Calculator</h1>
+    <p>Mix and match products, add packaging, customs details, and check if the packed order stays under your target weight.</p>
   </header>
 
   <main class="wrap">
-    <section class="panel">
-      <h2>Products</h2>
+    <div class="left">
+      <section class="panel">
+        <h2>Products</h2>
 
-      <div class="controls">
-        <div class="control-box">
-          <label for="boxWeight">Box / packaging weight (g)</label>
-          <input id="boxWeight" type="number" min="0" step="1" value="125" />
+        <div class="controls">
+          <div class="control-box">
+            <label for="boxWeight">Box / packaging weight (g)</label>
+            <input id="boxWeight" type="number" min="0" step="1" value="125" />
+          </div>
+          <div class="control-box">
+            <label for="extraPacking">Extra packing / wrap (g)</label>
+            <input id="extraPacking" type="number" min="0" step="1" value="0" />
+          </div>
+          <div class="control-box">
+            <label for="limitPreset">Target limit</label>
+            <select id="limitPreset">
+              <option value="1000">1kg</option>
+              <option value="2000" selected>2kg</option>
+              <option value="5000">5kg</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="control-box">
+            <label for="limitWeight">Custom / active limit (g)</label>
+            <input id="limitWeight" type="number" min="1" step="1" value="2000" />
+          </div>
         </div>
-        <div class="control-box">
-          <label for="extraPacking">Extra packing / wrap (g)</label>
-          <input id="extraPacking" type="number" min="0" step="1" value="0" />
-        </div>
-        <div class="control-box">
-          <label for="limitWeight">Target weight limit (g)</label>
-          <input id="limitWeight" type="number" min="1" step="1" value="2000" />
-        </div>
-      </div>
 
-      <table id="productTable">
-        <thead>
-          <tr>
-            <th>Game</th>
-            <th>Weight</th>
-            <th>Box size</th>
-            <th>Qty</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Weight</th>
+              <th class="hide-mobile">Box size</th>
+              <th class="hide-mobile">HS / origin</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
 
-      <button onclick="resetQuantities()">Reset quantities</button>
-      <button class="secondary" onclick="toggleSummary()">Show / hide packing note</button>
+        <button onclick="resetQuantities()">Reset quantities</button>
+        <button class="secondary" onclick="toggleSummary()">Show / hide packing note</button>
+        <button class="secondary" onclick="window.print()">Print note</button>
+      </section>
 
-      <div id="summaryText" class="print-area"></div>
-    </section>
+      <section class="panel">
+        <h2>Custom Items / Replacement Parts</h2>
+        <p class="muted">Add replacement cards, figures, cloth bags, promo cards, or other extras. Use £0.00 value if it is genuinely a free replacement.</p>
+
+        <div id="customItems"></div>
+
+        <button onclick="addCustomItem()">Add custom item</button>
+        <button class="secondary" onclick="clearCustomItems()">Clear custom items</button>
+      </section>
+    </div>
 
     <aside class="panel">
       <h2>Result</h2>
@@ -277,30 +362,52 @@
       <div class="result-card">
         <div class="muted">Estimated order footprint</div>
         <p id="dimensions"></p>
-        <p class="footer-note">This is a simple packing estimate, not a 3D box optimiser. Use it as a quick guide before checking Parcel2Go.</p>
+        <p class="footer-note">Simple packing estimate only — not a 3D optimiser. Use it as a quick guide before checking Parcel2Go.</p>
+      </div>
+
+      <div class="result-card">
+        <div class="muted">Declared value</div>
+        <p id="declaredValue"></p>
+        <p class="footer-note">Default values use RRP. For customs, use the actual sale price where needed.</p>
+      </div>
+
+      <div class="result-card">
+        <div class="muted">Customs summary</div>
+        <div id="customsSummary"></div>
       </div>
 
       <div class="result-card">
         <div class="muted">What else could fit under the limit?</div>
         <div id="canAdd" class="add-list"></div>
       </div>
+
+      <div class="result-card printable">
+        <div class="muted">Copy / print packing note</div>
+        <div id="summaryText" class="print-area"></div>
+      </div>
     </aside>
   </main>
 
   <script>
     const products = [
-      { name: "Bag of Dungeon", short: "BOD", weight: 782, l: 21, w: 21, h: 5 },
-      { name: "Bag of Dungeon 2", short: "BOD2", weight: 779, l: 21, w: 21, h: 5 },
-      { name: "Book of Dungeon", short: "Book", weight: 335, l: 15, w: 23, h: 1.5 },
-      { name: "Legends 1", short: "L1", weight: 165, l: 12, w: 17, h: 3 },
-      { name: "Legends 2", short: "L2", weight: 341, l: 13, w: 19, h: 3 },
-      { name: "7 Moons", short: "7M", weight: 1111, l: 21, w: 21, h: 5 },
-      { name: "Rabbito", short: "Rabbito", weight: 652, l: 21, w: 21, h: 7 },
-      { name: "Who Stole My Cheese?", short: "Cheese", weight: 167, l: 11, w: 11, h: 6 },
-      { name: "Kastles", short: "Kastles", weight: 153, l: 10, w: 8, h: 3 }
+      { name: "Bag of Dungeon", short: "BOD", weight: 782, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
+      { name: "Bag of Dungeon 2", short: "BOD2", weight: 779, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
+      { name: "Book of Dungeon", short: "Book", weight: 335, l: 15, w: 23, h: 1.5, hs: "4901990000", origin: "United Kingdom", value: 16.99 },
+      { name: "Legends 1", short: "L1", weight: 165, l: 12, w: 17, h: 3, hs: "9504400000", origin: "China", value: 19.99 },
+      { name: "Legends 2", short: "L2", weight: 341, l: 13, w: 19, h: 3, hs: "9504400000", origin: "China", value: 29.99 },
+      { name: "7 Moons", short: "7M", weight: 1111, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
+      { name: "Rabbito", short: "Rabbito", weight: 652, l: 21, w: 21, h: 7, hs: "9504400000", origin: "China", value: 19.99 },
+      { name: "Who Stole My Cheese?", short: "Cheese", weight: 167, l: 11, w: 11, h: 6, hs: "9504400000", origin: "China", value: 16.99 },
+      { name: "Kastles", short: "Kastles", weight: 153, l: 10, w: 8, h: 3, hs: "9504400000", origin: "China", value: 14.99 }
     ];
 
     const tbody = document.querySelector("#productTable tbody");
+    const customContainer = document.getElementById("customItems");
+    let customCounter = 0;
+
+    function money(n) {
+      return "£" + (Number(n) || 0).toFixed(2);
+    }
 
     function makeTable() {
       tbody.innerHTML = "";
@@ -309,15 +416,89 @@
         row.innerHTML = `
           <td><strong>${p.name}</strong><br><small>${p.short}</small></td>
           <td>${p.weight}g</td>
-          <td>${p.l} × ${p.w} × ${p.h}cm</td>
-          <td><input id="qty-${i}" type="number" min="0" step="1" value="0" oninput="calculate()"></td>
+          <td class="hide-mobile">${p.l} × ${p.w} × ${p.h}cm</td>
+          <td class="hide-mobile"><small>${p.hs}<br>${p.origin}<br>${money(p.value)}</small></td>
+          <td><input class="qty-input" id="qty-${i}" type="number" min="0" step="1" value="0" oninput="calculate()"></td>
         `;
         tbody.appendChild(row);
       });
     }
 
+    function addCustomItem(data = {}) {
+      const id = customCounter++;
+      const div = document.createElement("div");
+      div.className = "custom-grid";
+      div.id = `custom-${id}`;
+      div.innerHTML = `
+        <div>
+          <label>Name</label>
+          <input type="text" id="custom-name-${id}" value="${data.name || ""}" placeholder="Replacement cards">
+        </div>
+        <div>
+          <label>Weight each (g)</label>
+          <input type="number" min="0" step="1" id="custom-weight-${id}" value="${data.weight || 0}">
+        </div>
+        <div>
+          <label>Qty</label>
+          <input type="number" min="0" step="1" id="custom-qty-${id}" value="${data.qty || 0}">
+        </div>
+        <div>
+          <label>HS code</label>
+          <input type="text" id="custom-hs-${id}" value="${data.hs || "9504400000"}">
+        </div>
+        <div>
+          <label>Origin</label>
+          <input type="text" id="custom-origin-${id}" value="${data.origin || "China"}">
+        </div>
+        <div>
+          <label>Value each (£)</label>
+          <input type="number" min="0" step="0.01" id="custom-value-${id}" value="${data.value ?? 0}">
+        </div>
+        <div>
+          <button class="danger" onclick="removeCustomItem(${id})">Remove</button>
+        </div>
+      `;
+      customContainer.appendChild(div);
+      div.querySelectorAll("input").forEach(inp => inp.addEventListener("input", calculate));
+      calculate();
+    }
+
+    function removeCustomItem(id) {
+      const el = document.getElementById(`custom-${id}`);
+      if (el) el.remove();
+      calculate();
+    }
+
+    function clearCustomItems() {
+      customContainer.innerHTML = "";
+      calculate();
+    }
+
     function getNumber(id) {
-      return Number(document.getElementById(id).value) || 0;
+      const el = document.getElementById(id);
+      return el ? Number(el.value) || 0 : 0;
+    }
+
+    function getText(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : "";
+    }
+
+    function getCustomItems() {
+      const rows = [...customContainer.querySelectorAll(".custom-grid")];
+      return rows.map(row => {
+        const id = row.id.replace("custom-", "");
+        return {
+          name: getText(`custom-name-${id}`) || "Custom item",
+          weight: getNumber(`custom-weight-${id}`),
+          qty: getNumber(`custom-qty-${id}`),
+          hs: getText(`custom-hs-${id}`) || "9504400000",
+          origin: getText(`custom-origin-${id}`) || "China",
+          value: getNumber(`custom-value-${id}`),
+          l: 0, w: 0, h: 0,
+          custom: true
+        };
+      }).filter(x => x.qty > 0 && x.weight > 0);
     }
 
     function calculate() {
@@ -326,6 +507,7 @@
       const limitWeight = getNumber("limitWeight");
 
       let productWeight = 0;
+      let totalValue = 0;
       let items = [];
       let maxL = 0;
       let maxW = 0;
@@ -336,12 +518,21 @@
         const qty = getNumber(`qty-${i}`);
         if (qty > 0) {
           productWeight += qty * p.weight;
+          totalValue += qty * p.value;
           totalQty += qty;
           items.push({ ...p, qty });
           maxL = Math.max(maxL, p.l);
           maxW = Math.max(maxW, p.w);
           stackedH += qty * p.h;
         }
+      });
+
+      const customItems = getCustomItems();
+      customItems.forEach(item => {
+        productWeight += item.qty * item.weight;
+        totalValue += item.qty * item.value;
+        totalQty += item.qty;
+        items.push(item);
       });
 
       const packedWeight = productWeight + boxWeight + extraPacking;
@@ -361,14 +552,14 @@
       document.getElementById("underStatus").innerHTML = statusHTML;
 
       document.getElementById("breakdown").innerHTML = `
-        Products: <strong>${productWeight}g</strong><br>
+        Products / custom items: <strong>${productWeight}g</strong><br>
         Box / packaging: <strong>${boxWeight}g</strong><br>
         Extra packing: <strong>${extraPacking}g</strong><br>
         Total items: <strong>${totalQty}</strong>
       `;
 
-      if (totalQty === 0) {
-        document.getElementById("dimensions").innerHTML = "No products selected yet.";
+      if (totalQty === 0 || maxL === 0) {
+        document.getElementById("dimensions").innerHTML = customItems.length ? "Custom-only order: measure parcel manually." : "No products selected yet.";
       } else {
         const paddedL = maxL + 2;
         const paddedW = maxW + 2;
@@ -378,6 +569,26 @@
           Base footprint: <strong>${maxL} × ${maxW}cm</strong><br>
           Stacked product height: <strong>${stackedH.toFixed(1)}cm</strong>
         `;
+      }
+
+      document.getElementById("declaredValue").innerHTML = `
+        Estimated declared value: <strong>${money(totalValue)}</strong><br>
+        <span class="muted">Use actual sale price if different from RRP.</span>
+      `;
+
+      const customsBox = document.getElementById("customsSummary");
+      if (items.length === 0) {
+        customsBox.innerHTML = "No customs items yet.";
+      } else {
+        customsBox.innerHTML = items.map(item => `
+          <div class="summary-line">
+            <strong>${item.qty} × ${item.name}</strong><br>
+            <span class="pill">HS ${item.hs}</span>
+            <span class="pill">Origin: ${item.origin}</span>
+            <span class="pill">Value: ${money(item.qty * item.value)}</span>
+            <span class="pill">Weight: ${item.qty * item.weight}g</span>
+          </div>
+        `).join("");
       }
 
       const canAdd = document.getElementById("canAdd");
@@ -391,20 +602,33 @@
       });
 
       const selectedLines = items.length
-        ? items.map(item => `${item.qty} × ${item.name} (${item.qty * item.weight}g)`).join("\n")
+        ? items.map(item => `${item.qty} × ${item.name} (${item.qty * item.weight}g) | HS ${item.hs} | Origin: ${item.origin} | Value ${money(item.qty * item.value)}`).join("\n")
         : "No products selected";
 
+      const hsCodes = [...new Set(items.map(item => item.hs))].join(", ") || "None";
+      const origins = [...new Set(items.map(item => item.origin))].join(", ") || "None";
+
       document.getElementById("summaryText").textContent =
-`Gunpowder Studios packing check
+`Gunpowder Studios packing and customs check
 
 ${selectedLines}
 
-Product weight: ${productWeight}g
+Product/custom item weight: ${productWeight}g
 Box / packaging: ${boxWeight}g
 Extra packing: ${extraPacking}g
 Packed total: ${packedWeight}g
 Limit: ${limitWeight}g
-Result: ${remaining >= 0 ? "Under by " + remaining + "g" : "Over by " + Math.abs(remaining) + "g"}`;
+Result: ${remaining >= 0 ? "Under by " + remaining + "g" : "Over by " + Math.abs(remaining) + "g"}
+
+Declared value estimate: ${money(totalValue)}
+HS codes used: ${hsCodes}
+Countries of origin: ${origins}
+
+Notes:
+- Dispatch country: United Kingdom
+- Board games/components generally use HS 9504400000.
+- Book of Dungeon uses HS 4901990000 and UK origin when printed by KDP UK and shipped from home.
+- Use actual sale price for customs value where required.`;
     }
 
     function resetQuantities() {
@@ -421,7 +645,20 @@ Result: ${remaining >= 0 ? "Under by " + remaining + "g" : "Over by " + Math.abs
       document.getElementById(id).addEventListener("input", calculate);
     });
 
+    document.getElementById("limitPreset").addEventListener("change", function() {
+      if (this.value !== "custom") {
+        document.getElementById("limitWeight").value = this.value;
+        calculate();
+      }
+    });
+
+    document.getElementById("limitWeight").addEventListener("input", function() {
+      document.getElementById("limitPreset").value = "custom";
+      calculate();
+    });
+
     makeTable();
+    addCustomItem({ name: "", weight: 0, qty: 0, hs: "9504400000", origin: "China", value: 0 });
     calculate();
   </script>
 </body>
