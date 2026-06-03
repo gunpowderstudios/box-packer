@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gunpowder Studios Postage & Customs Calculator</title>
+  <title>Gunpowder Studios Postage, Customs & Pallet Calculator v5</title>
   <style>
     :root {
       --bg: #151515;
@@ -37,7 +37,7 @@
 
     header h1 {
       margin: 0 0 8px;
-      font-size: clamp(26px, 5vw, 42px);
+      font-size: clamp(25px, 5vw, 42px);
       letter-spacing: 0.5px;
     }
 
@@ -48,7 +48,7 @@
     }
 
     .wrap {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 22px;
       display: grid;
@@ -143,6 +143,30 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 12px;
+    }
+
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mode-tab {
+      background: #2b2b2b;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .mode-tab.active {
+      background: rgba(208,165,59,0.18);
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     button {
@@ -241,17 +265,12 @@
 
     @media (max-width: 900px) {
       .custom-grid { grid-template-columns: 1fr 1fr; }
+      .mode-tabs { grid-template-columns: 1fr; }
     }
 
     .custom-grid button {
       margin: 0;
       padding: 9px 12px;
-    }
-
-    .small-note {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 4px;
     }
 
     .summary-line {
@@ -272,6 +291,16 @@
       font-size: 12px;
     }
 
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
     @media print {
       body { background: white; color: black; }
       header, .left, .result-card:not(.printable), button { display:none !important; }
@@ -283,16 +312,25 @@
 </head>
 <body>
   <header>
-    <h1>Gunpowder Studios Postage & Customs Calculator</h1>
-    <p>Mix and match products, add packaging, customs details, and check if the packed order stays under your target weight.</p>
+    <h1>Gunpowder Studios Postage, Customs & Pallet Calculator v5</h1>
+    <p>Parcel orders, customs info, Longpack cartons, and rough pallet estimates in one tool.</p>
   </header>
 
   <main class="wrap">
     <div class="left">
       <section class="panel">
+        <h2>Mode</h2>
+        <div class="mode-tabs">
+          <div id="tab-parcel" class="mode-tab active" onclick="setMode('parcel')">Parcel Mode<br><small>Retail / Parcel2Go</small></div>
+          <div id="tab-carton" class="mode-tab" onclick="setMode('carton')">Carton Mode<br><small>Warehouse / wholesale</small></div>
+          <div id="tab-pallet" class="mode-tab" onclick="setMode('pallet')">Pallet Mode<br><small>Amazon / distributors</small></div>
+        </div>
+      </section>
+
+      <section class="panel">
         <h2>Products</h2>
 
-        <div class="controls">
+        <div id="parcelControls" class="controls">
           <div class="control-box">
             <label for="boxWeight">Box / packaging weight (g)</label>
             <input id="boxWeight" type="number" min="0" step="1" value="125" />
@@ -316,13 +354,40 @@
           </div>
         </div>
 
+        <div id="palletControls" class="controls" style="display:none;">
+          <div class="control-box">
+            <label for="palletType">Pallet type</label>
+            <select id="palletType">
+              <option value="uk" selected>UK pallet 120 × 100cm</option>
+              <option value="euro">Euro pallet 120 × 80cm</option>
+            </select>
+          </div>
+          <div class="control-box">
+            <label for="palletHeightLimit">Max pallet height (cm)</label>
+            <input id="palletHeightLimit" type="number" min="1" step="1" value="180" />
+          </div>
+          <div class="control-box">
+            <label for="palletBaseWeight">Pallet base weight (kg)</label>
+            <input id="palletBaseWeight" type="number" min="0" step="0.1" value="20" />
+          </div>
+          <div class="control-box">
+            <label for="cartonPackingFactor">Packing allowance</label>
+            <select id="cartonPackingFactor">
+              <option value="1">Tight estimate</option>
+              <option value="1.15" selected>Normal 15% allowance</option>
+              <option value="1.3">Loose 30% allowance</option>
+            </select>
+          </div>
+        </div>
+
         <table id="productTable">
           <thead>
             <tr>
               <th>Game</th>
-              <th>Weight</th>
+              <th>Unit</th>
               <th class="hide-mobile">Box size</th>
               <th class="hide-mobile">HS / origin</th>
+              <th class="hide-mobile">Longpack carton</th>
               <th>Qty</th>
             </tr>
           </thead>
@@ -334,9 +399,9 @@
         <button class="secondary" onclick="window.print()">Print note</button>
       </section>
 
-      <section class="panel">
+      <section id="customPanel" class="panel">
         <h2>Custom Items / Replacement Parts</h2>
-        <p class="muted">Add replacement cards, figures, cloth bags, promo cards, or other extras. Use £0.00 value if it is genuinely a free replacement.</p>
+        <p class="muted">For replacement cards, figures, cloth bags, promo cards, or other extras. These count in Parcel Mode, and appear as loose items in Carton/Pallet modes.</p>
 
         <div id="customItems"></div>
 
@@ -349,20 +414,26 @@
       <h2>Result</h2>
 
       <div class="result-card">
-        <div class="muted">Packed total weight</div>
-        <div id="totalWeight" class="big">0g</div>
+        <div class="muted" id="mainMetricLabel">Packed total weight</div>
+        <div id="mainMetric" class="big">0g</div>
         <div id="underStatus"></div>
       </div>
 
       <div class="result-card">
-        <div class="muted">Weight breakdown</div>
+        <div class="muted">Breakdown</div>
         <p id="breakdown"></p>
       </div>
 
-      <div class="result-card">
+      <div id="parcelResultCard" class="result-card">
         <div class="muted">Estimated order footprint</div>
         <p id="dimensions"></p>
         <p class="footer-note">Simple packing estimate only — not a 3D optimiser. Use it as a quick guide before checking Parcel2Go.</p>
+      </div>
+
+      <div id="logisticsResultCard" class="result-card" style="display:none;">
+        <div class="muted">Carton / pallet estimate</div>
+        <div id="logisticsSummary"></div>
+        <p class="footer-note">Pallet mode is a rough volume estimate. Confirm actual pallet stacking and courier requirements before booking.</p>
       </div>
 
       <div class="result-card">
@@ -376,7 +447,7 @@
         <div id="customsSummary"></div>
       </div>
 
-      <div class="result-card">
+      <div id="canAddCard" class="result-card">
         <div class="muted">What else could fit under the limit?</div>
         <div id="canAdd" class="add-list"></div>
       </div>
@@ -389,16 +460,18 @@
   </main>
 
   <script>
+    let currentMode = "parcel";
+
     const products = [
-      { name: "Bag of Dungeon", short: "BOD", weight: 782, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
-      { name: "Bag of Dungeon 2", short: "BOD2", weight: 779, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
-      { name: "Book of Dungeon", short: "Book", weight: 335, l: 15, w: 23, h: 1.5, hs: "4901990000", origin: "United Kingdom", value: 16.99 },
-      { name: "Legends 1", short: "L1", weight: 165, l: 12, w: 17, h: 3, hs: "9504400000", origin: "China", value: 19.99 },
-      { name: "Legends 2", short: "L2", weight: 341, l: 13, w: 19, h: 3, hs: "9504400000", origin: "China", value: 29.99 },
-      { name: "7 Moons", short: "7M", weight: 1111, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99 },
-      { name: "Rabbito", short: "Rabbito", weight: 652, l: 21, w: 21, h: 7, hs: "9504400000", origin: "China", value: 19.99 },
-      { name: "Who Stole My Cheese?", short: "Cheese", weight: 167, l: 11, w: 11, h: 6, hs: "9504400000", origin: "China", value: 16.99 },
-      { name: "Kastles", short: "Kastles", weight: 153, l: 10, w: 8, h: 3, hs: "9504400000", origin: "China", value: 14.99 }
+      { name: "Bag of Dungeon", short: "BOD", weight: 782, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99, cartonQty: 12, cartonWeight: 10.4, cartonL: 43.7, cartonW: 34.6, cartonH: 23.7 },
+      { name: "Bag of Dungeon 2", short: "BOD2", weight: 779, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99, cartonQty: 12, cartonWeight: 10.4, cartonL: 43.7, cartonW: 34.6, cartonH: 23.7 },
+      { name: "Book of Dungeon", short: "Book", weight: 335, l: 15, w: 23, h: 1.5, hs: "4901990000", origin: "United Kingdom", value: 16.99, cartonQty: 0, cartonWeight: 0, cartonL: 0, cartonW: 0, cartonH: 0 },
+      { name: "Legends 1", short: "L1", weight: 165, l: 12, w: 17, h: 3, hs: "9504400000", origin: "China", value: 19.99, cartonQty: 40, cartonWeight: 7.5, cartonL: 35.5, cartonW: 29.5, cartonH: 25.5 },
+      { name: "Legends 2", short: "L2", weight: 341, l: 13, w: 19, h: 3, hs: "9504400000", origin: "China", value: 29.99, cartonQty: 20, cartonWeight: 7.0, cartonL: 33.6, cartonW: 29.0, cartonH: 21.4 },
+      { name: "7 Moons", short: "7M", weight: 1111, l: 21, w: 21, h: 5, hs: "9504400000", origin: "China", value: 44.99, cartonQty: 8, cartonWeight: 9.3, cartonL: 45.0, cartonW: 23.0, cartonH: 24.0 },
+      { name: "Rabbito", short: "Rabbito", weight: 652, l: 21, w: 21, h: 7, hs: "9504400000", origin: "China", value: 19.99, cartonQty: 8, cartonWeight: 6.1, cartonL: 44.0, cartonW: 30.5, cartonH: 22.8 },
+      { name: "Who Stole My Cheese?", short: "Cheese", weight: 167, l: 11, w: 11, h: 6, hs: "9504400000", origin: "China", value: 16.99, cartonQty: 12, cartonWeight: 2.3, cartonL: 25.0, cartonW: 25.0, cartonH: 16.5 },
+      { name: "Kastles", short: "Kastles", weight: 153, l: 10, w: 8, h: 3, hs: "9504400000", origin: "China", value: 14.99, cartonQty: 90, cartonWeight: 14.3, cartonL: 44.5, cartonW: 24.8, cartonH: 23.0 }
     ];
 
     const tbody = document.querySelector("#productTable tbody");
@@ -409,19 +482,40 @@
       return "£" + (Number(n) || 0).toFixed(2);
     }
 
+    function kg(n) {
+      return (Number(n) || 0).toFixed(1) + "kg";
+    }
+
     function makeTable() {
       tbody.innerHTML = "";
       products.forEach((p, i) => {
+        const cartonText = p.cartonQty > 0
+          ? `${p.cartonQty}/ctn<br>${p.cartonL} × ${p.cartonW} × ${p.cartonH}cm<br>${p.cartonWeight}kg`
+          : `Loose / made per order`;
         const row = document.createElement("tr");
         row.innerHTML = `
           <td><strong>${p.name}</strong><br><small>${p.short}</small></td>
-          <td>${p.weight}g</td>
+          <td>${p.weight}g<br><small>${money(p.value)}</small></td>
           <td class="hide-mobile">${p.l} × ${p.w} × ${p.h}cm</td>
-          <td class="hide-mobile"><small>${p.hs}<br>${p.origin}<br>${money(p.value)}</small></td>
+          <td class="hide-mobile"><small>${p.hs}<br>${p.origin}</small></td>
+          <td class="hide-mobile"><small>${cartonText}</small></td>
           <td><input class="qty-input" id="qty-${i}" type="number" min="0" step="1" value="0" oninput="calculate()"></td>
         `;
         tbody.appendChild(row);
       });
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      ["parcel", "carton", "pallet"].forEach(m => {
+        document.getElementById("tab-" + m).classList.toggle("active", m === mode);
+      });
+      document.getElementById("parcelControls").style.display = mode === "parcel" ? "grid" : "none";
+      document.getElementById("palletControls").style.display = mode === "pallet" ? "grid" : "none";
+      document.getElementById("parcelResultCard").style.display = mode === "parcel" ? "block" : "none";
+      document.getElementById("logisticsResultCard").style.display = mode === "parcel" ? "none" : "block";
+      document.getElementById("canAddCard").style.display = mode === "parcel" ? "block" : "none";
+      calculate();
     }
 
     function addCustomItem(data = {}) {
@@ -496,50 +590,51 @@
           origin: getText(`custom-origin-${id}`) || "China",
           value: getNumber(`custom-value-${id}`),
           l: 0, w: 0, h: 0,
+          cartonQty: 0,
           custom: true
         };
       }).filter(x => x.qty > 0 && x.weight > 0);
     }
 
-    function calculate() {
+    function getSelectedItems() {
+      const items = [];
+      products.forEach((p, i) => {
+        const qty = getNumber(`qty-${i}`);
+        if (qty > 0) items.push({ ...p, qty });
+      });
+      getCustomItems().forEach(x => items.push(x));
+      return items;
+    }
+
+    function calcParcel(items) {
       const boxWeight = getNumber("boxWeight");
       const extraPacking = getNumber("extraPacking");
       const limitWeight = getNumber("limitWeight");
 
       let productWeight = 0;
       let totalValue = 0;
-      let items = [];
       let maxL = 0;
       let maxW = 0;
       let stackedH = 0;
       let totalQty = 0;
 
-      products.forEach((p, i) => {
-        const qty = getNumber(`qty-${i}`);
-        if (qty > 0) {
-          productWeight += qty * p.weight;
-          totalValue += qty * p.value;
-          totalQty += qty;
-          items.push({ ...p, qty });
-          maxL = Math.max(maxL, p.l);
-          maxW = Math.max(maxW, p.w);
-          stackedH += qty * p.h;
-        }
-      });
-
-      const customItems = getCustomItems();
-      customItems.forEach(item => {
+      items.forEach(item => {
         productWeight += item.qty * item.weight;
         totalValue += item.qty * item.value;
         totalQty += item.qty;
-        items.push(item);
+        if (!item.custom) {
+          maxL = Math.max(maxL, item.l);
+          maxW = Math.max(maxW, item.w);
+          stackedH += item.qty * item.h;
+        }
       });
 
       const packedWeight = productWeight + boxWeight + extraPacking;
       const remaining = limitWeight - packedWeight;
 
-      document.getElementById("totalWeight").textContent = `${packedWeight}g`;
-      document.getElementById("totalWeight").className = "big " + (remaining >= 0 ? "ok" : "bad");
+      document.getElementById("mainMetricLabel").textContent = "Packed total weight";
+      document.getElementById("mainMetric").textContent = `${packedWeight}g`;
+      document.getElementById("mainMetric").className = "big " + (remaining >= 0 ? "ok" : "bad");
 
       let statusHTML = "";
       if (packedWeight === boxWeight + extraPacking && totalQty === 0) {
@@ -559,7 +654,7 @@
       `;
 
       if (totalQty === 0 || maxL === 0) {
-        document.getElementById("dimensions").innerHTML = customItems.length ? "Custom-only order: measure parcel manually." : "No products selected yet.";
+        document.getElementById("dimensions").innerHTML = items.length ? "Custom-only order: measure parcel manually." : "No products selected yet.";
       } else {
         const paddedL = maxL + 2;
         const paddedW = maxW + 2;
@@ -571,6 +666,111 @@
         `;
       }
 
+      const canAdd = document.getElementById("canAdd");
+      canAdd.innerHTML = "";
+      products.forEach(p => {
+        const ok = remaining >= p.weight;
+        const div = document.createElement("div");
+        div.className = "add-item";
+        div.innerHTML = `<span>${ok ? "✓" : "✗"} ${p.name}</span><strong class="${ok ? "ok" : "bad"}">${p.weight}g</strong>`;
+        canAdd.appendChild(div);
+      });
+
+      return { productWeight, totalValue, packedWeight, totalQty, remaining, modeText: `Parcel Mode` };
+    }
+
+    function calcLogistics(items) {
+      let looseWeightKg = 0;
+      let totalValue = 0;
+      let totalCartons = 0;
+      let totalCartonWeightKg = 0;
+      let totalCartonVolumeCm3 = 0;
+      let lines = [];
+      let cartonRows = [];
+
+      items.forEach(item => {
+        totalValue += item.qty * item.value;
+        if (!item.custom && item.cartonQty > 0) {
+          const fullCartons = Math.floor(item.qty / item.cartonQty);
+          const looseUnits = item.qty % item.cartonQty;
+          const cartonsNeeded = Math.ceil(item.qty / item.cartonQty);
+          const cartonWeight = cartonsNeeded * item.cartonWeight;
+          const cartonVolume = cartonsNeeded * item.cartonL * item.cartonW * item.cartonH;
+
+          totalCartons += cartonsNeeded;
+          totalCartonWeightKg += cartonWeight;
+          totalCartonVolumeCm3 += cartonVolume;
+
+          lines.push(`<div class="summary-line"><strong>${item.name}</strong><br>
+            <span class="pill">${item.qty} units</span>
+            <span class="pill">${cartonsNeeded} carton(s)</span>
+            <span class="pill">${fullCartons} full + ${looseUnits} loose in last</span>
+            <span class="pill">${kg(cartonWeight)}</span>
+            <br><small class="muted">Carton: ${item.cartonQty}/ctn, ${item.cartonL} × ${item.cartonW} × ${item.cartonH}cm, ${item.cartonWeight}kg</small></div>`);
+
+          cartonRows.push(`${item.name}: ${item.qty} units = ${cartonsNeeded} carton(s) (${fullCartons} full + ${looseUnits} loose in last)`);
+        } else {
+          const wkg = (item.qty * item.weight) / 1000;
+          looseWeightKg += wkg;
+          lines.push(`<div class="summary-line"><strong>${item.name}</strong><br>
+            <span class="pill">${item.qty} loose item(s)</span>
+            <span class="pill">${kg(wkg)}</span>
+            <span class="pill">No Longpack carton</span></div>`);
+          cartonRows.push(`${item.name}: ${item.qty} loose item(s), ${kg(wkg)}`);
+        }
+      });
+
+      const goodsWeightKg = totalCartonWeightKg + looseWeightKg;
+      let palletWeightKg = goodsWeightKg;
+      let palletSummary = "";
+      let palletHeight = 0;
+
+      if (currentMode === "pallet") {
+        const palletBaseWeight = getNumber("palletBaseWeight");
+        const heightLimit = getNumber("palletHeightLimit");
+        const packingFactor = getNumber("cartonPackingFactor") || 1.15;
+        const palletType = document.getElementById("palletType").value;
+        const palletL = 120;
+        const palletW = palletType === "euro" ? 80 : 100;
+        const palletBaseArea = palletL * palletW;
+        const estimatedStackVolume = totalCartonVolumeCm3 * packingFactor;
+        palletHeight = totalCartonVolumeCm3 > 0 ? (estimatedStackVolume / palletBaseArea) : 0;
+        const totalPalletHeight = palletHeight + 15; // approximate pallet base height
+        palletWeightKg = goodsWeightKg + palletBaseWeight;
+
+        let heightClass = totalPalletHeight <= heightLimit ? "ok" : "bad";
+        palletSummary = `
+          <h3>Pallet estimate</h3>
+          <p>
+            Pallet: <strong>${palletL} × ${palletW}cm</strong><br>
+            Estimated stacked carton height: <strong>${palletHeight.toFixed(1)}cm</strong><br>
+            Approx total pallet height: <strong class="${heightClass}">${totalPalletHeight.toFixed(1)}cm</strong><br>
+            Height limit: <strong>${heightLimit}cm</strong><br>
+            Pallet base weight: <strong>${kg(palletBaseWeight)}</strong>
+          </p>
+        `;
+      }
+
+      document.getElementById("mainMetricLabel").textContent = currentMode === "carton" ? "Total cartons" : "Estimated pallet weight";
+      document.getElementById("mainMetric").textContent = currentMode === "carton" ? `${totalCartons}` : kg(palletWeightKg);
+      document.getElementById("mainMetric").className = "big ok";
+      document.getElementById("underStatus").innerHTML = currentMode === "carton"
+        ? `<span class="status ok">${totalCartons} carton(s)</span><span class="status warn">${kg(goodsWeightKg)} goods weight</span>`
+        : `<span class="status ok">${totalCartons} carton(s)</span><span class="status warn">${kg(palletWeightKg)} incl. pallet</span>`;
+
+      document.getElementById("breakdown").innerHTML = `
+        Longpack cartons: <strong>${totalCartons}</strong><br>
+        Carton gross weight: <strong>${kg(totalCartonWeightKg)}</strong><br>
+        Loose items/books/custom parts: <strong>${kg(looseWeightKg)}</strong><br>
+        Goods weight: <strong>${kg(goodsWeightKg)}</strong>
+      `;
+
+      document.getElementById("logisticsSummary").innerHTML = items.length ? lines.join("") + palletSummary : "No products selected yet.";
+
+      return { productWeight: Math.round(goodsWeightKg * 1000), totalValue, packedWeight: Math.round(palletWeightKg * 1000), totalQty: items.reduce((s,i)=>s+i.qty,0), remaining: 0, modeText: currentMode === "carton" ? "Carton Mode" : "Pallet Mode", cartonRows, totalCartons, goodsWeightKg, palletWeightKg };
+    }
+
+    function updateCustoms(items, totalValue) {
       document.getElementById("declaredValue").innerHTML = `
         Estimated declared value: <strong>${money(totalValue)}</strong><br>
         <span class="muted">Use actual sale price if different from RRP.</span>
@@ -590,17 +790,9 @@
           </div>
         `).join("");
       }
+    }
 
-      const canAdd = document.getElementById("canAdd");
-      canAdd.innerHTML = "";
-      products.forEach(p => {
-        const ok = remaining >= p.weight;
-        const div = document.createElement("div");
-        div.className = "add-item";
-        div.innerHTML = `<span>${ok ? "✓" : "✗"} ${p.name}</span><strong class="${ok ? "ok" : "bad"}">${p.weight}g</strong>`;
-        canAdd.appendChild(div);
-      });
-
+    function updateNote(items, result) {
       const selectedLines = items.length
         ? items.map(item => `${item.qty} × ${item.name} (${item.qty * item.weight}g) | HS ${item.hs} | Origin: ${item.origin} | Value ${money(item.qty * item.value)}`).join("\n")
         : "No products selected";
@@ -608,19 +800,28 @@
       const hsCodes = [...new Set(items.map(item => item.hs))].join(", ") || "None";
       const origins = [...new Set(items.map(item => item.origin))].join(", ") || "None";
 
+      let logisticsExtra = "";
+      if (currentMode !== "parcel") {
+        logisticsExtra = `\nLongpack / logistics summary:\n${(result.cartonRows || []).join("\n")}\nTotal cartons: ${result.totalCartons || 0}\nGoods weight: ${kg(result.goodsWeightKg || 0)}\n${currentMode === "pallet" ? "Estimated pallet weight: " + kg(result.palletWeightKg || 0) : ""}\n`;
+      }
+
       document.getElementById("summaryText").textContent =
-`Gunpowder Studios packing and customs check
+`Gunpowder Studios packing, customs and logistics check
+
+Mode: ${result.modeText}
 
 ${selectedLines}
 
-Product/custom item weight: ${productWeight}g
-Box / packaging: ${boxWeight}g
-Extra packing: ${extraPacking}g
-Packed total: ${packedWeight}g
-Limit: ${limitWeight}g
-Result: ${remaining >= 0 ? "Under by " + remaining + "g" : "Over by " + Math.abs(remaining) + "g"}
+Weight / logistics:
+${currentMode === "parcel" ? 
+`Product/custom item weight: ${result.productWeight}g
+Box / packaging: ${getNumber("boxWeight")}g
+Extra packing: ${getNumber("extraPacking")}g
+Packed total: ${result.packedWeight}g
+Limit: ${getNumber("limitWeight")}g
+Result: ${result.remaining >= 0 ? "Under by " + result.remaining + "g" : "Over by " + Math.abs(result.remaining) + "g"}` : logisticsExtra}
 
-Declared value estimate: ${money(totalValue)}
+Declared value estimate: ${money(result.totalValue)}
 HS codes used: ${hsCodes}
 Countries of origin: ${origins}
 
@@ -628,7 +829,15 @@ Notes:
 - Dispatch country: United Kingdom
 - Board games/components generally use HS 9504400000.
 - Book of Dungeon uses HS 4901990000 and UK origin when printed by KDP UK and shipped from home.
+- Book of Dungeon is treated as loose/per-order stock, not Longpack master carton stock.
 - Use actual sale price for customs value where required.`;
+    }
+
+    function calculate() {
+      const items = getSelectedItems();
+      const result = currentMode === "parcel" ? calcParcel(items) : calcLogistics(items);
+      updateCustoms(items, result.totalValue);
+      updateNote(items, result);
     }
 
     function resetQuantities() {
@@ -641,8 +850,9 @@ Notes:
       box.style.display = box.style.display === "block" ? "none" : "block";
     }
 
-    ["boxWeight", "extraPacking", "limitWeight"].forEach(id => {
+    ["boxWeight", "extraPacking", "limitWeight", "palletType", "palletHeightLimit", "palletBaseWeight", "cartonPackingFactor"].forEach(id => {
       document.getElementById(id).addEventListener("input", calculate);
+      document.getElementById(id).addEventListener("change", calculate);
     });
 
     document.getElementById("limitPreset").addEventListener("change", function() {
