@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gunpowder Studios Postage Calculator</title>
+  <style>
+    :root {
+      --bg: #151515;
+      --panel: #242424;
+      --panel2: #303030;
+      --text: #f4f1e8;
+      --muted: #bdb7aa;
+      --gold: #d0a53b;
+      --green: #53c26b;
+      --red: #ef6461;
+      --orange: #f2b84b;
+      --border: #464646;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #2a2a2a 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 28px 18px;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+      background: #101010;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 5vw, 42px);
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; padding: 14px; }
+    }
+
+    .panel {
+      background: rgba(36,36,36,0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 21px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      color: var(--gold);
+      background: #1b1b1b;
+      font-size: 14px;
+    }
+
+    td small { color: var(--muted); }
+
+    input[type="number"] {
+      width: 76px;
+      padding: 9px;
+      border: 1px solid #555;
+      background: #111;
+      color: var(--text);
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    @media (max-width: 650px) {
+      .controls { grid-template-columns: 1fr; }
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .control-box {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .control-box input {
+      width: 100%;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-weight: bold;
+      cursor: pointer;
+      background: var(--gold);
+      color: #111;
+      font-size: 15px;
+      margin: 8px 8px 0 0;
+    }
+
+    button.secondary { background: #4b4b4b; color: white; }
+
+    .result-card {
+      background: #181818;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .big {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900;
+      margin: 8px 0;
+    }
+
+    .ok { color: var(--green); }
+    .warn { color: var(--orange); }
+    .bad { color: var(--red); }
+    .muted { color: var(--muted); }
+
+    .status {
+      display: inline-block;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin: 5px 5px 5px 0;
+      background: #333;
+    }
+
+    .status.ok { background: rgba(83,194,107,0.14); }
+    .status.warn { background: rgba(242,184,75,0.15); }
+    .status.bad { background: rgba(239,100,97,0.16); }
+
+    .add-list {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .add-item {
+      padding: 8px 10px;
+      background: var(--panel2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer-note {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .print-area {
+      white-space: pre-wrap;
+      background: #101010;
+      border: 1px dashed #666;
+      border-radius: 12px;
+      padding: 12px;
+      font-family: Consolas, monospace;
+      color: #e9e2d2;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gunpowder Studios Postage Calculator</h1>
+    <p>Mix and match products, add packaging, and check if the packed order stays under 2kg.</p>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <h2>Products</h2>
+
+      <div class="controls">
+        <div class="control-box">
+          <label for="boxWeight">Box / packaging weight (g)</label>
+          <input id="boxWeight" type="number" min="0" step="1" value="125" />
+        </div>
+        <div class="control-box">
+          <label for="extraPacking">Extra packing / wrap (g)</label>
+          <input id="extraPacking" type="number" min="0" step="1" value="0" />
+        </div>
+        <div class="control-box">
+          <label for="limitWeight">Target weight limit (g)</label>
+          <input id="limitWeight" type="number" min="1" step="1" value="2000" />
+        </div>
+      </div>
+
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th>Weight</th>
+            <th>Box size</th>
+            <th>Qty</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button onclick="resetQuantities()">Reset quantities</button>
+      <button class="secondary" onclick="toggleSummary()">Show / hide packing note</button>
+
+      <div id="summaryText" class="print-area"></div>
+    </section>
+
+    <aside class="panel">
+      <h2>Result</h2>
+
+      <div class="result-card">
+        <div class="muted">Packed total weight</div>
+        <div id="totalWeight" class="big">0g</div>
+        <div id="underStatus"></div>
+      </div>
+
+      <div class="result-card">
+        <div class="muted">Weight breakdown</div>
+        <p id="breakdown"></p>
+      </div>
+
+      <div class="result-card">
+        <div class="muted">Estimated order footprint</div>
+        <p id="dimensions"></p>
+        <p class="footer-note">This is a simple packing estimate, not a 3D box optimiser. Use it as a quick guide before checking Parcel2Go.</p>
+      </div>
+
+      <div class="result-card">
+        <div class="muted">What else could fit under the limit?</div>
+        <div id="canAdd" class="add-list"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const products = [
+      { name: "Bag of Dungeon", short: "BOD", weight: 782, l: 21, w: 21, h: 5 },
+      { name: "Bag of Dungeon 2", short: "BOD2", weight: 779, l: 21, w: 21, h: 5 },
+      { name: "Book of Dungeon", short: "Book", weight: 335, l: 15, w: 23, h: 1.5 },
+      { name: "Legends 1", short: "L1", weight: 165, l: 12, w: 17, h: 3 },
+      { name: "Legends 2", short: "L2", weight: 341, l: 13, w: 19, h: 3 },
+      { name: "7 Moons", short: "7M", weight: 1111, l: 21, w: 21, h: 5 },
+      { name: "Rabbito", short: "Rabbito", weight: 652, l: 21, w: 21, h: 7 },
+      { name: "Who Stole My Cheese?", short: "Cheese", weight: 167, l: 11, w: 11, h: 6 },
+      { name: "Kastles", short: "Kastles", weight: 153, l: 10, w: 8, h: 3 }
+    ];
+
+    const tbody = document.querySelector("#productTable tbody");
+
+    function makeTable() {
+      tbody.innerHTML = "";
+      products.forEach((p, i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><strong>${p.name}</strong><br><small>${p.short}</small></td>
+          <td>${p.weight}g</td>
+          <td>${p.l} × ${p.w} × ${p.h}cm</td>
+          <td><input id="qty-${i}" type="number" min="0" step="1" value="0" oninput="calculate()"></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function getNumber(id) {
+      return Number(document.getElementById(id).value) || 0;
+    }
+
+    function calculate() {
+      const boxWeight = getNumber("boxWeight");
+      const extraPacking = getNumber("extraPacking");
+      const limitWeight = getNumber("limitWeight");
+
+      let productWeight = 0;
+      let items = [];
+      let maxL = 0;
+      let maxW = 0;
+      let stackedH = 0;
+      let totalQty = 0;
+
+      products.forEach((p, i) => {
+        const qty = getNumber(`qty-${i}`);
+        if (qty > 0) {
+          productWeight += qty * p.weight;
+          totalQty += qty;
+          items.push({ ...p, qty });
+          maxL = Math.max(maxL, p.l);
+          maxW = Math.max(maxW, p.w);
+          stackedH += qty * p.h;
+        }
+      });
+
+      const packedWeight = productWeight + boxWeight + extraPacking;
+      const remaining = limitWeight - packedWeight;
+
+      document.getElementById("totalWeight").textContent = `${packedWeight}g`;
+      document.getElementById("totalWeight").className = "big " + (remaining >= 0 ? "ok" : "bad");
+
+      let statusHTML = "";
+      if (packedWeight === boxWeight + extraPacking && totalQty === 0) {
+        statusHTML = `<span class="status warn">Add products to calculate</span>`;
+      } else if (remaining >= 0) {
+        statusHTML = `<span class="status ok">✓ Under ${limitWeight}g</span><span class="status ok">${remaining}g spare</span>`;
+      } else {
+        statusHTML = `<span class="status bad">✗ Over ${limitWeight}g</span><span class="status bad">${Math.abs(remaining)}g over</span>`;
+      }
+      document.getElementById("underStatus").innerHTML = statusHTML;
+
+      document.getElementById("breakdown").innerHTML = `
+        Products: <strong>${productWeight}g</strong><br>
+        Box / packaging: <strong>${boxWeight}g</strong><br>
+        Extra packing: <strong>${extraPacking}g</strong><br>
+        Total items: <strong>${totalQty}</strong>
+      `;
+
+      if (totalQty === 0) {
+        document.getElementById("dimensions").innerHTML = "No products selected yet.";
+      } else {
+        const paddedL = maxL + 2;
+        const paddedW = maxW + 2;
+        const paddedH = stackedH + 2;
+        document.getElementById("dimensions").innerHTML = `
+          Rough packed size: <strong>${paddedL.toFixed(1)} × ${paddedW.toFixed(1)} × ${paddedH.toFixed(1)}cm</strong><br>
+          Base footprint: <strong>${maxL} × ${maxW}cm</strong><br>
+          Stacked product height: <strong>${stackedH.toFixed(1)}cm</strong>
+        `;
+      }
+
+      const canAdd = document.getElementById("canAdd");
+      canAdd.innerHTML = "";
+      products.forEach(p => {
+        const ok = remaining >= p.weight;
+        const div = document.createElement("div");
+        div.className = "add-item";
+        div.innerHTML = `<span>${ok ? "✓" : "✗"} ${p.name}</span><strong class="${ok ? "ok" : "bad"}">${p.weight}g</strong>`;
+        canAdd.appendChild(div);
+      });
+
+      const selectedLines = items.length
+        ? items.map(item => `${item.qty} × ${item.name} (${item.qty * item.weight}g)`).join("\n")
+        : "No products selected";
+
+      document.getElementById("summaryText").textContent =
+`Gunpowder Studios packing check
+
+${selectedLines}
+
+Product weight: ${productWeight}g
+Box / packaging: ${boxWeight}g
+Extra packing: ${extraPacking}g
+Packed total: ${packedWeight}g
+Limit: ${limitWeight}g
+Result: ${remaining >= 0 ? "Under by " + remaining + "g" : "Over by " + Math.abs(remaining) + "g"}`;
+    }
+
+    function resetQuantities() {
+      products.forEach((_, i) => document.getElementById(`qty-${i}`).value = 0);
+      calculate();
+    }
+
+    function toggleSummary() {
+      const box = document.getElementById("summaryText");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+
+    ["boxWeight", "extraPacking", "limitWeight"].forEach(id => {
+      document.getElementById(id).addEventListener("input", calculate);
+    });
+
+    makeTable();
+    calculate();
+  </script>
+</body>
+</html>
