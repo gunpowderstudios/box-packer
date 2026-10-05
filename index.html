@@ -3,53 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v9.0</title>
+<title>Gunpowder Studios Box Packer v9.1</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#151515;color:var(--t);line-height:1.45}
-header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}
-h1{margin:0}
-.muted,small{color:var(--m)}
-.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}
-.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}
-.card{background:#181818}
-h2,h3{color:var(--g);margin-top:0}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}
-.tab.active{color:var(--g);border-color:var(--g)}
-table{width:100%;border-collapse:collapse}
-th,td{padding:9px 7px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}
-th{color:var(--g)}
-input,select{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}
-input:disabled{opacity:.4;cursor:not-allowed}
-.qty{width:88px}
-.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.control{background:#303030;padding:10px;border-radius:10px}
-label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}
-.big{font-size:36px;font-weight:900}
-.ok{color:var(--ok)}
-.bad{color:var(--bad)}
-.line{padding:8px 0;border-bottom:1px solid #333}
-.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}
-.warning strong{color:#ffd76a}
-.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}
-button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}
-.copy-status{color:var(--ok);font-size:13px;margin-left:8px}
-.unit-spec{margin-top:6px;padding:7px 9px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.45}
-.unit-spec strong{color:#f4f1e8}
-.unit-spec .secondary{color:var(--m)}
-.carton-spec{line-height:1.5}
-@media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.controls,.tabs{grid-template-columns:1fr}.hide-mobile{display:none}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.dest-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.controls,.tabs,.dest-grid,.invoice-fields{grid-template-columns:1fr}.hide-mobile{display:none}}
+@media print{html,body{background:#fff!important;color:#000!important}body>*{display:none!important}#invoicePrint{display:block!important;height:auto!important;min-height:277mm!important;overflow:visible!important;position:static!important;width:100%;color:#000!important;background:#fff!important;font-family:Arial;padding:12mm!important}#invoicePrint *{color:#000!important;background-color:transparent!important}#invoicePrint table{font-size:10pt;background:#fff!important}#invoicePrint th,#invoicePrint td{border:1px solid #999;padding:5px;background:#fff!important}#invoicePrint h1{font-size:20pt}#invoicePrint .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12mm}@page{size:A4;margin:10mm}}
 </style>
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v9.0</h1>
-<p>Game boxes · master cartons · pallet packing · metric and US measurements</p>
+<h1>Gunpowder Studios Box Packer v9.1</h1>
+<p>Parcels by game · cartons from manufacturer specs · pallets from carton counts</p>
 </header>
-
 <main class="wrap">
 <div>
 <section class="panel">
@@ -59,313 +26,193 @@ button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-wei
 <div id="t-carton" class="tab" onclick="setMode('carton')">Carton Mode</div>
 <div id="t-pallet" class="tab" onclick="setMode('pallet')">Pallet Mode</div>
 </div>
-<div id="modeNote" class="mode-note"></div>
 </section>
-
 <section class="panel">
-<h2>Products</h2>
+<h2>Destination</h2>
+<div class="dest-grid">
+<div class="control">
+<label>Shipping to</label>
+<select id="destination" onchange="make();draw()">
+<option value="usa">USA</option>
+<option value="eu">European Union</option>
+<option value="canada">Canada</option>
+<option value="australia">Australia</option>
+<option value="japan">Japan</option>
+<option value="uk">United Kingdom</option>
+<option value="other">Other / check with broker</option>
+</select>
+<br><small id="fxNote"></small>
+</div>
+<div class="control"><label>Dispatch from</label><strong>United Kingdom</strong><br><small>Origin remains product-specific</small></div>
+<div class="control"><label>USA CN duty %</label><input id="usDutyRate" type="number" min="0" step="0.1" value="10" oninput="draw()"><small>Planning estimate — enter your own percentage</small></div>
+</div>
+</section>
+<section class="panel">
+<h2>Products & customs value</h2>
 <table>
-<thead>
-<tr>
-<th>Product / individual box</th>
-<th class="hide-mobile">Master carton</th>
-<th id="qtyHead">Games</th>
-</tr>
-</thead>
+<thead><tr><th>Product</th><th class="hide-mobile">Master carton</th><th id="makeHead">Make cost</th><th id="customsHead">Customs /unit</th><th id="qtyHead">Games</th></tr></thead>
 <tbody id="products"></tbody>
 </table>
+<div id="modeNote" class="mode-note"></div>
+<div class="warning"><strong>Customs value is editable.</strong> All costs are displayed in the destination currency. Stored make costs remain in GBP and are converted using the reference FX rates shown above. The USA duty estimate uses make cost as its base and the editable USA CN duty percentage above.</div>
 <button onclick="resetQ()">Reset quantities</button>
 </section>
-
 <section class="panel" id="palletControls" style="display:none">
 <h2>Pallet settings</h2>
 <div class="controls">
-<div class="control">
-<label>Pallet type</label>
-<select id="palletType" onchange="draw()">
-<option value="uk">UK 120 × 100 cm</option>
-<option value="euro">Euro 120 × 80 cm</option>
-</select>
-</div>
-<div class="control">
-<label>Max loaded height cm</label>
-<input id="height" type="number" value="180" oninput="draw()">
-</div>
-<div class="control">
-<label>Pallet weight kg</label>
-<input id="baseWeight" type="number" value="20" step=".1" oninput="draw()">
-</div>
-<div class="control">
-<label>Pallets to use</label>
-<input id="palletOverride" type="number" min="0" step="1" value="0" oninput="draw()">
-<small>0 = automatic</small>
-</div>
-<div class="control">
-<label>Packing allowance</label>
-<select id="factor" onchange="draw()">
-<option value="1">Tight</option>
-<option value="1.15" selected>Normal 15%</option>
-<option value="1.3">Loose 30%</option>
-</select>
-</div>
+<div class="control"><label>Pallet type</label><select id="palletType" onchange="draw()"><option value="uk">UK 120 × 100cm</option><option value="euro">Euro 120 × 80cm</option></select></div>
+<div class="control"><label>Max loaded height cm</label><input id="height" type="number" value="180" oninput="draw()"></div>
+<div class="control"><label>Pallet weight kg</label><input id="baseWeight" type="number" value="20" step=".1" oninput="draw()"></div>
+<div class="control"><label>Pallets to use</label><input id="palletOverride" type="number" min="0" step="1" value="0" oninput="draw()"><small>0 = automatic</small></div>
+<div class="control"><label>Packing allowance</label><select id="factor" onchange="draw()"><option value="1">Tight</option><option value="1.15" selected>Normal 15%</option><option value="1.3">Loose 30%</option></select></div>
 </div>
 </section>
 </div>
-
 <aside class="panel">
 <h2>Result</h2>
+<div class="card"><div class="muted" id="metricLabel">Product weight</div><div class="big ok" id="metric">0</div><div id="imperialMetric"></div></div>
+<div class="card"><h3>Breakdown</h3><div id="breakdown"></div></div>
+<div class="card" id="logCard"><h3 id="logTitle">Parcel detail</h3><div id="logistics"></div><div id="copyShipperWrap" style="display:none"><button onclick="copyForShipper()">Copy for Shipper</button><span id="copyStatus" class="copy-status"></span></div></div>
+<div class="card"><h3>Customs / tax guide</h3><div id="customs"></div><div id="countryWarning" class="warning"></div></div>
 <div class="card">
-<div class="muted" id="metricLabel">Product weight</div>
-<div class="big ok" id="metric">0</div>
-<div id="imperialMetric"></div>
+<h3>Commercial invoice</h3>
+<div class="invoice-fields">
+<div><label>Invoice no.</label><input id="invoiceNo" placeholder="e.g. GPS-2026-001"></div>
+<div><label>Invoice date</label><input id="invoiceDate" type="date"></div>
+<div><label>Exporter / sender</label><textarea id="exporter" rows="8">Gunpowder Studios Ltd&#10;19 High View Close&#10;Upper Norwood&#10;London SE19 2DS&#10;United Kingdom&#10;VAT: GB327677077&#10;Company No: 11961488&#10;EORI: GB327677077000</textarea></div>
+<div><label>Consignee / ship-to</label><textarea id="consignee" rows="8" placeholder="Replace with the fulfilment centre name and full address from Amazon">Amazon FBA&#10;ENTER FULFILMENT CENTRE NAME&#10;ENTER FULL AMAZON FC ADDRESS</textarea></div>
+<div><label>Currency</label><select id="currency"><option value="GBP">GBP £</option><option value="USD">USD $</option><option value="EUR">EUR €</option><option value="CAD">CAD C$</option><option value="AUD">AUD A$</option><option value="JPY">JPY ¥</option></select></div>
+<div><label>Reason for export</label><select id="reason"><option>Stock transfer / not a sale</option><option>Commercial sale</option><option>Samples</option></select></div>
 </div>
-
-<div class="card">
-<h3>Breakdown</h3>
-<div id="breakdown"></div>
-</div>
-
-<div class="card">
-<h3 id="logTitle">Parcel detail</h3>
-<div id="logistics"></div>
-<div id="copyShipperWrap" style="display:none">
-<button onclick="copyForShipper()">Copy packing details</button>
-<span id="copyStatus" class="copy-status"></span>
-</div>
+<div class="invoice-help">Invoice currency follows the selected destination automatically. Exporter details are pre-filled. For FBA, replace the Amazon consignee reminder text with the exact fulfilment-centre name and address shown on the shipment.</div>
+<button onclick="printInvoice()">Print / Save A4 Commercial Invoice</button>
 </div>
 </aside>
 </main>
-
+<section id="invoicePrint" aria-hidden="true"></section>
 <script>
 let mode='parcel',shipperText='';
-
+const FX_DATE='20 Aug 2026';
 const P=[
-['Bag of Dungeon','BOD',956,12,10.4,43.7,34.6,23.7,'Includes shipping box and packing materials',21,21,5],
-['Bag of Dungeon 2','BOD2',779,12,10.4,43.7,34.6,23.7,'',21,21,5],
-['Book of Dungeon','Book',335,0,0,0,0,0,'No master-carton sheet supplied',15,23,1.5],
-['Legends 1','L1',165,40,7.5,35.5,29.5,25.5,'',12,17,3],
-['Legends 2','L2',341,20,7.0,29,33.6,21.4,'',13,19,3],
-['7 Moons Base','7M Base',963,8,7.7,45,23,24,'Parcel weight estimated from carton gross ÷ 8',21,21,5],
-['7 Moons Deluxe','7M Deluxe',1111,8,9.3,45,23,24,'',21,21,5],
-['Rabbito','Rabbito',652,8,6.1,44,30.5,22.8,'',21,21,7],
-['Who Stole My Cheese?','Cheese',167,12,2.3,25,25,16.5,'',11,11,6],
-['Kastles','Kastles',153,90,14.3,44.5,24.8,23,'',10,8,3]
-].map(x=>({
- name:x[0],short:x[1],weight:x[2],
- cq:x[3],cw:x[4],cl:x[5],cwi:x[6],ch:x[7],
- note:x[8],ul:x[9],uw:x[10],uh:x[11]
-}));
-
+['Bag of Dungeon','BOD',956,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,2.405168,'Includes shipping box and packing materials',21,21,5],
+['Bag of Dungeon 2','BOD2',779,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,3.138451,'',21,21,5],
+['Book of Dungeon','Book',335,'49019900','490199','Printed book','GB',0,0,0,0,0,3.446430,'No master-carton sheet supplied',15,23,1.5],
+['Legends 1','L1',165,'9504906000','950490','Board-game expansion','CN',40,7.5,35.5,29.5,25.5,1.165920,'',12,17,3],
+['Legends 2','L2',341,'9504906000','950490','Board-game expansion','CN',20,7.0,29,33.6,21.4,1.400570,'',13,19,3],
+['7 Moons Base','7M Base',963,'9504906000','950490','Board game','CN',8,7.7,45,23,24,3.138451,'Parcel weight estimated from carton gross ÷ 8',21,21,5],
+['7 Moons Deluxe','7M Deluxe',1111,'9504906000','950490','Board game','CN',8,9.3,45,23,24,3.138451,'',21,21,5],
+['Rabbito','Rabbito',652,'9504906000','950490','Board game','CN',8,6.1,44,30.5,22.8,2.999127,'',21,21,7],
+['Who Stole My Cheese?','Cheese',167,'9504906000','950490','Table/board game','CN',12,2.3,25,25,16.5,2.119188,'',11,11,6],
+['Kastles','Kastles',153,'9504400000','950440','Card game / playing cards','CN',90,14.3,44.5,24.8,23,1.253914,'',10,8,3]
+].map(x=>({name:x[0],short:x[1],weight:x[2],ushts:x[3],hs:x[4],type:x[5],origin:x[6],cq:x[7],cw:x[8],cl:x[9],cwi:x[10],ch:x[11],cost:x[12],note:x[13],ul:x[14],uw:x[15],uh:x[16]}));
+const DEST={
+usa:{name:'USA',currency:'USD',symbol:'$',rate:1.36373,codeLabel:'US HTS',code:p=>p.ushts,warning:'⚠ USA planning estimate: the duty percentage for CN-origin goods is editable above. This estimate excludes brokerage, MPF, customs clearance, disbursement/advancement and carrier fees.'},
+eu:{name:'European Union',currency:'EUR',symbol:'€',rate:1.16577,codeLabel:'HS/CN family',code:p=>p.hs,warning:'⚠ Import VAT, customs duty and clearance fees may apply. CN remains the origin of the games even though dispatch is from the UK.'},
+canada:{name:'Canada',currency:'CAD',symbol:'C$',rate:1.87817,codeLabel:'HS family',code:p=>p.hs,warning:'⚠ GST/HST, possible duty and broker/carrier fees may apply.'},
+australia:{name:'Australia',currency:'AUD',symbol:'A$',rate:1.91854,codeLabel:'HS family',code:p=>p.hs,warning:'⚠ GST, possible customs duty/import-processing and broker fees may apply.'},
+japan:{name:'Japan',currency:'JPY',symbol:'¥',rate:216.357,codeLabel:'HS family',code:p=>p.hs,warning:'⚠ Consumption tax, possible customs duty and clearance charges may apply.'},
+uk:{name:'United Kingdom',currency:'GBP',symbol:'£',rate:1,codeLabel:'Commodity family',code:p=>p.hs,warning:'UK domestic shipment: normal UK VAT/shipping rules apply.'},
+other:{name:'Other destination',currency:'GBP',symbol:'£',rate:1,codeLabel:'HS family',code:p=>p.hs,warning:'⚠ GBP shown as the fallback currency. Confirm destination duty, VAT/GST, customs and broker/carrier fees before shipping.'}
+};
 const qtyState={parcel:P.map(()=>0),carton:P.map(()=>0),pallet:P.map(()=>0)};
-const inch=x=>(x/2.54).toFixed(2);
-const lb=x=>(x*2.2046226218).toFixed(2);
-const oz=x=>(x*35.27396195).toFixed(1);
-
+const customsGBP=P.map(p=>p.cost||0);
+const inch=x=>(x/2.54).toFixed(2),lb=x=>(x*2.2046226218).toFixed(2),oz=x=>(x*35.27396195).toFixed(1);
+function decimals(cur){return cur==='JPY'?0:2}
+function fmtLocal(n,d){return `${d.symbol}${Number(n).toFixed(decimals(d.currency))}`}
+function fromGBP(n,d){return (Number(n)||0)*d.rate}
+function toGBP(n,d){return (Number(n)||0)/d.rate}
+function getUSDutyRate(){return Math.max(0,Number(document.getElementById('usDutyRate')?.value||10)||0)/100}
+function dutyPct(){return `${(getUSDutyRate()*100).toFixed(2).replace(/\.?0+$/,'')}%`}
 function setMode(m){mode=m;make();draw()}
-
-function saveQty(i){
- qtyState[mode][i]=Math.max(0,Number(document.getElementById('q'+i)?.value||0)||0);
- draw();
-}
-
+function saveQty(i){qtyState[mode][i]=Math.max(0,Number(document.getElementById('q'+i)?.value||0)||0);draw()}
+function saveCustoms(i){const d=DEST[destination.value];customsGBP[i]=toGBP(Number(document.getElementById('v'+i)?.value||0),d);draw()}
 function make(){
+ const d=DEST[destination.value];
  const cartonMode=mode!=='parcel';
-
  document.getElementById('products').innerHTML=P.map((p,i)=>{
    const noCarton=cartonMode&&!p.cq;
-   const kg=(p.weight/1000).toFixed(3);
-   const pounds=lb(p.weight/1000);
-   const ounces=oz(p.weight/1000);
-
-   const unitSpec=
-     '<div class="unit-spec">'+
-     '<strong>Individual box</strong><br>'+
-     p.ul+' × '+p.uw+' × '+p.uh+' cm · '+p.weight+' g / '+kg+' kg<br>'+
-     '<span class="secondary">'+inch(p.ul)+' × '+inch(p.uw)+' × '+inch(p.uh)+' in · '+pounds+' lb · '+ounces+' oz</span>'+
-     (p.note?'<br><small>'+p.note+'</small>':'')+
-     '</div>';
-
-   const cartonText=p.cq
-     ? '<div class="carton-spec"><strong>'+p.cq+'/ctn</strong><br>'+
-       p.cl+' × '+p.cwi+' × '+p.ch+' cm<br>'+
-       inch(p.cl)+' × '+inch(p.cwi)+' × '+inch(p.ch)+' in<br>'+
-       p.cw+' kg / '+lb(p.cw)+' lb gross</div>'
-     : '<span class="muted">No carton data</span>';
-
-   return '<tr>'+
-     '<td><strong>'+p.name+'</strong>'+unitSpec+'</td>'+
-     '<td class="hide-mobile">'+cartonText+'</td>'+
-     '<td><input class="qty" id="q'+i+'" type="number" min="0" step="1" value="'+qtyState[mode][i]+'" '+(noCarton?'disabled':'')+' oninput="saveQty('+i+')">'+(noCarton?'<br><small>n/a</small>':'')+'</td>'+
-     '</tr>';
+   const cartonText=p.cq?`${p.cq}/ctn<br>${p.cl} × ${p.cwi} × ${p.ch}cm · ${p.cw}kg gross`:'No carton data';
+   const usa=destination.value==='usa';
+   const metricDims=`${p.ul} × ${p.uw} × ${p.uh} cm`;
+   const imperialDims=`${inch(p.ul)} × ${inch(p.uw)} × ${inch(p.uh)} in`;
+   const kg=(p.weight/1000).toFixed(3), pounds=lb(p.weight/1000), ounces=oz(p.weight/1000);
+   const primary=usa?`${imperialDims} · ${pounds} lb · ${ounces} oz`:`${metricDims} · ${p.weight} g`;
+   const secondary=usa?`${metricDims} · ${p.weight} g`:`${imperialDims} · ${pounds} lb · ${ounces} oz`;
+   const unitSpec=`<div class="unit-spec"><strong>Individual box:</strong><br>${primary}<br><span class="secondary">${secondary}</span>${p.note?`<br><small>${p.note}</small>`:''}</div>`;
+   return `<tr><td><strong>${p.name}</strong><br><small>${p.type} · ${p.origin}</small>${unitSpec}</td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
  }).join('');
-
- updateModeUI();
+ updateModeUI(d);
 }
-
-function updateModeUI(){
+function updateModeUI(d){
  ['parcel','carton','pallet'].forEach(x=>document.getElementById('t-'+x).classList.toggle('active',x===mode));
+ document.getElementById('makeHead').textContent=`Make cost (${d.currency})`;
+ document.getElementById('customsHead').textContent=`Customs ${d.currency}/unit`;
+ document.getElementById('fxNote').textContent=d.rate===1?`Currency: ${d.currency}`:`FX reference ${FX_DATE}: £1 = ${d.rate} ${d.currency}`;
+ document.getElementById('currency').value=d.currency;
  document.getElementById('palletControls').style.display=mode==='pallet'?'block':'none';
  document.getElementById('copyShipperWrap').style.display=mode==='pallet'?'block':'none';
  document.getElementById('qtyHead').textContent=mode==='parcel'?'Games':'Cartons';
-
- document.getElementById('modeNote').textContent=
-   mode==='parcel'
-   ? 'Parcel Mode: enter individual games. Weight is calculated game by game.'
-   : mode==='carton'
-   ? 'Carton Mode: enter full master cartons. Total games, gross weight and volume are calculated from carton specs.'
-   : 'Pallet Mode: enter master cartons. The app estimates pallet count, height and shipment weight.';
-
- document.getElementById('logTitle').textContent=
-   mode==='parcel'?'Parcel detail':
-   mode==='carton'?'Carton detail':'Carton / pallet estimate';
+ document.getElementById('modeNote').textContent=mode==='parcel'?'Parcel Mode: enter individual games. Weight is calculated game by game.':mode==='carton'?'Carton Mode: enter the number of full master cartons. Games, gross weight and volume are calculated from the manufacturer carton sheets.':'Pallet Mode: enter the cartons you want to send. Pallets are estimated from those carton dimensions/weights; set “Pallets to use” if you want to force a specific pallet count.';
+ document.getElementById('logTitle').textContent=mode==='parcel'?'Parcel detail':mode==='carton'?'Carton detail':'Carton / pallet estimate';
 }
-
 function sel(){
+ const d=DEST[destination.value];
  return P.map((p,i)=>{
    const inputQty=Math.max(0,Number(qtyState[mode][i])||0);
    if(!inputQty)return null;
    const units=mode==='parcel'?inputQty:(p.cq?inputQty*p.cq:0);
    const cartons=mode==='parcel'?0:(p.cq?inputQty:0);
-   return {...p,index:i,inputQty,units,cartons};
+   return {...p,index:i,inputQty,units,cartons,valueLocal:fromGBP(customsGBP[i],d),valueGBP:customsGBP[i]};
  }).filter(Boolean);
 }
-
+function dutyForGBP(p,dest){return dest==='usa'&&p.origin==='CN'?(p.cost||0)*p.units*getUSDutyRate():0}
 function draw(){
- updateModeUI();
+ const key=destination.value,d=DEST[key];updateModeUI(d);
  const a=sel();
- let units=0,cartons=0,goodsKg=0,vol=0,lines=[];
-
+ let units=0,cartons=0,goodsKg=0,vol=0,valueGBP=0,makeGBP=0,dutyGBP=0,lines=[];
  a.forEach(p=>{
-   units+=p.units;
-
+   units+=p.units;valueGBP+=p.units*p.valueGBP;makeGBP+=(p.cost||0)*p.units;dutyGBP+=dutyForGBP(p,key);
    if(mode==='parcel'){
-     const kg=p.units*p.weight/1000;
-     goodsKg+=kg;
-     lines.push(
-       '<div class="line"><strong>'+p.name+'</strong>: '+p.units+' game(s)<br>'+
-       '<small>1 game: '+p.ul+' × '+p.uw+' × '+p.uh+' cm / '+inch(p.ul)+' × '+inch(p.uw)+' × '+inch(p.uh)+' in · '+
-       (p.weight/1000).toFixed(3)+' kg / '+lb(p.weight/1000)+' lb / '+oz(p.weight/1000)+' oz<br>'+
-       'Line weight: '+kg.toFixed(3)+' kg / '+lb(kg)+' lb'+
-       (p.note?' · '+p.note:'')+
-       '</small></div>'
-     );
+     const kg=p.units*p.weight/1000;goodsKg+=kg;
+     lines.push(`<div class="line"><strong>${p.name}</strong>: ${p.units} game(s)<br><small>1 game = ${(p.weight/1000).toFixed(3)}kg / ${lb(p.weight/1000)}lb / ${oz(p.weight/1000)}oz · ${p.ul} × ${p.uw} × ${p.uh}cm / ${inch(p.ul)} × ${inch(p.uw)} × ${inch(p.uh)}in · line total ${kg.toFixed(3)}kg / ${lb(kg)}lb${p.note?` · ${p.note}`:''}</small></div>`);
    }else if(p.cq){
-     cartons+=p.cartons;
-     goodsKg+=p.cartons*p.cw;
-     vol+=p.cartons*p.cl*p.cwi*p.ch;
-     lines.push(
-       '<div class="line"><strong>'+p.name+'</strong>: '+p.cartons+' carton(s) = '+p.units+' games<br>'+
-       '<small>'+p.cq+'/ctn · '+p.cl+' × '+p.cwi+' × '+p.ch+' cm / '+inch(p.cl)+' × '+inch(p.cwi)+' × '+inch(p.ch)+' in · '+
-       p.cw+' kg / '+lb(p.cw)+' lb gross each</small></div>'
-     );
+     cartons+=p.cartons;goodsKg+=p.cartons*p.cw;vol+=p.cartons*p.cl*p.cwi*p.ch;
+     lines.push(`<div class="line"><strong>${p.name}</strong>: ${p.cartons} carton(s) = ${p.units} games<br><small>${p.cq}/ctn · ${p.cl} × ${p.cwi} × ${p.ch}cm · ${p.cw}kg gross each / ${inch(p.cl)} × ${inch(p.cwi)} × ${inch(p.ch)}in · ${lb(p.cw)}lb</small></div>`);
    }
  });
-
  if(mode==='parcel'){
-   metricLabel.textContent='Product weight';
-   metric.textContent=goodsKg.toFixed(2)+' kg';
-   imperialMetric.innerHTML='<strong>'+lb(goodsKg)+' lb</strong>';
-   breakdown.innerHTML=
-     'Games: <strong>'+units+'</strong><br>'+
-     'Product weight: <strong>'+goodsKg.toFixed(2)+' kg / '+lb(goodsKg)+' lb</strong>';
-   logistics.innerHTML=lines.join('')||'No games selected.';
-   shipperText='';
- }
-
- else if(mode==='carton'){
-   metricLabel.textContent='Total cartons';
-   metric.textContent=cartons;
-   imperialMetric.innerHTML='<strong>'+units+' games · '+goodsKg.toFixed(1)+' kg / '+lb(goodsKg)+' lb</strong>';
-   breakdown.innerHTML=
-     'Master cartons: <strong>'+cartons+'</strong><br>'+
-     'Games inside: <strong>'+units+'</strong><br>'+
-     'Carton gross total: <strong>'+goodsKg.toFixed(1)+' kg / '+lb(goodsKg)+' lb</strong><br>'+
-     'Carton volume: <strong>'+(vol/1000000).toFixed(3)+' m³</strong>';
-   logistics.innerHTML=lines.join('')||'No cartons selected.';
-   shipperText='';
- }
-
- else{
-   const L=120;
-   const W=palletType.value==='euro'?80:100;
-   const maxH=Math.max(30,Number(height.value)||180);
-   const baseH=15;
-   const usableH=Math.max(1,maxH-baseH);
-   const spaceFactor=Math.max(1,Number(factor.value)||1.15);
-   const neededVol=vol*spaceFactor;
-   const capacity=L*W*usableH;
-   const autoPallets=cartons?Math.max(1,Math.ceil(neededVol/capacity)):0;
-   const override=Math.max(0,Math.floor(Number(palletOverride.value)||0));
-   const pallets=cartons?(override||autoPallets):0;
-   const loadH=pallets?neededVol/(L*W*pallets):0;
-   const totalH=pallets?baseH+loadH:0;
-   const palletKg=Math.max(0,Number(baseWeight.value)||20);
-   const totalKg=goodsKg+pallets*palletKg;
-   const avgKg=pallets?totalKg/pallets:0;
-   const overHeight=pallets&&totalH>maxH;
-
-   metricLabel.textContent=override?'Pallets selected':'Estimated pallets';
-   metric.textContent=pallets;
-   metric.classList.toggle('bad',!!overHeight);
-   metric.classList.toggle('ok',!overHeight);
-   imperialMetric.innerHTML='<strong>'+cartons+' cartons · '+units+' games</strong>';
-
-   breakdown.innerHTML=
-     'Master cartons: <strong>'+cartons+'</strong><br>'+
-     'Games inside: <strong>'+units+'</strong><br>'+
-     'Goods gross: <strong>'+goodsKg.toFixed(1)+' kg / '+lb(goodsKg)+' lb</strong><br>'+
-     'Pallets: <strong>'+pallets+(override?' (manual)':' (auto)')+'</strong><br>'+
-     'Estimated shipment gross: <strong>'+totalKg.toFixed(1)+' kg / '+lb(totalKg)+' lb</strong>';
-
-   const pallet=
-     '<h3>Pallet estimate</h3>'+
-     (pallets
-       ? pallets+' pallet(s), each approx. '+L+' × '+W+' × <strong class="'+(overHeight?'bad':'ok')+'">'+totalH.toFixed(1)+' cm</strong><br>'+
-         inch(L)+' × '+inch(W)+' × '+inch(totalH)+' in<br>'+
-         'Average gross per pallet: <strong>'+avgKg.toFixed(1)+' kg / '+lb(avgKg)+' lb</strong>'+
-         (overHeight?'<div class="warning"><strong>Too tall for the selected maximum.</strong> Use more pallets or increase the max loaded height.</div>':'')
-       : 'No cartons selected.');
-
+   metricLabel.textContent='Product weight';metric.textContent=`${goodsKg.toFixed(2)}kg`;imperialMetric.innerHTML=`<strong>${lb(goodsKg)} lb</strong>`;
+   breakdown.innerHTML=`Games: <strong>${units}</strong><br>Product weight: <strong>${goodsKg.toFixed(2)}kg / ${lb(goodsKg)}lb</strong><br>Make-cost total: <strong>${fmtLocal(fromGBP(makeGBP,d),d)}</strong><br>Declared customs value: <strong>${fmtLocal(fromGBP(valueGBP,d),d)}</strong>${key==='usa'?`<br>Estimated US duty (${dutyPct()}): <strong>${fmtLocal(fromGBP(dutyGBP,d),d)}</strong>`:''}`;
+   logistics.innerHTML=lines.join('')||'No games selected.';shipperText='';
+ }else if(mode==='carton'){
+   metricLabel.textContent='Total cartons';metric.textContent=cartons;imperialMetric.innerHTML=`<strong>${units} games · ${goodsKg.toFixed(1)}kg / ${lb(goodsKg)}lb</strong>`;
+   breakdown.innerHTML=`Master cartons: <strong>${cartons}</strong><br>Games inside: <strong>${units}</strong><br>Carton gross total: <strong>${goodsKg.toFixed(1)}kg / ${lb(goodsKg)}lb</strong><br>Carton volume: <strong>${(vol/1000000).toFixed(3)}m³</strong><br>Make-cost total: <strong>${fmtLocal(fromGBP(makeGBP,d),d)}</strong><br>Declared customs value: <strong>${fmtLocal(fromGBP(valueGBP,d),d)}</strong>${key==='usa'?`<br>Estimated US duty (${dutyPct()}): <strong>${fmtLocal(fromGBP(dutyGBP,d),d)}</strong>`:''}`;
+   logistics.innerHTML=lines.join('')||'No cartons selected.';shipperText='';
+ }else{
+   const L=120,W=palletType.value==='euro'?80:100,maxH=Math.max(30,Number(height.value)||180),baseH=15,usableH=Math.max(1,maxH-baseH),spaceFactor=Math.max(1,Number(factor.value)||1.15),neededVol=vol*spaceFactor,capacity=L*W*usableH;
+   const autoPallets=cartons?Math.max(1,Math.ceil(neededVol/capacity)):0,override=Math.max(0,Math.floor(Number(palletOverride.value)||0)),pallets=cartons?(override||autoPallets):0;
+   const loadH=pallets?neededVol/(L*W*pallets):0,totalH=pallets?baseH+loadH:0,palletKg=Math.max(0,Number(baseWeight.value)||20),totalKg=goodsKg+pallets*palletKg,avgKg=pallets?totalKg/pallets:0,overHeight=pallets&&totalH>maxH;
+   metricLabel.textContent=override?'Pallets selected':'Estimated pallets';metric.textContent=pallets;metric.classList.toggle('bad',!!overHeight);metric.classList.toggle('ok',!overHeight);imperialMetric.innerHTML=`<strong>${cartons} cartons · ${units} games</strong>`;
+   breakdown.innerHTML=`Master cartons: <strong>${cartons}</strong><br>Games inside: <strong>${units}</strong><br>Goods gross: <strong>${goodsKg.toFixed(1)}kg / ${lb(goodsKg)}lb</strong><br>Pallets: <strong>${pallets}${override?' (manual)':' (auto)'}</strong><br>Estimated shipment gross: <strong>${totalKg.toFixed(1)}kg / ${lb(totalKg)}lb</strong><br>Make-cost total: <strong>${fmtLocal(fromGBP(makeGBP,d),d)}</strong><br>Declared customs value: <strong>${fmtLocal(fromGBP(valueGBP,d),d)}</strong>${key==='usa'?`<br>Estimated US duty (${dutyPct()}): <strong>${fmtLocal(fromGBP(dutyGBP,d),d)}</strong>`:''}`;
+   const pallet=`<h3>Pallet estimate</h3>${pallets?`${pallets} pallet(s), each approx. ${L} × ${W} × <strong class="${overHeight?'bad':'ok'}">${totalH.toFixed(1)}cm</strong><br>${inch(L)} × ${inch(W)} × ${inch(totalH)}in<br>Average gross per pallet: <strong>${avgKg.toFixed(1)}kg / ${lb(avgKg)}lb</strong>${overHeight?`<div class="warning"><strong>Too tall for the selected maximum.</strong> Use more pallets or increase the max loaded height.</div>`:''}`:'No cartons selected.'}`;
    logistics.innerHTML=(lines.join('')||'No cartons selected.')+pallet;
-
-   shipperText=cartons
-     ? 'PACKING DETAILS\n'+
-       'Pallets: '+pallets+(override?' (manual count)':' (estimated)')+'\n'+
-       'Contents: '+units+' games\n'+
-       'Master cartons: '+cartons+'\n'+
-       'Approx. pallet L x W x H: '+L+' x '+W+' x '+totalH.toFixed(1)+' cm / '+inch(L)+' x '+inch(W)+' x '+inch(totalH)+' in\n'+
-       'Approx. average gross per pallet: '+avgKg.toFixed(1)+' kg / '+lb(avgKg)+' lb\n'+
-       'Estimated shipment gross: '+totalKg.toFixed(1)+' kg / '+lb(totalKg)+' lb\n\n'+
-       a.map(p=>p.name+': '+p.cartons+' cartons / '+p.units+' games').join('\n')+
-       '\n\nPlease confirm final pallet dimensions and gross weights after physical packing.'
-     : '';
+   shipperText=cartons?`SHIPMENT DETAILS\nDestination: ${d.name}\nPallets: ${pallets}${override?' (manual count)':' (estimated)'}\nContents: ${units} games\nMaster cartons: ${cartons}\nApprox. pallet L x W x H: ${L} x ${W} x ${totalH.toFixed(1)} cm\nApprox. average gross per pallet: ${avgKg.toFixed(1)} kg / ${lb(avgKg)} lb\nEstimated shipment gross: ${totalKg.toFixed(1)} kg / ${lb(totalKg)} lb\nDeclared goods value: ${d.currency} ${fromGBP(valueGBP,d).toFixed(decimals(d.currency))}\n${key==='usa'?`Estimated US duty (${dutyPct()}) from make cost: ${d.currency} ${fromGBP(dutyGBP,d).toFixed(decimals(d.currency))}\n`:''}${a.map(p=>`${p.name}: ${p.cartons} cartons / ${p.units} games | ${d.codeLabel} ${d.code(p)} | Origin ${p.origin}`).join('\n')}\n\nPlease confirm final pallet dimensions and gross weights after physical packing.`:'';
  }
+ const dutySummary=key==='usa'&&a.length?`<div class="warning"><strong>Estimated US import duty</strong><div class="duty-total">${fmtLocal(fromGBP(dutyGBP,d),d)}</div>Calculated from the stored make cost of CN-origin products at <strong>${dutyPct()}</strong>.<br><small>Make-cost base used: ${fmtLocal(fromGBP(a.filter(p=>p.origin==='CN').reduce((s,p)=>s+(p.cost||0)*p.units,0),d),d)}. GB-origin products are not included in this CN tariff estimate.</small></div>`:'';
+ customs.innerHTML=(a.map(p=>`<div class="line"><strong>${p.units} × ${p.name}</strong>${mode!=='parcel'?` <small>(${p.cartons} cartons)</small>`:''}<br><span class="pill">${d.codeLabel}: ${d.code(p)}</span><span class="pill">Origin: ${p.origin}</span><br>Make cost: ${fmtLocal(fromGBP(p.cost||0,d),d)}/unit · ${fmtLocal(fromGBP((p.cost||0)*p.units,d),d)} total${key==='usa'?`<br>Estimated duty: <strong>${fmtLocal(fromGBP(dutyForGBP(p,'usa'),d),d)}</strong>${p.origin==='CN'?` (${dutyPct()} of make cost)`:' (not CN-origin)'}`:''}<br>Customs value: ${fmtLocal(p.valueLocal,d)}/unit · ${fmtLocal(p.valueLocal*p.units,d)} total</div>`).join('')||'No items selected.')+dutySummary;
+ countryWarning.innerHTML=`<strong>${d.name}</strong><br>${d.warning}`;
 }
-
-async function copyForShipper(){
- if(!shipperText)return;
- try{
-   await navigator.clipboard.writeText(shipperText);
- }catch(e){
-   const t=document.createElement('textarea');
-   t.value=shipperText;
-   document.body.appendChild(t);
-   t.select();
-   document.execCommand('copy');
-   t.remove();
- }
- copyStatus.textContent='✓ Copied';
- setTimeout(()=>copyStatus.textContent='',2000);
+async function copyForShipper(){if(!shipperText)return;try{await navigator.clipboard.writeText(shipperText)}catch(e){const t=document.createElement('textarea');t.value=shipperText;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}copyStatus.textContent='✓ Copied';setTimeout(()=>copyStatus.textContent='',2000)}
+function resetQ(){qtyState[mode]=P.map(()=>0);make();draw()}
+function esc(s){return String(s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])).replace(/\n/g,'<br>')}
+function printInvoice(){
+ const a=sel();if(!a.length){alert('Select at least one product first.');return}if(consignee.value.includes('ENTER FULFILMENT')){alert('Please replace the Amazon FBA reminder with the exact fulfilment-centre name and address from your Amazon shipment before printing.');return}
+ const d=DEST[destination.value],units=a.reduce((s,p)=>s+p.units,0),cartons=a.reduce((s,p)=>s+p.cartons,0),kg=mode==='parcel'?a.reduce((s,p)=>s+p.units*p.weight/1000,0):a.reduce((s,p)=>s+p.cartons*p.cw,0),total=a.reduce((s,p)=>s+p.units*p.valueLocal,0),cur=d.currency,sym=d.symbol;
+ const rows=a.map(p=>`<tr><td>${esc(p.name)}<br><small>${esc(p.type)}</small></td><td>${p.units}</td><td>${esc(d.code(p))}</td><td>${esc(p.origin)}</td><td>${sym}${Number(p.valueLocal).toFixed(decimals(cur))}</td><td>${sym}${Number(p.units*p.valueLocal).toFixed(decimals(cur))}</td></tr>`).join('');
+ invoicePrint.innerHTML=`<h1>COMMERCIAL / CUSTOMS INVOICE</h1><div class="inv-grid"><div><strong>Exporter / Sender</strong><br>${esc(exporter.value)}</div><div><strong>Consignee / Ship-to</strong><br>${esc(consignee.value)||'____________________________'}</div></div><p><strong>Invoice:</strong> ${esc(invoiceNo.value)||'________________'} &nbsp; <strong>Date:</strong> ${esc(invoiceDate.value)}<br><strong>Destination:</strong> ${esc(d.name)} &nbsp; <strong>Reason:</strong> ${esc(reason.value)} &nbsp; <strong>Currency:</strong> ${cur}</p><table><thead><tr><th>Description</th><th>Qty</th><th>${esc(d.codeLabel)}</th><th>Origin</th><th>Unit value</th><th>Line value</th></tr></thead><tbody>${rows}<tr><td colspan="5"><strong>TOTAL DECLARED GOODS VALUE</strong></td><td><strong>${sym}${Number(total).toFixed(decimals(cur))}</strong></td></tr></tbody></table><p><strong>Shipment summary:</strong> ${units} units${cartons?` · ${cartons} master cartons`:''} · approx. ${kg.toFixed(1)} kg goods gross.</p><p><strong>Declaration:</strong> Values shown are declared for customs purposes. ${esc(reason.value)==='Stock transfer / not a sale'?'This shipment is a stock transfer and is not a sale to the consignee.':''}</p><p style="margin-top:25mm">Signed: ______________________________ &nbsp;&nbsp; Date: __________________</p>`;
+ window.print();
 }
-
-function resetQ(){
- qtyState[mode]=P.map(()=>0);
- make();
- draw();
-}
-
-make();
-draw();
+invoiceDate.value=new Date().toISOString().slice(0,10);make();draw();
 </script>
 </body>
 </html>
