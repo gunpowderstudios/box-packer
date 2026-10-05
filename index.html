@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v8.1</title>
+<title>Gunpowder Studios Box Packer v8.2</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
-*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
 @media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.dest-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.controls,.tabs,.dest-grid,.invoice-fields{grid-template-columns:1fr}.hide-mobile{display:none}}
 @media print{html,body{background:#fff!important;color:#000!important}body>*{display:none!important}#invoicePrint{display:block!important;height:auto!important;min-height:277mm!important;overflow:visible!important;position:static!important;width:100%;color:#000!important;background:#fff!important;font-family:Arial;padding:12mm!important}#invoicePrint *{color:#000!important;background-color:transparent!important}#invoicePrint table{font-size:10pt;background:#fff!important}#invoicePrint th,#invoicePrint td{border:1px solid #999;padding:5px;background:#fff!important}#invoicePrint h1{font-size:20pt}#invoicePrint .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12mm}@page{size:A4;margin:10mm}}
@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v8.1</h1>
+<h1>Gunpowder Studios Box Packer v8.2</h1>
 <p>Parcels by game · cartons from manufacturer specs · pallets from carton counts</p>
 </header>
 <main class="wrap">
@@ -94,16 +94,16 @@
 let mode='parcel',shipperText='';
 const FX_DATE='20 Aug 2026';
 const P=[
-['Bag of Dungeon','BOD',956,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,2.405168,'Includes shipping box and packing materials'],
-['Bag of Dungeon 2','BOD2',779,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,3.138451,''],
-['Book of Dungeon','Book',335,'49019900','490199','Printed book','GB',0,0,0,0,0,3.446430,'No master-carton sheet supplied'],
-['Legends 1','L1',165,'9504906000','950490','Board-game expansion','CN',40,7.5,35.5,29.5,25.5,1.165920,''],
-['Legends 2','L2',341,'9504906000','950490','Board-game expansion','CN',20,7.0,29,33.6,21.4,1.400570,''],
-['7 Moons Base','7M Base',963,'9504906000','950490','Board game','CN',8,7.7,45,23,24,3.138451,'Parcel weight estimated from carton gross ÷ 8'],
-['7 Moons Deluxe','7M Deluxe',1111,'9504906000','950490','Board game','CN',8,9.3,45,23,24,3.138451,''],
-['Rabbito','Rabbito',652,'9504906000','950490','Board game','CN',8,6.1,44,30.5,22.8,2.999127,''],
-['Who Stole My Cheese?','Cheese',167,'9504906000','950490','Table/board game','CN',12,2.3,25,25,16.5,2.119188,''],
-['Kastles','Kastles',153,'9504400000','950440','Card game / playing cards','CN',90,14.3,44.5,24.8,23,1.253914,'']
+['Bag of Dungeon','BOD',956,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,2.405168,'Includes shipping box and packing materials',21,21,5],
+['Bag of Dungeon 2','BOD2',779,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,3.138451,'',21,21,5],
+['Book of Dungeon','Book',335,'49019900','490199','Printed book','GB',0,0,0,0,0,3.446430,'No master-carton sheet supplied',15,23,1.5],
+['Legends 1','L1',165,'9504906000','950490','Board-game expansion','CN',40,7.5,35.5,29.5,25.5,1.165920,'',12,17,3],
+['Legends 2','L2',341,'9504906000','950490','Board-game expansion','CN',20,7.0,29,33.6,21.4,1.400570,'',13,19,3],
+['7 Moons Base','7M Base',963,'9504906000','950490','Board game','CN',8,7.7,45,23,24,3.138451,'Parcel weight estimated from carton gross ÷ 8',21,21,5],
+['7 Moons Deluxe','7M Deluxe',1111,'9504906000','950490','Board game','CN',8,9.3,45,23,24,3.138451,'',21,21,5],
+['Rabbito','Rabbito',652,'9504906000','950490','Board game','CN',8,6.1,44,30.5,22.8,2.999127,'',21,21,7],
+['Who Stole My Cheese?','Cheese',167,'9504906000','950490','Table/board game','CN',12,2.3,25,25,16.5,2.119188,'',11,11,6],
+['Kastles','Kastles',153,'9504400000','950440','Card game / playing cards','CN',90,14.3,44.5,24.8,23,1.253914,'',10,8,3]
 ].map(x=>({name:x[0],short:x[1],weight:x[2],ushts:x[3],hs:x[4],type:x[5],origin:x[6],cq:x[7],cw:x[8],cl:x[9],cwi:x[10],ch:x[11],cost:x[12],note:x[13]}));
 const DEST={
 usa:{name:'USA',currency:'USD',symbol:'$',rate:1.36373,codeLabel:'US HTS',code:p=>p.ushts,warning:'⚠ USA planning estimate: the duty percentage for CN-origin goods is editable above. This estimate excludes brokerage, MPF, customs clearance, disbursement/advancement and carrier fees.'},
@@ -116,7 +116,7 @@ other:{name:'Other destination',currency:'GBP',symbol:'£',rate:1,codeLabel:'HS 
 };
 const qtyState={parcel:P.map(()=>0),carton:P.map(()=>0),pallet:P.map(()=>0)};
 const customsGBP=P.map(p=>p.cost||0);
-const inch=x=>(x/2.54).toFixed(2),lb=x=>(x*2.2046226218).toFixed(2);
+const inch=x=>(x/2.54).toFixed(2),lb=x=>(x*2.2046226218).toFixed(2),oz=x=>(x*35.27396195).toFixed(1);
 function decimals(cur){return cur==='JPY'?0:2}
 function fmtLocal(n,d){return `${d.symbol}${Number(n).toFixed(decimals(d.currency))}`}
 function fromGBP(n,d){return (Number(n)||0)*d.rate}
@@ -132,8 +132,14 @@ function make(){
  document.getElementById('products').innerHTML=P.map((p,i)=>{
    const noCarton=cartonMode&&!p.cq;
    const cartonText=p.cq?`${p.cq}/ctn<br>${p.cl} × ${p.cwi} × ${p.ch}cm · ${p.cw}kg gross`:'No carton data';
-   const unitNote=mode==='parcel'?`<br><small>1 game: ${(p.weight/1000).toFixed(3)}kg${p.note?` · ${p.note}`:''}</small>`:'';
-   return `<tr><td><strong>${p.name}</strong><br><small>${p.type} · ${p.origin}</small>${unitNote}</td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
+   const usa=destination.value==='usa';
+   const metricDims=`${p.ul} × ${p.uw} × ${p.uh} cm`;
+   const imperialDims=`${inch(p.ul)} × ${inch(p.uw)} × ${inch(p.uh)} in`;
+   const kg=(p.weight/1000).toFixed(3), pounds=lb(p.weight/1000), ounces=oz(p.weight/1000);
+   const primary=usa?`${imperialDims} · ${pounds} lb · ${ounces} oz`:`${metricDims} · ${p.weight} g`;
+   const secondary=usa?`${metricDims} · ${p.weight} g`:`${imperialDims} · ${pounds} lb · ${ounces} oz`;
+   const unitSpec=`<div class="unit-spec"><strong>Individual box:</strong><br>${primary}<br><span class="secondary">${secondary}</span>${p.note?`<br><small>${p.note}</small>`:''}</div>`;
+   return `<tr><td><strong>${p.name}</strong><br><small>${p.type} · ${p.origin}</small>${unitSpec}</td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
  }).join('');
  updateModeUI(d);
 }
@@ -168,7 +174,7 @@ function draw(){
    units+=p.units;valueGBP+=p.units*p.valueGBP;makeGBP+=(p.cost||0)*p.units;dutyGBP+=dutyForGBP(p,key);
    if(mode==='parcel'){
      const kg=p.units*p.weight/1000;goodsKg+=kg;
-     lines.push(`<div class="line"><strong>${p.name}</strong>: ${p.units} game(s)<br><small>1 game = ${(p.weight/1000).toFixed(3)}kg / ${lb(p.weight/1000)}lb · line total ${kg.toFixed(3)}kg / ${lb(kg)}lb${p.note?` · ${p.note}`:''}</small></div>`);
+     lines.push(`<div class="line"><strong>${p.name}</strong>: ${p.units} game(s)<br><small>1 game = ${(p.weight/1000).toFixed(3)}kg / ${lb(p.weight/1000)}lb / ${oz(p.weight/1000)}oz · ${p.ul} × ${p.uw} × ${p.uh}cm / ${inch(p.ul)} × ${inch(p.uw)} × ${inch(p.uh)}in · line total ${kg.toFixed(3)}kg / ${lb(kg)}lb${p.note?` · ${p.note}`:''}</small></div>`);
    }else if(p.cq){
      cartons+=p.cartons;goodsKg+=p.cartons*p.cw;vol+=p.cartons*p.cl*p.cwi*p.ch;
      lines.push(`<div class="line"><strong>${p.name}</strong>: ${p.cartons} carton(s) = ${p.units} games<br><small>${p.cq}/ctn · ${p.cl} × ${p.cwi} × ${p.ch}cm · ${p.cw}kg gross each / ${inch(p.cl)} × ${inch(p.cwi)} × ${inch(p.ch)}in · ${lb(p.cw)}lb</small></div>`);
