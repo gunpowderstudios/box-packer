@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v9.7</title>
+<title>Gunpowder Studios Box Packer v9.8</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#111;background:var(--g);border-color:var(--g)}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v9.7</h1>
+<h1>Gunpowder Studios Box Packer v9.8</h1>
 <p>Packing, shipping · Amazon compliance & inventory</p>
 </header>
 <nav class="app-tabs" aria-label="Box Packer sections">
@@ -108,13 +108,13 @@
 <div class="warning"><strong>Current position — 8 Oct 2026.</strong> Bag of Dungeon Edition 3.0 review is now finished at Intertek and Paul has asked when Amazon will update the compliance status. Separate UK/EU revalidation requests for BoD2, Rabbito and Legends 2 are still awaiting Chris Leung's quote, timing and requirements. US validation is separate and is not included in those requests.</div>
 <div class="compliance-grid">
   <div class="compliance-item">
-    <div class="compliance-top"><div><strong>Bag of Dungeon — Edition 3.0</strong><br><small>Intertek Direct Verification · Q000696727</small></div><span class="status-pill status-done">Review finished</span></div>
+    <div class="compliance-top"><div><strong>Bag of Dungeon — Edition 3.0</strong><br><small>Intertek Direct Verification · Q000696727</small></div><span class="status-pill status-wait">Waiting for compliance</span></div>
     <div class="compliance-meta">
-      <div><strong>ASIN</strong>B0CM3K68M8</div>
+      <div><strong>ASIN</strong>B07XKSQ7VX</div>
+      <div><strong>SKU</strong>GQBOD03-stickerless</div>
       <div><strong>TRID</strong>TR178342222629980</div>
-      <div><strong>Amazon status</strong>Awaiting update</div>
     </div>
-    <div class="compliance-note">8 Oct: Jin Peng confirmed “The reviewing has been finished.” Paul has replied asking when Amazon's status will be updated. Next step: wait for the Amazon compliance status to refresh / Intertek confirmation that the DV has flowed through.</div>
+    <div class="compliance-note">UK: this is the Edition 3.0 listing currently waiting for Amazon compliance to update. Intertek confirmed on 8 Oct that the review is finished. USA: Edition 3.0 is live. Next step: wait for Amazon UK compliance status to refresh / Intertek confirmation that the DV has flowed through.</div>
   </div>
   <div class="compliance-item">
     <div class="compliance-top"><div><strong>Bag of Dungeon 2 — The Cursed Forest</strong><br><small>Existing report: Bureau Veritas</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
@@ -153,10 +153,10 @@
 <thead><tr><th>Product</th><th>UK</th><th>USA</th><th>Stock note</th></tr></thead>
 <tbody>
 <tr>
-<td><strong>Bag of Dungeon</strong></td>
-<td class="market-id">ASIN <code>B0CM3K68M8</code><br>SKU <code>C5-OLX5-RS8C</code><br><span class="stock-good">757 available</span> · 18 reserved</td>
-<td class="market-id">ASIN <code>B0CM3K68M8</code><br>SKUs seen: <code>C5-OLX5-RS8C</code>, <code>GV-WRGC-8AFU</code><br><span class="stock-good">70 available</span> · 4 reserved</td>
-<td>Current ASIN matches in UK and USA. Legacy ASIN <code>B07XKSQ7VX</code> is still visible but out of stock / inactive.</td>
+<td><strong>Bag of Dungeon</strong><br><small>Edition 3.0 / current editions</small></td>
+<td class="market-id"><strong>Edition 3.0 compliance listing</strong><br>ASIN <code>B07XKSQ7VX</code><br>SKU <code>GQBOD03-stickerless</code><br><span class="stock-warn">Waiting for compliance</span><br><br><strong>Current live UK edition</strong><br>ASIN <code>B0CM3K68M8</code><br>SKU <code>C5-OLX5-RS8C</code><br><span class="stock-good">757 available</span> · 18 reserved</td>
+<td class="market-id"><strong>Edition 3.0</strong><br>ASIN <code>B07XKSQ7VX</code><br><span class="stock-good">Live in USA</span><br><br><strong>Current edition</strong><br>ASIN <code>B0CM3K68M8</code><br>SKUs seen: <code>C5-OLX5-RS8C</code>, <code>GV-WRGC-8AFU</code><br><span class="stock-good">70 available</span> · 4 reserved</td>
+<td>Do not treat <code>B07XKSQ7VX</code> as simply legacy/inactive: it is the Edition 3.0 ASIN under compliance review in the UK and is live in the USA.</td>
 </tr>
 <tr>
 <td><strong>Bag of Dungeon 2</strong></td>
