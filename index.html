@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v10.1</title>
+<title>Gunpowder Studios Box Packer v10.2</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
-*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#111;background:var(--g);border-color:var(--g)}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#111;background:var(--g);border-color:var(--g)}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}.product-cell{display:flex;align-items:flex-start;gap:10px;min-width:190px}.product-thumb{width:58px;height:58px;object-fit:contain;flex:0 0 58px;background:#111;border:1px solid #3c3c3c;border-radius:8px;padding:3px}.product-info{min-width:0}.inventory-product{display:flex;align-items:center;gap:9px;min-width:165px}.inventory-product .product-thumb{width:52px;height:52px;flex-basis:52px}.compliance-name{display:flex;align-items:center;gap:10px}.compliance-name .product-thumb{width:54px;height:54px;flex-basis:54px}
 .compliance-grid{display:grid;grid-template-columns:1fr;gap:10px}.compliance-item{background:#181818;border:1px solid var(--b);border-radius:10px;padding:12px}.compliance-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status-pill{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:bold}.status-wait{background:#392b12;color:#ffd76a;border:1px solid var(--g)}.status-done{background:#17351f;color:#8be39d;border:1px solid var(--ok)}.compliance-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.compliance-meta div{background:#202020;border-radius:7px;padding:7px 8px;font-size:12px}.compliance-meta strong{display:block;color:var(--m);font-size:11px;text-transform:uppercase;margin-bottom:2px}.compliance-note{margin-top:10px;font-size:12px;color:var(--m)}.id-table{font-size:12px}.id-table th{white-space:nowrap}.id-table td{vertical-align:top}.stock-good{color:var(--ok);font-weight:bold}.stock-zero{color:var(--m)}.stock-warn{color:#ffd76a;font-weight:bold}.market-id{line-height:1.55}.market-id code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff;background:#111;padding:1px 4px;border-radius:4px}@media(max-width:650px){.compliance-meta{grid-template-columns:1fr}}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
 @media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.dest-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.app-tabs,.controls,.tabs,.dest-grid,.invoice-fields{grid-template-columns:1fr}.hide-mobile{display:none}}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v10.1</h1>
+<h1>Gunpowder Studios Box Packer v10.2</h1>
 <p>Packing, shipping · Amazon compliance & inventory</p>
 </header>
 <nav class="app-tabs" aria-label="Box Packer sections">
@@ -108,7 +108,7 @@
 <div class="warning"><strong>Current position — 8 Oct 2026.</strong> Bag of Dungeon Edition 3.0 review is now finished at Intertek and Paul has asked when Amazon will update the compliance status. Separate UK/EU revalidation requests for BoD2, Rabbito and Legends 2 are still awaiting Chris Leung's quote, timing and requirements. US validation is separate and is not included in those requests.</div>
 <div class="compliance-grid">
   <div class="compliance-item">
-    <div class="compliance-top"><div><strong>Bag of Dungeon — Edition 3.0</strong><br><small>Intertek Direct Verification · Q000696727</small></div><span class="status-pill status-wait">Waiting for compliance</span></div>
+    <div class="compliance-top"><div class="compliance-name"><img class="product-thumb" src="boxes/bod-1.png" alt="Bag of Dungeon"><div><strong>Bag of Dungeon — Edition 3.0</strong><br><small>Intertek Direct Verification · Q000696727</small></div></div><span class="status-pill status-wait">Waiting for compliance</span></div>
     <div class="compliance-meta">
       <div><strong>ASIN</strong>B07XKSQ7VX</div>
       <div><strong>SKU</strong>GQBOD03-stickerless</div>
@@ -117,7 +117,7 @@
     <div class="compliance-note">UK: this is the Edition 3.0 listing currently waiting for Amazon compliance to update. Intertek confirmed on 8 Oct that the review is finished. USA: user confirms the title is live, but the 8 Oct All Listings report marks both B07XKSQ7VX offers inactive; the Inventory Ledger still shows recent activity on MSKU 83-V2C5-0R52 through 1 Oct. Verify the live US offer in Seller Central if needed. Next step: wait for Amazon UK compliance status to refresh.</div>
   </div>
   <div class="compliance-item">
-    <div class="compliance-top"><div><strong>Bag of Dungeon 2 — The Cursed Forest</strong><br><small>Existing report: Bureau Veritas</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
+    <div class="compliance-top"><div class="compliance-name"><img class="product-thumb" src="boxes/bod-2.png" alt="Bag of Dungeon 2"><div><strong>Bag of Dungeon 2 — The Cursed Forest</strong><br><small>Existing report: Bureau Veritas</small></div></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
     <div class="compliance-meta">
       <div><strong>ASIN</strong>B0BLW9DRD6</div>
       <div><strong>TRID</strong>TR179144198602647</div>
@@ -125,7 +125,7 @@
     </div>
   </div>
   <div class="compliance-item">
-    <div class="compliance-top"><div><strong>Rabbito</strong><br><small>Existing report: Bureau Veritas</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
+    <div class="compliance-top"><div class="compliance-name"><img class="product-thumb" src="boxes/rabbito.png" alt="Rabbito"><div><strong>Rabbito</strong><br><small>Existing report: Bureau Veritas</small></div></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
     <div class="compliance-meta">
       <div><strong>ASIN</strong>B0BWW7WWHN</div>
       <div><strong>TRID</strong>TR179143985855839</div>
@@ -133,7 +133,7 @@
     </div>
   </div>
   <div class="compliance-item">
-    <div class="compliance-top"><div><strong>Bag of Dungeon Legends 2 — Relics</strong><br><small>Existing report: TÜV — signature/chop missing</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
+    <div class="compliance-top"><div class="compliance-name"><img class="product-thumb" src="boxes/legends-2.png" alt="Legends 2"><div><strong>Bag of Dungeon Legends 2 — Relics</strong><br><small>Existing report: TÜV — signature/chop missing</small></div></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
     <div class="compliance-meta">
       <div><strong>ASIN</strong>B0FXMYZKQX</div>
       <div><strong>TRID</strong>TR179144233402894</div>
@@ -153,67 +153,67 @@
 <thead><tr><th>Product</th><th>UK</th><th>USA</th><th>Reconciled note</th></tr></thead>
 <tbody>
 <tr>
-<td><strong>Bag of Dungeon — current</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/bod-1.png" alt="Bag of Dungeon"><strong>Bag of Dungeon — current</strong></div></td>
 <td class="market-id">ASIN <code>B0CM3K68M8</code><br>Current FBA SKU <code>XO-1VUA-B8QC</code><br><span class="stock-good">1506 available</span></td>
 <td class="market-id">ASIN <code>B0CM3K68M8</code><br><strong>Active SKUs:</strong> <code>C5-0LXS-RSBC</code>, <code>GV-WRGC-8AFU</code><br><strong>Current FBA SKU:</strong> <code>GV-WRGC-8AFU</code><br><span class="stock-good">68 available</span></td>
 <td>Same current ASIN in both markets. US Amazon-fulfilled Inventory confirms 68 sellable units on SKU GV-WRGC-8AFU.</td>
 </tr>
 <tr>
-<td><strong>Bag of Dungeon — Edition 3.0</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/bod-1.png" alt="Bag of Dungeon Edition 3.0"><strong>Bag of Dungeon — Edition 3.0</strong></div></td>
 <td class="market-id">ASIN <code>B07XKSQ7VX</code><br>Compliance SKU <code>GQBOD03-stickerless</code><br>Amazon-fulfilled Inventory also shows UK FBA SKUs <code>YY-JFFA-550O</code>, <code>BOD02</code>, <code>RK-8HPE-Q7OI</code> and historical FNSKU offers<br><span class="stock-warn">Waiting for compliance</span><br><span class="stock-zero">0 available</span></td>
 <td class="market-id">ASIN <code>B07XKSQ7VX</code><br>All Listings SKUs: <code>FG-QQGD-2M5S</code>, <code>GQBOD03-stickerless</code> — report says Inactive<br>Amazon-fulfilled Inventory shows multiple FBA SKUs for this ASIN, all <span class="stock-zero">0 available</span></td>
 <td>User confirms v3.0 is live in USA, while the 8 Oct All Listings report marks the known offers inactive. Current US FBA sellable quantity is 0. Treat the live Seller Central detail page as the final check for offer status.</td>
 </tr>
 <tr>
-<td><strong>Bag of Dungeon 2 — The Cursed Forest</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/bod-2.png" alt="Bag of Dungeon 2"><strong>Bag of Dungeon 2 — The Cursed Forest</strong></div></td>
 <td class="market-id"><strong>Current UK</strong><br>ASIN <code>B0DK5DXRDN</code><br>SKU <code>SK-LWSO-PIG8</code><br><span class="stock-warn">2 available</span><br><br><strong>Older UK offer</strong><br>ASIN <code>B0BLW9DRD6</code><br>Amazon-fulfilled Inventory SKU <code>WN-NE1N-ZATE</code><br><span class="stock-zero">0 available</span></td>
 <td class="market-id"><strong>Active US</strong><br>ASIN <code>B0BLW9DRD6</code><br>SKU <code>8B-ZHFU-BLF4</code><br><span class="stock-zero">0 available</span><br><br>ASIN <code>B0DK5DXRDN</code> / SKU <code>SK-LWSO-PIG8</code>: <span class="stock-zero">0 available</span> and Inactive in All Listings.</td>
 <td>UK and USA use different active ASINs. This is the key product to check carefully when pairing TRIDs to marketplaces.</td>
 </tr>
 <tr>
-<td><strong>Legends 1</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/legends-1.png" alt="Legends 1"><strong>Legends 1</strong></div></td>
 <td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>Current FBA SKU <code>TS-HCMY-GYNP</code><br><span class="stock-good">207 available</span></td>
 <td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>All Listings SKUs <code>3D-WSRS-XEWL</code>, <code>TO-A73G-8SX9</code> — Inactive<br>Amazon-fulfilled Inventory SKU <code>TW-TNNO-H43J</code>: <span class="stock-zero">0 available</span></td>
 <td>Same ASIN, different US SKUs recorded.</td>
 </tr>
 <tr>
-<td><strong>Legends 2 — Relics</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/legends-2.png" alt="Legends 2"><strong>Legends 2 — Relics</strong></div></td>
 <td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br><span class="stock-zero">0 sellable</span> · <span class="stock-warn">8 unsellable</span></td>
 <td class="market-id">ASIN <code>B0FXMYZKQX</code><br><strong>Active SKUs:</strong> <code>4W-W4ES-ECQY</code>, <code>6G-9BG6-IE2U</code><br><strong>Current FBA SKU:</strong> <code>6G-9BG6-IE2U</code><br><span class="stock-good">76 available</span></td>
 <td>UK listing is the compliance problem with the TÜV signature/chop issue. US All Listings has two active offers; current US sellable stock is 76.</td>
 </tr>
 <tr>
-<td><strong>Rabbito</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/rabbito.png" alt="Rabbito"><strong>Rabbito</strong></div></td>
 <td class="market-id">ASIN <code>B0BWW7WWHN</code><br>Current FBA SKU <code>S8-FQ3U-C6PH</code><br><span class="stock-zero">0 available</span></td>
 <td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code> — Inactive<br><span class="stock-zero">0 available</span></td>
 <td>Included in current Intertek UK/EU revalidation request.</td>
 </tr>
 <tr>
-<td><strong>Who Stole My Cheese?</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/cheese.png" alt="Who Stole My Cheese?"><strong>Who Stole My Cheese?</strong></div></td>
 <td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>Current FBA SKU <code>UV-0REH-4XKQ</code><br><span class="stock-good">51 available</span><br><small>Used-like-new SKU <code>amzn.gr.UH-C251-2LJZ-asRZeGTszt37F0IE-LN</code>: 0</small></td>
 <td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>All Listings SKU <code>UH-C251-2LJZ</code> — Inactive<br>Amazon-fulfilled Inventory SKU <code>YZ-NIG1-KUKW</code>: <span class="stock-zero">0 available</span></td>
 <td>SKU corrected from the FBA/All Listings reports.</td>
 </tr>
 <tr>
-<td><strong>Kastles</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/kastles.png" alt="Kastles"><strong>Kastles</strong></div></td>
 <td class="market-id">ASIN <code>B01N1YPPZR</code><br>Current FBA SKU <code>XC-1UX0-PW4Z-stickerless</code><br><span class="stock-good">102 available</span></td>
 <td class="market-id">ASIN <code>B01N1YPPZR</code><br>Multiple historical FBA SKUs present<br><span class="stock-zero">0 available</span></td>
 <td>UK active inventory confirmed.</td>
 </tr>
 <tr>
-<td><strong>7 Moons Deluxe</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/7-moons-deluxe.png" alt="7 Moons Deluxe"><strong>7 Moons Deluxe</strong></div></td>
 <td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VI-DK89-FSQK</code><br><span class="stock-zero">0 available</span></td>
 <td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VI-DK89-FSQK</code> — All Listings says Inactive<br><span class="stock-good">5 available</span></td>
 <td>SKU spelling corrected to <code>VI-DK89-FSQK</code>. Current US FBA report shows 5 sellable units despite the All Listings offer being marked inactive.</td>
 </tr>
 <tr>
-<td><strong>7 Moons Standard</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/7-moons-standard.png" alt="7 Moons Standard"><strong>7 Moons Standard</strong></div></td>
 <td class="market-id">ASIN <code>B09GJVW1L9</code><br>Current FBA SKU <code>Q2-SD10-PF8F</code><br><span class="stock-zero">0 available</span></td>
 <td class="market-id">ASIN <code>B09GJVW1L9</code><br>SKU <code>GD-YZOL-LXZX</code><br><span class="stock-zero">0 available</span></td>
 <td>UK listing only in the supplied reports.</td>
 </tr>
 <tr>
-<td><strong>Book of Dungeon</strong></td>
+<td><div class="inventory-product"><img class="product-thumb" src="boxes/book.png" alt="Book of Dungeon"><strong>Book of Dungeon</strong></div></td>
 <td colspan="2" class="market-id">KDP title — not represented in these FBA inventory/listings reports.</td>
 <td>Track through KDP separately.</td>
 </tr>
@@ -237,6 +237,22 @@ function setAppView(view){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 const FX_DATE='20 Aug 2026';
+const PRODUCT_IMAGES={
+  'Bag of Dungeon':'boxes/bod-1.png',
+  'Bag of Dungeon 2':'boxes/bod-2.png',
+  'Book of Dungeon':'boxes/book.png',
+  'Legends 1':'boxes/legends-1.png',
+  'Legends 2':'boxes/legends-2.png',
+  '7 Moons Base':'boxes/7-moons-standard.png',
+  '7 Moons Deluxe':'boxes/7-moons-deluxe.png',
+  'Rabbito':'boxes/rabbito.png',
+  'Who Stole My Cheese?':'boxes/cheese.png',
+  'Kastles':'boxes/kastles.png'
+};
+function productImg(name,alt=name){
+  const src=PRODUCT_IMAGES[name];
+  return src?`<img class="product-thumb" src="${src}" alt="${alt}" loading="lazy">`:'';
+}
 const P=[
 ['Bag of Dungeon','BOD',956,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,2.405168,'Includes shipping box and packing materials',21,21,5],
 ['Bag of Dungeon 2','BOD2',779,'9504906000','950490','Board game','CN',12,10.4,43.7,34.6,23.7,3.138451,'',21,21,5],
@@ -391,7 +407,7 @@ function make(){
    const primary=usa?`${imperialDims} · ${pounds} lb · ${ounces} oz`:`${metricDims} · ${p.weight} g`;
    const secondary=usa?`${metricDims} · ${p.weight} g`:`${imperialDims} · ${pounds} lb · ${ounces} oz`;
    const unitSpec=`<div class="unit-spec"><strong>Individual box:</strong><br>${primary}<br><span class="secondary">${secondary}</span>${p.note?`<br><small>${p.note}</small>`:''}</div>`;
-   return `<tr><td><strong>${p.name}</strong><br><small>${p.type} · ${p.origin}</small>${unitSpec}</td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
+   return `<tr><td><div class="product-cell">${productImg(p.name)}<div class="product-info"><strong>${p.name}</strong><br><small>${p.type} · ${p.origin}</small>${unitSpec}</div></div></td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
  }).join('');
  updateModeUI(d);
 }
