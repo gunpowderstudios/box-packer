@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v9.5</title>
+<title>Gunpowder Studios Box Packer v9.6</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}
-.compliance-grid{display:grid;grid-template-columns:1fr;gap:10px}.compliance-item{background:#181818;border:1px solid var(--b);border-radius:10px;padding:12px}.compliance-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status-pill{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:bold}.status-wait{background:#392b12;color:#ffd76a;border:1px solid var(--g)}.status-done{background:#17351f;color:#8be39d;border:1px solid var(--ok)}.compliance-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.compliance-meta div{background:#202020;border-radius:7px;padding:7px 8px;font-size:12px}.compliance-meta strong{display:block;color:var(--m);font-size:11px;text-transform:uppercase;margin-bottom:2px}.compliance-note{margin-top:10px;font-size:12px;color:var(--m)}@media(max-width:650px){.compliance-meta{grid-template-columns:1fr}}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+.compliance-grid{display:grid;grid-template-columns:1fr;gap:10px}.compliance-item{background:#181818;border:1px solid var(--b);border-radius:10px;padding:12px}.compliance-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status-pill{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:bold}.status-wait{background:#392b12;color:#ffd76a;border:1px solid var(--g)}.status-done{background:#17351f;color:#8be39d;border:1px solid var(--ok)}.compliance-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.compliance-meta div{background:#202020;border-radius:7px;padding:7px 8px;font-size:12px}.compliance-meta strong{display:block;color:var(--m);font-size:11px;text-transform:uppercase;margin-bottom:2px}.compliance-note{margin-top:10px;font-size:12px;color:var(--m)}.id-table{font-size:12px}.id-table th{white-space:nowrap}.id-table td{vertical-align:top}.stock-good{color:var(--ok);font-weight:bold}.stock-zero{color:var(--m)}.stock-warn{color:#ffd76a;font-weight:bold}.market-id{line-height:1.55}.market-id code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff;background:#111;padding:1px 4px;border-radius:4px}@media(max-width:650px){.compliance-meta{grid-template-columns:1fr}}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
 @media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.dest-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.controls,.tabs,.dest-grid,.invoice-fields{grid-template-columns:1fr}.hide-mobile{display:none}}
 @media print{html,body{background:#fff!important;color:#000!important}body>*{display:none!important}#invoicePrint{display:block!important;height:auto!important;min-height:277mm!important;overflow:visible!important;position:static!important;width:100%;color:#000!important;background:#fff!important;font-family:Arial;padding:12mm!important}#invoicePrint *{color:#000!important;background-color:transparent!important}#invoicePrint table{font-size:10pt;background:#fff!important}#invoicePrint th,#invoicePrint td{border:1px solid #999;padding:5px;background:#fff!important}#invoicePrint h1{font-size:20pt}#invoicePrint .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12mm}@page{size:A4;margin:10mm}}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v9.5</h1>
+<h1>Gunpowder Studios Box Packer v9.6</h1>
 <p>Parcels by game · cartons from manufacturer specs · pallets from carton counts</p>
 </header>
 <main class="wrap">
@@ -88,6 +88,77 @@
   </div>
 </div>
 <div class="compliance-note"><strong>Intertek contacts:</strong> Chris Leung for the current UK/EU revalidations; Jin Peng / Fanny Sun for the completed Bag of Dungeon Edition 3.0 DV. <strong>Important:</strong> Paul's 8 Oct email accidentally repeated the BoD2 ASIN on the Rabbito line; the correct Rabbito ASIN shown here is B0BWW7WWHN. For US compliance, Chris advised handling it separately; ASTM + CPSIA may be required.</div>
+</section>
+<section class="panel">
+<h2>Amazon listing IDs / inventory snapshot</h2>
+<div class="warning"><strong>Snapshot from Seller Central — 8 Oct 2026.</strong> ASIN is the main identifier. Seller SKUs can differ by marketplace and there can be more than one SKU for the same ASIN, so use ASIN first when checking compliance or stock.</div>
+<div style="overflow-x:auto">
+<table class="id-table">
+<thead><tr><th>Product</th><th>UK</th><th>USA</th><th>Stock note</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Bag of Dungeon</strong></td>
+<td class="market-id">ASIN <code>B0CM3K68M8</code><br>SKU <code>C5-OLX5-RS8C</code><br><span class="stock-good">757 available</span> · 18 reserved</td>
+<td class="market-id">ASIN <code>B0CM3K68M8</code><br>SKUs seen: <code>C5-OLX5-RS8C</code>, <code>GV-WRGC-8AFU</code><br><span class="stock-good">70 available</span> · 4 reserved</td>
+<td>Current ASIN matches in UK and USA. Legacy ASIN <code>B07XKSQ7VX</code> is still visible but out of stock / inactive.</td>
+</tr>
+<tr>
+<td><strong>Bag of Dungeon 2</strong></td>
+<td class="market-id">ASIN <code>B0DK5DXRDN</code><br>SKU <code>SK-LWSO-PIG8</code><br><span class="stock-warn">2 available</span> · 1 reserved</td>
+<td class="market-id">Active ASIN <code>B0BLW9DRD6</code><br>SKU <code>8B-ZHFU-BLF4</code><br><span class="stock-warn">0 available</span> · 177 reserved</td>
+<td><strong>Important:</strong> UK and USA are currently using different active ASINs. USA removal/revalidation work has involved <code>B0BLW9DRD6</code>. The UK/EU compliance card above currently references that ASIN too, so check the TRID/ASIN pairing before submitting.</td>
+</tr>
+<tr>
+<td><strong>Legends 1</strong></td>
+<td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>SKU <code>TO-A73G-8SX9</code><br><span class="stock-good">69 available</span></td>
+<td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>SKU <code>TO-A73G-8SX9</code><br><span class="stock-warn">0 available</span> · 40 inbound</td>
+<td>ASIN/SKU match across both marketplaces.</td>
+</tr>
+<tr>
+<td><strong>Legends 2 — Relics</strong></td>
+<td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br><span class="stock-warn">0 available</span> · 8 unfulfillable</td>
+<td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br><span class="stock-good">76 available</span> · 3 reserved</td>
+<td>ASIN/SKU match. UK listing is review-blocked; this is the product with the TÜV report signature/chop problem.</td>
+</tr>
+<tr>
+<td><strong>Who Stole My Cheese?</strong></td>
+<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-CZ51-ZLJZ</code><br><span class="stock-good">17 available</span></td>
+<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-CZ51-ZLJZ</code><br><span class="stock-zero">0 available</span></td>
+<td>Same ASIN/SKU. USA listing shown as review blocked.</td>
+</tr>
+<tr>
+<td><strong>Kastles</strong></td>
+<td class="market-id">ASIN <code>B01N1YPPZR</code><br>SKU <code>8T-8C7H-5Q64</code><br><span class="stock-good">102 available</span></td>
+<td class="market-id"><span class="stock-zero">Not shown in supplied USA inventory screenshot</span></td>
+<td>UK listing active.</td>
+</tr>
+<tr>
+<td><strong>Rabbito</strong></td>
+<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code><br><span class="stock-zero">0 available</span></td>
+<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code><br><span class="stock-zero">0 available</span></td>
+<td>Same ASIN/SKU. UK listing review blocked; included in current Intertek UK/EU revalidation request.</td>
+</tr>
+<tr>
+<td><strong>7 Moons Deluxe</strong></td>
+<td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VI-DK89-F5QK</code><br><span class="stock-zero">0 available</span></td>
+<td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VH-DK89-F5QK</code><br><span class="stock-good">5 available</span></td>
+<td>Same ASIN, different marketplace SKU prefix.</td>
+</tr>
+<tr>
+<td><strong>7 Moons Standard</strong></td>
+<td class="market-id">ASIN <code>B09GJVW1L9</code><br>SKU <code>38-ZIBX-AKXH</code><br><span class="stock-zero">0 available</span></td>
+<td class="market-id"><span class="stock-zero">Not shown in supplied USA screenshot</span></td>
+<td>UK listing inactive.</td>
+</tr>
+<tr>
+<td><strong>Book of Dungeon</strong></td>
+<td colspan="2" class="market-id">KDP title — not shown in these FBA Manage Inventory screenshots.</td>
+<td>Track through KDP rather than this FBA stock snapshot.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="compliance-note">Seller Central screenshots can show several SKUs for one ASIN. This table records the useful/current identifiers visible in the supplied UK and USA screenshots rather than treating every old/out-of-stock SKU as a separate product.</div>
 </section>
 <section class="panel">
 <h2>Products & customs value</h2>
