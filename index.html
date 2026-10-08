@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v9.8</title>
+<title>Gunpowder Studios Box Packer v9.9</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#111;background:var(--g);border-color:var(--g)}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v9.8</h1>
+<h1>Gunpowder Studios Box Packer v9.9</h1>
 <p>Packing, shipping · Amazon compliance & inventory</p>
 </header>
 <nav class="app-tabs" aria-label="Box Packer sections">
@@ -114,7 +114,7 @@
       <div><strong>SKU</strong>GQBOD03-stickerless</div>
       <div><strong>TRID</strong>TR178342222629980</div>
     </div>
-    <div class="compliance-note">UK: this is the Edition 3.0 listing currently waiting for Amazon compliance to update. Intertek confirmed on 8 Oct that the review is finished. USA: Edition 3.0 is live. Next step: wait for Amazon UK compliance status to refresh / Intertek confirmation that the DV has flowed through.</div>
+    <div class="compliance-note">UK: this is the Edition 3.0 listing currently waiting for Amazon compliance to update. Intertek confirmed on 8 Oct that the review is finished. USA: user confirms the title is live, but the 8 Oct All Listings report marks both B07XKSQ7VX offers inactive; the Inventory Ledger still shows recent activity on MSKU 83-V2C5-0R52 through 1 Oct. Verify the live US offer in Seller Central if needed. Next step: wait for Amazon UK compliance status to refresh.</div>
   </div>
   <div class="compliance-item">
     <div class="compliance-top"><div><strong>Bag of Dungeon 2 — The Cursed Forest</strong><br><small>Existing report: Bureau Veritas</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
@@ -147,74 +147,80 @@
 
     <section class="panel">
 <h2>Amazon listing IDs / inventory snapshot</h2>
-<div class="warning"><strong>Snapshot from Seller Central — 8 Oct 2026.</strong> ASIN is the main identifier. Seller SKUs can differ by marketplace and there can be more than one SKU for the same ASIN, so use ASIN first when checking compliance or stock.</div>
+<div class="warning"><strong>Reconciled 8 Oct 2026.</strong> UK data is from the fresh FBA Inventory report. US listing IDs/status are from the All Listings report; recent US stock movement is confirmed by the Inventory Ledger. The ledger is not a current-stock snapshot, so screenshot quantities are kept only where previously observed. Use ASIN first, then marketplace SKU.</div>
 <div style="overflow-x:auto">
 <table class="id-table">
-<thead><tr><th>Product</th><th>UK</th><th>USA</th><th>Stock note</th></tr></thead>
+<thead><tr><th>Product</th><th>UK</th><th>USA</th><th>Reconciled note</th></tr></thead>
 <tbody>
 <tr>
-<td><strong>Bag of Dungeon</strong><br><small>Edition 3.0 / current editions</small></td>
-<td class="market-id"><strong>Edition 3.0 compliance listing</strong><br>ASIN <code>B07XKSQ7VX</code><br>SKU <code>GQBOD03-stickerless</code><br><span class="stock-warn">Waiting for compliance</span><br><br><strong>Current live UK edition</strong><br>ASIN <code>B0CM3K68M8</code><br>SKU <code>C5-OLX5-RS8C</code><br><span class="stock-good">757 available</span> · 18 reserved</td>
-<td class="market-id"><strong>Edition 3.0</strong><br>ASIN <code>B07XKSQ7VX</code><br><span class="stock-good">Live in USA</span><br><br><strong>Current edition</strong><br>ASIN <code>B0CM3K68M8</code><br>SKUs seen: <code>C5-OLX5-RS8C</code>, <code>GV-WRGC-8AFU</code><br><span class="stock-good">70 available</span> · 4 reserved</td>
-<td>Do not treat <code>B07XKSQ7VX</code> as simply legacy/inactive: it is the Edition 3.0 ASIN under compliance review in the UK and is live in the USA.</td>
+<td><strong>Bag of Dungeon — current</strong></td>
+<td class="market-id">ASIN <code>B0CM3K68M8</code><br>SKU <code>C5-0LXS-RSBC</code><br><span class="stock-good">756 available</span> · 19 reserved</td>
+<td class="market-id">ASIN <code>B0CM3K68M8</code><br><strong>Active SKUs:</strong> <code>C5-0LXS-RSBC</code>, <code>GV-WRGC-8AFU</code><br><span class="stock-good">Recent FBA activity confirmed</span></td>
+<td>Same current ASIN in both markets. US Inventory Ledger shows C5-0LXS-RSBC movements through 7 Oct.</td>
 </tr>
 <tr>
-<td><strong>Bag of Dungeon 2</strong></td>
-<td class="market-id">ASIN <code>B0DK5DXRDN</code><br>SKU <code>SK-LWSO-PIG8</code><br><span class="stock-warn">2 available</span> · 1 reserved</td>
-<td class="market-id">Active ASIN <code>B0BLW9DRD6</code><br>SKU <code>8B-ZHFU-BLF4</code><br><span class="stock-warn">0 available</span> · 177 reserved</td>
-<td><strong>Important:</strong> UK and USA are currently using different active ASINs. USA removal/revalidation work has involved <code>B0BLW9DRD6</code>. The UK/EU compliance card above currently references that ASIN too, so check the TRID/ASIN pairing before submitting.</td>
+<td><strong>Bag of Dungeon — Edition 3.0</strong></td>
+<td class="market-id">ASIN <code>B07XKSQ7VX</code><br>SKU <code>GQBOD03-stickerless</code><br><span class="stock-warn">Waiting for compliance</span><br>0 FBA available</td>
+<td class="market-id">ASIN <code>B07XKSQ7VX</code><br>All Listings SKUs: <code>FG-QQGD-2M5S</code>, <code>GQBOD03-stickerless</code> — report says Inactive<br>Ledger MSKU: <code>83-V2C5-0R52</code> — recent activity</td>
+<td>User confirms v3.0 is live in USA, which conflicts with the 8 Oct All Listings report. Treat Seller Central live view as the final check for US offer status.</td>
+</tr>
+<tr>
+<td><strong>Bag of Dungeon 2 — The Cursed Forest</strong></td>
+<td class="market-id"><strong>Current UK</strong><br>ASIN <code>B0DK5DXRDN</code><br>SKU <code>SK-LWSO-PIG8</code><br><span class="stock-warn">2 available</span> · 1 reserved<br><br><strong>Older UK offer</strong><br>ASIN <code>B0BLW9DRD6</code><br>SKU <code>5X-05W7-3LA4</code> · 0 available</td>
+<td class="market-id"><strong>Active US</strong><br>ASIN <code>B0BLW9DRD6</code><br>SKU <code>8B-ZHFU-BLF4</code><br><span class="stock-good">Recent FBA activity confirmed</span><br><br>ASIN <code>B0DK5DXRDN</code> offers are Inactive in the US report.</td>
+<td>UK and USA use different active ASINs. This is the key product to check carefully when pairing TRIDs to marketplaces.</td>
 </tr>
 <tr>
 <td><strong>Legends 1</strong></td>
 <td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>SKU <code>TO-A73G-8SX9</code><br><span class="stock-good">69 available</span></td>
-<td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>SKU <code>TO-A73G-8SX9</code><br><span class="stock-warn">0 available</span> · 40 inbound</td>
-<td>ASIN/SKU match across both marketplaces.</td>
+<td class="market-id">ASIN <code>B0DKJG8DRJ</code><br>SKUs <code>3D-WSRS-XEWL</code>, <code>TO-A73G-8SX9</code> — All Listings says Inactive<br>Ledger confirms recent activity on <code>3D-WSRS-XEWL</code></td>
+<td>Same ASIN, different US SKUs recorded.</td>
 </tr>
 <tr>
 <td><strong>Legends 2 — Relics</strong></td>
-<td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br><span class="stock-warn">0 available</span> · 8 unfulfillable</td>
-<td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br><span class="stock-good">76 available</span> · 3 reserved</td>
-<td>ASIN/SKU match. UK listing is review-blocked; this is the product with the TÜV report signature/chop problem.</td>
+<td class="market-id">ASIN <code>B0FXMYZKQX</code><br>SKU <code>4W-W4ES-ECQY</code><br>0 available · <span class="stock-warn">8 unfulfillable</span></td>
+<td class="market-id">ASIN <code>B0FXMYZKQX</code><br><strong>Active SKUs:</strong> <code>4W-W4ES-ECQY</code>, <code>6G-9BG6-IE2U</code><br><span class="stock-good">Recent FBA activity confirmed</span></td>
+<td>UK listing is the compliance problem with the TÜV signature/chop issue. US report has two active offers.</td>
+</tr>
+<tr>
+<td><strong>Rabbito</strong></td>
+<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code><br>0 available</td>
+<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code> — Inactive</td>
+<td>Included in current Intertek UK/EU revalidation request.</td>
 </tr>
 <tr>
 <td><strong>Who Stole My Cheese?</strong></td>
-<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-CZ51-ZLJZ</code><br><span class="stock-good">17 available</span></td>
-<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-CZ51-ZLJZ</code><br><span class="stock-zero">0 available</span></td>
-<td>Same ASIN/SKU. USA listing shown as review blocked.</td>
+<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-C251-2LJZ</code><br><span class="stock-good">17 available</span> · 1 reserved</td>
+<td class="market-id">ASIN <code>B0DP3D1B1Q</code><br>SKU <code>UH-C251-2LJZ</code> — Inactive</td>
+<td>SKU corrected from the FBA/All Listings reports.</td>
 </tr>
 <tr>
 <td><strong>Kastles</strong></td>
 <td class="market-id">ASIN <code>B01N1YPPZR</code><br>SKU <code>8T-8C7H-5Q64</code><br><span class="stock-good">102 available</span></td>
-<td class="market-id"><span class="stock-zero">Not shown in supplied USA inventory screenshot</span></td>
-<td>UK listing active.</td>
-</tr>
-<tr>
-<td><strong>Rabbito</strong></td>
-<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code><br><span class="stock-zero">0 available</span></td>
-<td class="market-id">ASIN <code>B0BWW7WWHN</code><br>SKU <code>GL-AZE8-X5XQ</code><br><span class="stock-zero">0 available</span></td>
-<td>Same ASIN/SKU. UK listing review blocked; included in current Intertek UK/EU revalidation request.</td>
+<td class="market-id"><span class="stock-zero">Not present in the supplied US All Listings report.</span></td>
+<td>UK active inventory confirmed.</td>
 </tr>
 <tr>
 <td><strong>7 Moons Deluxe</strong></td>
-<td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VI-DK89-F5QK</code><br><span class="stock-zero">0 available</span></td>
-<td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VH-DK89-F5QK</code><br><span class="stock-good">5 available</span></td>
-<td>Same ASIN, different marketplace SKU prefix.</td>
+<td class="market-id">ASIN <code>B09GJQF8X6</code><br>SKU <code>VI-DK89-FSQK</code><br>0 available</td>
+<td class="market-id">ASIN <code>B09GJQF8X6</code><br>All Listings SKU <code>VI-DK89-FSQK</code> — Inactive<br>Ledger MSKU <code>HO-VX82-SRR9</code> — recent movement</td>
+<td>SKU spelling corrected to <code>VI-DK89-FSQK</code>.</td>
 </tr>
 <tr>
 <td><strong>7 Moons Standard</strong></td>
-<td class="market-id">ASIN <code>B09GJVW1L9</code><br>SKU <code>38-ZIBX-AKXH</code><br><span class="stock-zero">0 available</span></td>
-<td class="market-id"><span class="stock-zero">Not shown in supplied USA screenshot</span></td>
-<td>UK listing inactive.</td>
+<td class="market-id">ASIN <code>B09GJVW1L9</code><br>SKU <code>38-ZIBX-AKXH</code><br>0 available</td>
+<td class="market-id"><span class="stock-zero">Not present in the supplied US All Listings report.</span></td>
+<td>UK listing only in the supplied reports.</td>
 </tr>
 <tr>
 <td><strong>Book of Dungeon</strong></td>
-<td colspan="2" class="market-id">KDP title — not shown in these FBA Manage Inventory screenshots.</td>
-<td>Track through KDP rather than this FBA stock snapshot.</td>
+<td colspan="2" class="market-id">KDP title — not represented in these FBA inventory/listings reports.</td>
+<td>Track through KDP separately.</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="compliance-note">Seller Central screenshots can show several SKUs for one ASIN. This table records the useful/current identifiers visible in the supplied UK and USA screenshots rather than treating every old/out-of-stock SKU as a separate product.</div>
+<div class="compliance-note">This table reconciles the UK FBA Inventory report, US All Listings report and US Inventory Ledger. The US ledger proves recent stock movement but is not a current quantity snapshot. Where reports disagree with the live Seller Central screen, verify the live offer before taking compliance or removal action.</div>
 </section>
 
   </main>
