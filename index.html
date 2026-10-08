@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunpowder Studios Box Packer v9.4</title>
+<title>Gunpowder Studios Box Packer v9.5</title>
 <style>
 :root{--p:#242424;--t:#f4f1e8;--m:#bdb7aa;--g:#d0a53b;--ok:#53c26b;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:24px 18px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:var(--g);margin-top:0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:var(--g);border-color:var(--g)}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#392b12;border:1px solid var(--g);border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#ffd76a}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#ffd76a;font-weight:bold}button{background:var(--g);border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}
-.compliance-grid{display:grid;grid-template-columns:1fr;gap:10px}.compliance-item{background:#181818;border:1px solid var(--b);border-radius:10px;padding:12px}.compliance-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status-pill{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:bold}.status-wait{background:#392b12;color:#ffd76a;border:1px solid var(--g)}.compliance-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.compliance-meta div{background:#202020;border-radius:7px;padding:7px 8px;font-size:12px}.compliance-meta strong{display:block;color:var(--m);font-size:11px;text-transform:uppercase;margin-bottom:2px}.compliance-note{margin-top:10px;font-size:12px;color:var(--m)}@media(max-width:650px){.compliance-meta{grid-template-columns:1fr}}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
+.compliance-grid{display:grid;grid-template-columns:1fr;gap:10px}.compliance-item{background:#181818;border:1px solid var(--b);border-radius:10px;padding:12px}.compliance-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status-pill{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:bold}.status-wait{background:#392b12;color:#ffd76a;border:1px solid var(--g)}.status-done{background:#17351f;color:#8be39d;border:1px solid var(--ok)}.compliance-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.compliance-meta div{background:#202020;border-radius:7px;padding:7px 8px;font-size:12px}.compliance-meta strong{display:block;color:var(--m);font-size:11px;text-transform:uppercase;margin-bottom:2px}.compliance-note{margin-top:10px;font-size:12px;color:var(--m)}@media(max-width:650px){.compliance-meta{grid-template-columns:1fr}}#invoicePrint{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}
 @media(max-width:900px){.wrap{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.dest-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.controls,.tabs,.dest-grid,.invoice-fields{grid-template-columns:1fr}.hide-mobile{display:none}}
 @media print{html,body{background:#fff!important;color:#000!important}body>*{display:none!important}#invoicePrint{display:block!important;height:auto!important;min-height:277mm!important;overflow:visible!important;position:static!important;width:100%;color:#000!important;background:#fff!important;font-family:Arial;padding:12mm!important}#invoicePrint *{color:#000!important;background-color:transparent!important}#invoicePrint table{font-size:10pt;background:#fff!important}#invoicePrint th,#invoicePrint td{border:1px solid #999;padding:5px;background:#fff!important}#invoicePrint h1{font-size:20pt}#invoicePrint .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12mm}@page{size:A4;margin:10mm}}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-<h1>Gunpowder Studios Box Packer v9.4</h1>
+<h1>Gunpowder Studios Box Packer v9.5</h1>
 <p>Parcels by game · cartons from manufacturer specs · pallets from carton counts</p>
 </header>
 <main class="wrap">
@@ -50,8 +50,17 @@
 </section>
 <section class="panel">
 <h2>Amazon compliance / validation</h2>
-<div class="warning"><strong>Current position — 8 Oct 2026.</strong> Intertek has been asked to revalidate these products for UK/EU only. We are waiting for Chris Leung to confirm the quote, timing and anything else required. US validation is separate and is not included in this current request.</div>
+<div class="warning"><strong>Current position — 8 Oct 2026.</strong> Bag of Dungeon Edition 3.0 review is now finished at Intertek and Paul has asked when Amazon will update the compliance status. Separate UK/EU revalidation requests for BoD2, Rabbito and Legends 2 are still awaiting Chris Leung's quote, timing and requirements. US validation is separate and is not included in those requests.</div>
 <div class="compliance-grid">
+  <div class="compliance-item">
+    <div class="compliance-top"><div><strong>Bag of Dungeon — Edition 3.0</strong><br><small>Intertek Direct Verification · Q000696727</small></div><span class="status-pill status-done">Review finished</span></div>
+    <div class="compliance-meta">
+      <div><strong>ASIN</strong>B0CM3K68M8</div>
+      <div><strong>TRID</strong>TR178342222629980</div>
+      <div><strong>Amazon status</strong>Awaiting update</div>
+    </div>
+    <div class="compliance-note">8 Oct: Jin Peng confirmed “The reviewing has been finished.” Paul has replied asking when Amazon's status will be updated. Next step: wait for the Amazon compliance status to refresh / Intertek confirmation that the DV has flowed through.</div>
+  </div>
   <div class="compliance-item">
     <div class="compliance-top"><div><strong>Bag of Dungeon 2 — The Cursed Forest</strong><br><small>Existing report: Bureau Veritas</small></div><span class="status-pill status-wait">Awaiting Intertek</span></div>
     <div class="compliance-meta">
@@ -78,7 +87,7 @@
     <div class="compliance-note">May require a new Direct Validation rather than a simple report review because the TÜV report supplied to Intertek is missing the official signature/chop.</div>
   </div>
 </div>
-<div class="compliance-note"><strong>Intertek contact:</strong> Chris Leung, Retail, Toys &amp; Hardlines. <strong>Important:</strong> Paul's 8 Oct email accidentally repeated the BoD2 ASIN on the Rabbito line; the correct Rabbito ASIN shown here is B0BWW7WWHN. For US compliance, Chris advised handling it separately; ASTM + CPSIA may be required.</div>
+<div class="compliance-note"><strong>Intertek contacts:</strong> Chris Leung for the current UK/EU revalidations; Jin Peng / Fanny Sun for the completed Bag of Dungeon Edition 3.0 DV. <strong>Important:</strong> Paul's 8 Oct email accidentally repeated the BoD2 ASIN on the Rabbito line; the correct Rabbito ASIN shown here is B0BWW7WWHN. For US compliance, Chris advised handling it separately; ASTM + CPSIA may be required.</div>
 </section>
 <section class="panel">
 <h2>Products & customs value</h2>
