@@ -149,20 +149,20 @@
 <table class="id-table">
 <thead><tr><th>Product</th><th>Master SKU</th></tr></thead>
 <tbody>
-<tr><td>Bag of Dungeon</td><td><code>GPS-1001</code></td></tr>
-<tr><td>Bag of Dungeon 2: The Cursed Forest</td><td><code>GPS-1002</code></td></tr>
-<tr><td>Legends 1</td><td><code>GPS-1003</code></td></tr>
-<tr><td>Legends 2: Relics</td><td><code>GPS-1004</code></td></tr>
-<tr><td>7 Moons Standard / Classic</td><td><code>GPS-1005</code></td></tr>
-<tr><td>7 Moons Deluxe</td><td><code>GPS-1006</code></td></tr>
-<tr><td>Rabbito</td><td><code>GPS-1007</code></td></tr>
-<tr><td>Who Stole My Cheese?</td><td><code>GPS-1008</code></td></tr>
-<tr><td>Kastles</td><td><code>GPS-1009</code></td></tr>
-<tr><td>Book of Dungeon — English</td><td><code>GPS-1010</code></td></tr>
-<tr><td>Book of Dungeon — Spanish</td><td><code>GPS-1011</code></td></tr>
-<tr><td>Bag of Dungeon Minis set</td><td><code>GPS-1012</code></td></tr>
-<tr><td>Red Dragon miniature</td><td><code>GPS-1013</code></td></tr>
-<tr><td>Replacement parts / giveaways</td><td><code>GPS-1099</code></td></tr>
+<tr><td>Bag of Dungeon</td><td><code>SKU: GPS-1001</code></td></tr>
+<tr><td>Bag of Dungeon 2: The Cursed Forest</td><td><code>SKU: GPS-1002</code></td></tr>
+<tr><td>Legends 1</td><td><code>SKU: GPS-1003</code></td></tr>
+<tr><td>Legends 2: Relics</td><td><code>SKU: GPS-1004</code></td></tr>
+<tr><td>7 Moons Standard / Classic</td><td><code>SKU: GPS-1005</code></td></tr>
+<tr><td>7 Moons Deluxe</td><td><code>SKU: GPS-1006</code></td></tr>
+<tr><td>Rabbito</td><td><code>SKU: GPS-1007</code></td></tr>
+<tr><td>Who Stole My Cheese?</td><td><code>SKU: GPS-1008</code></td></tr>
+<tr><td>Kastles</td><td><code>SKU: GPS-1009</code></td></tr>
+<tr><td>Book of Dungeon — English</td><td><code>SKU: GPS-1010</code></td></tr>
+<tr><td>Book of Dungeon — Spanish</td><td><code>SKU: GPS-1011</code></td></tr>
+<tr><td>Bag of Dungeon Minis set</td><td><code>SKU: GPS-1012</code></td></tr>
+<tr><td>Red Dragon miniature</td><td><code>SKU: GPS-1013</code></td></tr>
+<tr><td>Replacement parts / giveaways</td><td><code>SKU: GPS-1099</code></td></tr>
 </tbody>
 </table>
 </div>
@@ -636,7 +636,7 @@ function make(){
    const primary=usa?`${imperialDims} · ${pounds} lb · ${ounces} oz`:`${metricDims} · ${p.weight} g`;
    const secondary=usa?`${metricDims} · ${p.weight} g`:`${imperialDims} · ${pounds} lb · ${ounces} oz`;
    const unitSpec=`<div class="unit-spec"><strong>Individual box:</strong><br>${primary}<br><span class="secondary">${secondary}</span>${p.note?`<br><small>${p.note}</small>`:''}</div>`;
-   return `<tr><td><div class="product-cell">${productImg(p.name)}<div class="product-info"><strong>${p.name}</strong><br><small><strong>${MASTER_SKUS[p.name]||'—'}</strong> · ${p.type} · ${p.origin}</small>${unitSpec}</div></div></td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
+   return `<tr><td><div class="product-cell">${productImg(p.name)}<div class="product-info"><strong>${p.name}</strong><br><small><strong>SKU: ${MASTER_SKUS[p.name]||'—'}</strong> · ${p.type} · ${p.origin}</small>${unitSpec}</div></div></td><td class="hide-mobile">${cartonText}</td><td><span id="mc${i}">${fmtLocal(fromGBP(p.cost||0,d),d)}</span></td><td><input class="money" id="v${i}" type="number" min="0" step="${d.currency==='JPY'?'1':'.01'}" value="${fromGBP(customsGBP[i],d).toFixed(decimals(d.currency))}" oninput="saveCustoms(${i})"></td><td><input class="qty" id="q${i}" type="number" min="0" step="1" value="${qtyState[mode][i]}" ${noCarton?'disabled':''} oninput="saveQty(${i})">${noCarton?'<br><small>n/a</small>':''}</td></tr>`;
  }).join('');
  updateModeUI(d);
 }
