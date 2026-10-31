@@ -452,6 +452,13 @@
 </div>
 <section id="invoicePrint" aria-hidden="true"></section>
 <script>
+
+function loadViewFromHash(){
+  const view=(location.hash||'#products').slice(1).toLowerCase();
+  const valid=['products','shipping','compliance','gardners','sales','contacts'];
+  setAppView(valid.includes(view)?view:'products',true);
+}
+window.addEventListener('hashchange',loadViewFromHash);
 function unlockGate(){
   const input=document.getElementById('gatePassword');
   const err=document.getElementById('gateError');
@@ -627,7 +634,7 @@ function renderSales(){
     ? 'Annual unit totals from GS 2023–2025 Sales. Gross / net money was not included in that annual summary.'
     : rows.length?'Reports included: '+rows.length+' · Coverage '+rows[0].start+' to '+rows[rows.length-1].end+(mode==='daily'?' · Per-day figures are averages across '+days+' report-days.':''):'No reports found.';
 }
-function setAppView(view){
+function setAppView(view,skipHash){
   ['products','shipping','compliance','gardners','sales','contacts'].forEach(v=>{
     const el=document.getElementById('view-'+v);
     const tab=document.getElementById('app-tab-'+v);
@@ -913,7 +920,7 @@ function printInvoice(){
  invoicePrint.innerHTML=`<h1>COMMERCIAL / CUSTOMS INVOICE</h1><div class="inv-grid"><div><strong>Exporter / Sender</strong><br>${esc(exporter.value)}</div><div><strong>Consignee / Ship-to</strong><br>${esc(consignee.value)||'____________________________'}</div></div><p><strong>Invoice:</strong> ${esc(invoiceNo.value)||'________________'} &nbsp; <strong>Date:</strong> ${esc(invoiceDate.value)}<br><strong>Destination:</strong> ${esc(d.name)} &nbsp; <strong>Reason:</strong> ${esc(reason.value)} &nbsp; <strong>Currency:</strong> ${cur}</p><table><thead><tr><th>Description</th><th>Qty</th><th>${esc(d.codeLabel)}</th><th>Origin</th><th>Unit value</th><th>Line value</th></tr></thead><tbody>${rows}<tr><td colspan="5"><strong>TOTAL DECLARED GOODS VALUE</strong></td><td><strong>${sym}${Number(total).toFixed(decimals(cur))}</strong></td></tr></tbody></table><p><strong>Shipment summary:</strong> ${units} units${cartons?` · ${cartons} master cartons`:''} · approx. ${kg.toFixed(1)} kg goods gross.</p><p><strong>Declaration:</strong> Values shown are declared for customs purposes. ${esc(reason.value)==='Stock transfer / not a sale'?'This shipment is a stock transfer and is not a sale to the consignee.':''}</p><p style="margin-top:25mm">Signed: ______________________________ &nbsp;&nbsp; Date: __________________</p>`;
  window.print();
 }
-invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();make();draw();updateFCOptions();initSales();
+invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();make();draw();updateFCOptions();initSales();loadViewFromHash();
 </script>
 </body>
 </html>
