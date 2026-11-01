@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-<title>Gunpowder Studios Box Packer v14.5</title>
+<title>Gunpowder Studios Box Packer v14.6</title>
 <style>
 :root{--p:#242424;--t:#ffffff;--m:#d7d7d7;--g:#5a5a5a;--ok:#ffffff;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}.gate{position:fixed;inset:0;z-index:9999;background:#111;display:flex;align-items:center;justify-content:center;padding:20px}.gate-card{width:min(420px,100%);background:#242424;border:1px solid #555;border-radius:16px;padding:24px;text-align:center}.gate-card img{width:220px;max-width:80%;height:auto;margin-bottom:18px}.gate-card input{margin-top:10px;text-align:center}.gate-card button{width:100%;margin-top:10px}.gate-hint{margin-top:10px;color:#d7d7d7;font-size:13px}.gate-error{min-height:20px;margin-top:8px;color:#ffaaaa;font-size:13px}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:0 0 22px;text-align:center;border-bottom:4px solid var(--g);background:#101010}h1{margin:18px 0 0}.site-logo-link{display:block;width:100%;background:#101010;cursor:pointer}.site-logo{display:block;width:100%;height:auto;max-height:180px;object-fit:contain;margin:0 auto;padding:12px 20px 0}.muted,small{color:var(--m)}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:#fff;margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#fff;background:#555;border-color:#777}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:#fff;border-color:#777}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#2b2b2b;border:1px solid #555;border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#fff}.howto-wrap{margin:0 0 16px}.howto-wrap summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#4a4a4a;color:#fff;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer}.howto-wrap summary::-webkit-details-marker{display:none}.howto-wrap summary:after{content:"＋";font-size:20px;line-height:1}.howto-wrap[open] summary:after{content:"−"}.weekly-update{background:#2a2a2a;border:1px solid #555;border-radius:0 0 14px 14px;padding:16px 18px;margin:0;box-shadow:0 0 0 1px rgba(255,215,106,.08) inset}.weekly-update .weekly-title{font-size:18px;font-weight:900;color:#fff;margin-bottom:6px}.weekly-update .weekly-date{font-size:13px;color:#f4f1e8;margin-top:10px}.weekly-update .weekly-date strong{color:#fff}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#fff;font-weight:bold}button{background:#555;color:#fff;border:1px solid #777;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}.product-cell{display:flex;align-items:flex-start;gap:10px;min-width:190px}.product-thumb{width:58px;height:58px;object-fit:contain;flex:0 0 58px;background:#111;border:1px solid #3c3c3c;border-radius:8px;padding:3px}.product-info{min-width:0}
@@ -20,8 +20,18 @@
 .product-id-box strong{display:block;font-size:11px;text-transform:uppercase;color:#fff;margin-bottom:3px}
 .product-id-box code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff;overflow-wrap:anywhere}
 .product-id-note{font-size:12px;color:var(--m);line-height:1.5}
-.sales-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 16px}
+.sales-controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0 16px}
 .sales-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.sales-chart{background:#181818;border:1px solid var(--b);border-radius:14px;padding:16px;margin:0 0 16px}
+.sales-chart-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sales-chart-head h3{margin:0}.sales-chart-sub{font-size:12px;color:var(--m)}
+.sales-bars{display:flex;align-items:flex-end;gap:10px;min-height:280px;padding:18px 8px 0;border-bottom:1px solid #444;overflow-x:auto}
+.sales-bar-wrap{min-width:78px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:250px}
+.sales-bar-value{font-size:12px;font-weight:900;margin-bottom:6px}
+.sales-bar{width:min(52px,72%);min-height:2px;background:linear-gradient(180deg,#f2f2f2,#777);border-radius:8px 8px 2px 2px;box-shadow:0 0 18px rgba(255,255,255,.08)}
+.sales-bar-label{font-size:11px;color:var(--m);text-align:center;line-height:1.15;margin-top:7px;min-height:30px}
+.sales-chart-empty{padding:50px 10px;text-align:center;color:var(--m)}
+.sales-range-note{font-size:12px;color:var(--m);margin:-6px 0 14px}
 .sales-kpi{background:#181818;border:1px solid var(--b);border-radius:12px;padding:14px}
 .sales-kpi small{display:block;margin-bottom:4px}.sales-kpi strong{font-size:22px}
 .sales-note{font-size:12px;color:var(--m);margin-top:10px}
@@ -120,7 +130,7 @@
 </div>
 <header>
 <a class="site-logo-link" href="#" onclick="setAppView('products');return false;" aria-label="Return to Products home"><a href="#" class="site-logo-link" onclick="setAppView('products');return false;" aria-label="Return to Products home"><img class="site-logo" src="images/gunpowder-logo-new-wht.png" alt="Gunpowder Studios"></a>
-<div class="version-badge">v14.5</div></a>
+<div class="version-badge">v14.6</div></a>
 <div class="header-line">Gunpowder Studios Box Packer - Products · Shipping · Compliance · Sales</div>
 </header>
 <nav class="app-tabs" aria-label="Box Packer sections">
@@ -247,14 +257,21 @@
 <div id="view-sales" class="app-view">
   <main class="compliance-wrap" style="max-width:1200px">
     <section class="panel">
-      <h2>Sales</h2>
-      <div class="warning"><strong>Source:</strong> Mick's emailed sales / collection reports. Product rows are units sold. Gross sales, expenses and proceeds are period-level figures where the reports contain them; older annual summaries do not provide product-level money figures.</div>
+      <h2>Sales dashboard</h2>
+      <div class="warning"><strong>Source:</strong> Mick's emailed sales / collection reports. Older years contain annual product totals; detailed 2026 figures come from Mick's dated reports. Day and month selections therefore use the report coverage available rather than pretending we have individual daily transactions.</div>
       <div class="sales-controls">
-        <div><label>Year</label><select id="salesYear" onchange="updateSalesPeriods();renderSales()"></select></div>
-        <div><label>Period</label><select id="salesPeriod" onchange="renderSales()"></select></div>
-        <div><label>View</label><select id="salesMode" onchange="renderSales()"><option value="total">Totals</option><option value="daily">Average per day</option></select></div>
+        <div><label>Range</label><select id="salesRangeType" onchange="updateSalesRangeOptions();renderSales()">
+          <option value="year">Year</option><option value="month">Month</option><option value="days">Last N days</option><option value="months">Last N months</option>
+        </select></div>
+        <div><label id="salesRangeLabel">Year</label><select id="salesRangeValue" onchange="renderSales()"></select></div>
+        <div><label>Numbers</label><select id="salesMode" onchange="renderSales()"><option value="total">Totals</option><option value="daily">Average per day</option></select></div>
       </div>
+      <div id="salesRangeNote" class="sales-range-note"></div>
       <div id="salesKpis" class="sales-kpis"></div>
+      <div class="sales-chart">
+        <div class="sales-chart-head"><div><h3>Product sales</h3><div id="salesChartSub" class="sales-chart-sub"></div></div><strong id="salesChartTotal"></strong></div>
+        <div id="salesBars" class="sales-bars"></div>
+      </div>
       <div style="overflow-x:auto">
         <table class="sales-table">
           <thead><tr><th>Product</th><th>Total units</th><th>Amazon</th><th>Etsy</th><th>Website</th><th>Other</th></tr></thead>
@@ -588,25 +605,56 @@ function renderProductOverview(){
 const SALES_REPORTS=[{"year":2023,"start":"2023-01-01","end":"2023-12-31","label":"Whole year","gross":null,"expenses":null,"proceeds":null,"annual":true,"products":{"Bag of Dungeon":{"units":4542,"amazon":4386,"etsy":42,"website":114,"other":0},"Bag of Dungeon 2":{"units":1773,"amazon":1636,"etsy":5,"website":132,"other":0},"Legends 1":{"units":917,"amazon":820,"etsy":0,"website":97,"other":0},"Legends 2":{"units":0,"amazon":0,"etsy":0,"website":0,"other":0},"Book of Dungeon":{"units":0,"amazon":0,"etsy":0,"website":0,"other":0},"7 Moons":{"units":727,"amazon":644,"etsy":7,"website":76,"other":0},"Rabbito":{"units":197,"amazon":174,"etsy":0,"website":23,"other":0},"Who Stole My Cheese?":{"units":0,"amazon":0,"etsy":0,"website":0,"other":0},"Kastles":{"units":181,"amazon":151,"etsy":0,"website":30,"other":0}}},{"year":2024,"start":"2024-01-01","end":"2024-12-31","label":"Whole year","gross":null,"expenses":null,"proceeds":null,"annual":true,"products":{"Bag of Dungeon":{"units":3078,"amazon":2912,"etsy":41,"website":125,"other":0},"Bag of Dungeon 2":{"units":667,"amazon":541,"etsy":13,"website":113,"other":0},"Legends 1":{"units":560,"amazon":484,"etsy":0,"website":76,"other":0},"Legends 2":{"units":0,"amazon":0,"etsy":0,"website":0,"other":0},"Book of Dungeon":{"units":0,"amazon":0,"etsy":0,"website":0,"other":0},"7 Moons":{"units":316,"amazon":267,"etsy":7,"website":42,"other":0},"Rabbito":{"units":170,"amazon":142,"etsy":5,"website":23,"other":0},"Who Stole My Cheese?":{"units":25,"amazon":0,"etsy":0,"website":25,"other":0},"Kastles":{"units":204,"amazon":183,"etsy":1,"website":20,"other":0}}},{"year":2025,"start":"2025-01-01","end":"2025-12-31","label":"Whole year","gross":null,"expenses":null,"proceeds":null,"annual":true,"products":{"Bag of Dungeon":{"units":2736,"amazon":2619,"etsy":56,"website":61,"other":0},"Bag of Dungeon 2":{"units":931,"amazon":861,"etsy":15,"website":55,"other":0},"Legends 1":{"units":734,"amazon":647,"etsy":1,"website":86,"other":0},"Legends 2":{"units":122,"amazon":6,"etsy":3,"website":113,"other":0},"Book of Dungeon":{"units":1095,"amazon":850,"etsy":130,"website":115,"other":0},"7 Moons":{"units":374,"amazon":286,"etsy":22,"website":66,"other":0},"Rabbito":{"units":51,"amazon":41,"etsy":3,"website":7,"other":0},"Who Stole My Cheese?":{"units":250,"amazon":236,"etsy":3,"website":11,"other":0},"Kastles":{"units":233,"amazon":210,"etsy":3,"website":20,"other":0}}},{"year":2026,"start":"2026-02-09","end":"2026-02-23","label":"2026-02-09 to 2026-02-23","gross":6174.06,"expenses":1796.64,"proceeds":6643.88,"annual":false,"products":{"Bag of Dungeon":{"units":93,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":24,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":37,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":25,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-02-23","end":"2026-03-09","label":"2026-02-23 to 2026-03-09","gross":6445,"expenses":2604.08,"proceeds":8267.87,"annual":false,"products":{"Bag of Dungeon":{"units":91,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":33,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":24,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":20,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":36,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-03-09","end":"2026-03-23","label":"2026-03-09 to 2026-03-23","gross":4516.7,"expenses":1682.33,"proceeds":11531.45,"annual":false,"products":{"Bag of Dungeon":{"units":91,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":20,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":22,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":33,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-03-23","end":"2026-04-06","label":"2026-03-23 to 2026-04-06","gross":5274.5,"expenses":1725.44,"proceeds":9532.78,"annual":false,"products":{"Bag of Dungeon":{"units":73,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":6,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":24,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":18,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":11,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":24,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-04-06","end":"2026-04-20","label":"2026-04-06 to 2026-04-20","gross":4802.95,"expenses":1855.6,"proceeds":6445.38,"annual":false,"products":{"Bag of Dungeon":{"units":66,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":19,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":29,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":14,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":19,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-04-20","end":"2026-05-04","label":"2026-04-20 to 2026-05-04","gross":1957.06,"expenses":960.44,"proceeds":5020.93,"annual":false,"products":{"Bag of Dungeon":{"units":23,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":12,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":11,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-05-04","end":"2026-05-18","label":"2026-05-04 to 2026-05-18","gross":3690.81,"expenses":1454.66,"proceeds":2846.94,"annual":false,"products":{"Bag of Dungeon":{"units":46,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":6,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":15,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-05-18","end":"2026-06-01","label":"2026-05-18 to 2026-06-01","gross":3711.18,"expenses":1282.95,"proceeds":13320.59,"annual":false,"products":{"Bag of Dungeon":{"units":53,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":9,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":12,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":10,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":4,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-06-01","end":"2026-06-15","label":"2026-06-01 to 2026-06-15","gross":3242.08,"expenses":1278.33,"proceeds":4441.22,"annual":false,"products":{"Bag of Dungeon":{"units":54,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":22,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":17,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":13,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-06-15","end":"2026-06-29","label":"2026-06-15 to 2026-06-29","gross":5088.42,"expenses":2101.03,"proceeds":3686.67,"annual":false,"products":{"Bag of Dungeon":{"units":67,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":11,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":15,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":25,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":10,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":14,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":11,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-07-13","end":"2026-07-27","label":"2026-07-13 to 2026-07-27","gross":3811.11,"expenses":1271.51,"proceeds":4577,"annual":false,"products":{"Bag of Dungeon":{"units":52,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":25,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":20,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-07-27","end":"2026-08-10","label":"2026-07-27 to 2026-08-10","gross":3906.45,"expenses":1505.86,"proceeds":6365.05,"annual":false,"products":{"Bag of Dungeon":{"units":57,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":6,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":17,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":16,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":14,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-08-10","end":"2026-08-24","label":"2026-08-10 to 2026-08-24","gross":5488.69,"expenses":2136.85,"proceeds":3837.74,"annual":false,"products":{"Bag of Dungeon":{"units":68,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":30,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":7,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":17,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-08-24","end":"2026-09-07","label":"2026-08-24 to 2026-09-07","gross":4256.13,"expenses":2030.98,"proceeds":6037.12,"annual":false,"products":{"Bag of Dungeon":{"units":43,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":23,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":2,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":12,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":16,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-09-21","end":"2026-10-05","label":"2026-09-21 to 2026-10-05","gross":2514.74,"expenses":809.61,"proceeds":5038.65,"annual":false,"products":{"Bag of Dungeon":{"units":34,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":18,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":0,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":12,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":8,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null}}},{"year":2026,"start":"2026-10-05","end":"2026-10-19","label":"2026-10-05 to 2026-10-19","gross":3622.3,"expenses":1723.99,"proceeds":5369.34,"annual":false,"products":{"Bag of Dungeon":{"units":80,"amazon":null,"etsy":null,"website":null,"other":null},"Kastles":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"7 Moons":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 1":{"units":5,"amazon":null,"etsy":null,"website":null,"other":null},"Bag of Dungeon 2":{"units":21,"amazon":null,"etsy":null,"website":null,"other":null},"Rabbito":{"units":1,"amazon":null,"etsy":null,"website":null,"other":null},"Book of Dungeon":{"units":3,"amazon":null,"etsy":null,"website":null,"other":null},"Legends 2":{"units":10,"amazon":null,"etsy":null,"website":null,"other":null},"Who Stole My Cheese?":{"units":6,"amazon":null,"etsy":null,"website":null,"other":null}}}];
 function fmtGBP(n){return n==null?'—':'£'+Number(n).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function salesDays(r){const a=new Date(r.start+'T00:00:00'),b=new Date(r.end+'T00:00:00');return Math.max(1,Math.round((b-a)/86400000))}
-function initSales(){
-  const y=document.getElementById('salesYear'); if(!y)return;
-  const years=[...new Set(SALES_REPORTS.map(r=>r.year))].sort((a,b)=>b-a);
-  y.innerHTML=years.map(v=>'<option value="'+v+'">'+v+'</option>').join('');
-  y.value=years.includes(2026)?'2026':String(years[0]);
-  updateSalesPeriods();renderSales();
+function salesLatestDate(){return SALES_REPORTS.filter(r=>!r.annual).reduce((m,r)=>r.end>m?r.end:m,'2026-01-01')}
+function monthKey(d){return d.slice(0,7)}
+function prettyMonth(k){const [y,m]=k.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('en-GB',{month:'long',year:'numeric'})}
+function initSales(){updateSalesRangeOptions();renderSales()}
+function updateSalesRangeOptions(){
+  const type=document.getElementById('salesRangeType')?.value||'year';
+  const select=document.getElementById('salesRangeValue'),label=document.getElementById('salesRangeLabel');
+  if(!select)return;
+  let opts=[];
+  if(type==='year'){
+    label.textContent='Year';
+    opts=[...new Set(SALES_REPORTS.map(r=>r.year))].sort((a,b)=>b-a).map(y=>[String(y),String(y)]);
+  }else if(type==='month'){
+    label.textContent='Month';
+    const months=[...new Set(SALES_REPORTS.filter(r=>!r.annual).map(r=>monthKey(r.end)))].sort().reverse();
+    opts=months.map(m=>[m,prettyMonth(m)]);
+  }else if(type==='days'){
+    label.textContent='Days';
+    opts=[7,14,30,60,90,120,180,365].map(n=>[String(n),'Last '+n+' days']);
+  }else{
+    label.textContent='Months';
+    opts=Array.from({length:12},(_,i)=>i+1).map(n=>[String(n),'Last '+n+' month'+(n===1?'':'s')]);
+  }
+  select.innerHTML=opts.map(([v,t])=>'<option value="'+v+'">'+t+'</option>').join('');
 }
-function updateSalesPeriods(){
-  const y=Number(document.getElementById('salesYear').value);
-  const p=document.getElementById('salesPeriod');
-  const rows=SALES_REPORTS.filter(r=>r.year===y);
-  p.innerHTML='<option value="all">Whole year / all available reports</option>'+rows.map(r=>'<option value="'+r.start+'|'+r.end+'">'+(r.label||r.start+' to '+r.end)+'</option>').join('');
+function getSelectedSalesRows(){
+  const type=document.getElementById('salesRangeType')?.value||'year';
+  const val=document.getElementById('salesRangeValue')?.value||'';
+  let rows=[];
+  let note='';
+  if(type==='year'){
+    rows=SALES_REPORTS.filter(r=>String(r.year)===val);
+    note=val;
+  }else if(type==='month'){
+    rows=SALES_REPORTS.filter(r=>!r.annual && (monthKey(r.start)===val||monthKey(r.end)===val));
+    note=prettyMonth(val)+' · report-based';
+  }else{
+    const latest=new Date(salesLatestDate()+'T00:00:00');
+    const n=Number(val)||1;
+    const cutoff=new Date(latest);
+    if(type==='days')cutoff.setDate(cutoff.getDate()-n);
+    else cutoff.setMonth(cutoff.getMonth()-n);
+    rows=SALES_REPORTS.filter(r=>!r.annual && new Date(r.end+'T00:00:00')>cutoff && new Date(r.start+'T00:00:00')<=latest);
+    note=(type==='days'?'Last '+n+' days':'Last '+n+' month'+(n===1?'':'s'))+' · based on reports ending up to '+salesLatestDate();
+  }
+  return {rows,note,type};
 }
 function renderSales(){
-  const y=Number(document.getElementById('salesYear')?.value||0);
-  const pv=document.getElementById('salesPeriod')?.value||'all';
+  const {rows,note,type}=getSelectedSalesRows();
   const mode=document.getElementById('salesMode')?.value||'total';
-  let rows=SALES_REPORTS.filter(r=>r.year===y);
-  if(pv!=='all'){const [s,e]=pv.split('|');rows=rows.filter(r=>r.start===s&&r.end===e)}
   const days=rows.reduce((n,r)=>n+salesDays(r),0)||1;
   const divisor=mode==='daily'?days:1;
   const validMoney=k=>rows.filter(r=>r[k]!=null);
@@ -621,18 +669,30 @@ function renderSales(){
   }));
   const num=n=>mode==='daily'?(n/divisor).toFixed(1):Number(n).toLocaleString('en-GB');
   const money=n=>moneyAvailable?(mode==='daily'?fmtGBP(n/divisor):fmtGBP(n)):'—';
+  document.getElementById('salesRangeNote').textContent=note;
   document.getElementById('salesKpis').innerHTML=
     '<div class="sales-kpi"><small>Gross sales</small><strong>'+money(gross)+'</strong></div>'+
     '<div class="sales-kpi"><small>Sales expenses</small><strong>'+money(expenses)+'</strong></div>'+
-    '<div class="sales-kpi"><small>Net after sales expenses</small><strong>'+money(net)+'</strong></div>'+
+    '<div class="sales-kpi"><small>Net sales</small><strong>'+money(net)+'</strong></div>'+
     '<div class="sales-kpi"><small>Proceeds into bank</small><strong>'+money(proceeds)+'</strong></div>';
-  document.getElementById('salesRows').innerHTML=Object.entries(units).sort((a,b)=>b[1].units-a[1].units).map(([name,v])=>
+  const sorted=Object.entries(units).sort((a,b)=>b[1].units-a[1].units);
+  document.getElementById('salesRows').innerHTML=sorted.map(([name,v])=>
     '<tr><td><strong>'+name+'</strong></td><td>'+num(v.units)+'</td><td>'+(v.channelsKnown?num(v.amazon):'—')+'</td><td>'+(v.channelsKnown?num(v.etsy):'—')+'</td><td>'+(v.channelsKnown?num(v.website):'—')+'</td><td>'+(v.channelsKnown?num(v.other):'—')+'</td></tr>'
   ).join('')||'<tr><td colspan="6">No sales data for this selection.</td></tr>';
+  const max=sorted.length?Math.max(...sorted.map(x=>x[1].units),1):1;
+  const totalUnits=sorted.reduce((n,x)=>n+x[1].units,0);
+  document.getElementById('salesChartTotal').textContent=mode==='daily'?num(totalUnits)+' / day':totalUnits.toLocaleString('en-GB')+' units';
+  document.getElementById('salesChartSub').textContent=note+(mode==='daily'?' · average per report-day':'');
+  document.getElementById('salesBars').innerHTML=sorted.length?sorted.map(([name,v])=>{
+    const value=mode==='daily'?v.units/divisor:v.units;
+    const height=Math.max(2,(v.units/max)*205);
+    const short=name.replace('Bag of Dungeon 2','BoD 2').replace('Bag of Dungeon','BoD').replace('Who Stole My Cheese?','Cheese').replace('Book of Dungeon','Book');
+    return '<div class="sales-bar-wrap"><div class="sales-bar-value">'+(mode==='daily'?value.toFixed(1):Math.round(value).toLocaleString('en-GB'))+'</div><div class="sales-bar" style="height:'+height+'px"></div><div class="sales-bar-label">'+short+'</div></div>';
+  }).join(''):'<div class="sales-chart-empty">No chart data for this selection.</div>';
   const annualOnly=rows.length===1&&rows[0].annual;
   document.getElementById('salesCoverage').textContent=annualOnly
-    ? 'Annual unit totals from GS 2023–2025 Sales. Gross / net money was not included in that annual summary.'
-    : rows.length?'Reports included: '+rows.length+' · Coverage '+rows[0].start+' to '+rows[rows.length-1].end+(mode==='daily'?' · Per-day figures are averages across '+days+' report-days.':''):'No reports found.';
+    ? 'Annual product totals from GS 2023–2025 Sales. That annual summary does not include gross, expenses or proceeds.'
+    : rows.length?'Reports included: '+rows.length+' · coverage '+rows[0].start+' to '+rows[rows.length-1].end+(type!=='year'?' · selections use Mick’s report dates, not individual transaction dates.':''):'No reports found.';
 }
 function setAppView(view,skipHash){
   ['products','shipping','compliance','gardners','sales','contacts'].forEach(v=>{
