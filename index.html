@@ -569,10 +569,11 @@ function renderSales(){
   const money=n=>moneyAvailable?(mode==='daily'?fmtGBP(n/divisor):fmtGBP(n)):'—';
   document.getElementById('salesRangeNote').textContent=note+(type==='all'?' · units 2023–2026; £ figures 2026 reports only':'');
   document.getElementById('salesKpis').innerHTML=
+    '<div class="sales-kpi"><small>Bank Proceeds (£)</small><strong>'+money(proceeds)+'</strong></div>'+ 
     '<div class="sales-kpi"><small>Gross sales</small><strong>'+money(gross)+'</strong></div>'+
     '<div class="sales-kpi"><small>Sales expenses</small><strong>'+money(expenses)+'</strong></div>'+
     '<div class="sales-kpi"><small>Net sales</small><strong>'+money(net)+'</strong></div>'+
-    '<div class="sales-kpi"><small>Proceeds into bank</small><strong>'+money(proceeds)+'</strong></div>';
+
   // KDP reports net paperback units by royalty calendar month, not fortnightly.
   // Direct Etsy/website book quantities remain separate and are not duplicated into KDP.
   let bookSalesNote='KDP Book of Dungeon sales use monthly net units; Etsy/website use Mick’s fortnightly reports. November 2026 is partial.';
