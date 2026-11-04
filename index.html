@@ -260,7 +260,7 @@
       <div class="warning"><strong>Source:</strong> Emailed sales / collection reports. Older years contain annual product totals; detailed 2026 figures come from dated reports. Day and month selections use the available report coverage rather than individual daily transactions.</div>
       <div class="sales-controls">
         <div><label>Range</label><select id="salesRangeType" onchange="updateSalesRangeOptions();renderSales()">
-          <option value="year">Year</option><option value="month">Month</option><option value="days">Last N days</option><option value="months">Last N months</option>
+          <option value="all">All time</option><option value="year">Year</option><option value="month">Month</option><option value="days">Last N days</option><option value="months">Last N months</option>
         </select></div>
         <div><label id="salesRangeLabel">Year</label><select id="salesRangeValue" onchange="renderSales()"></select></div>
         <div><label>Numbers</label><select id="salesMode" onchange="renderSales()"><option value="total">Totals</option><option value="daily">Average per day</option></select></div>
@@ -501,7 +501,10 @@ function updateSalesRangeOptions(){
   const select=document.getElementById('salesRangeValue'),label=document.getElementById('salesRangeLabel');
   if(!select)return;
   let opts=[];
-  if(type==='year'){
+  if(type==='all'){
+    label.textContent='Coverage';
+    opts=[['all','2023 to latest']];
+  }else if(type==='year'){
     label.textContent='Year';
     opts=[...new Set(SALES_REPORTS.map(r=>r.year))].sort((a,b)=>b-a).map(y=>[String(y),String(y)]);
   }else if(type==='month'){
@@ -522,7 +525,10 @@ function getSelectedSalesRows(){
   const val=document.getElementById('salesRangeValue')?.value||'';
   let rows=[];
   let note='';
-  if(type==='year'){
+  if(type==='all'){
+    rows=SALES_REPORTS.slice();
+    note='All time · available reports (2023–'+salesLatestDate()+')';
+  }else if(type==='year'){
     rows=SALES_REPORTS.filter(r=>String(r.year)===val);
     note=val;
   }else if(type==='month'){
@@ -556,7 +562,7 @@ function renderSales(){
   }));
   const num=n=>mode==='daily'?(n/divisor).toFixed(1):Number(n).toLocaleString('en-GB');
   const money=n=>moneyAvailable?(mode==='daily'?fmtGBP(n/divisor):fmtGBP(n)):'—';
-  document.getElementById('salesRangeNote').textContent=note;
+  document.getElementById('salesRangeNote').textContent=note+(type==='all'?' · units 2023–2026; £ figures 2026 reports only':'');
   document.getElementById('salesKpis').innerHTML=
     '<div class="sales-kpi"><small>Gross sales</small><strong>'+money(gross)+'</strong></div>'+
     '<div class="sales-kpi"><small>Sales expenses</small><strong>'+money(expenses)+'</strong></div>'+
@@ -565,9 +571,17 @@ function renderSales(){
   // KDP reports net paperback units by royalty calendar month, not fortnightly.
   // Direct Etsy/website book quantities remain separate and are not duplicated into KDP.
   let bookSalesNote='KDP Book of Dungeon sales use monthly net units; Etsy/website use Mick’s fortnightly reports. November 2026 is partial.';
-  if(type==='year'&&document.getElementById('salesRangeValue')?.value==='2025'){
+  if(type==='all'||(type==='year'&&document.getElementById('salesRangeValue')?.value==='2025')){
     delete units['Book of Dungeon']; // annual 2025 legacy total is not disaggregated, so avoid double-counting
-    bookSalesNote+=' The 2025 annual summary’s unverified Book total is replaced by KDP 2025 sales only.';
+    bookSalesNote+=' The 2025 annual summary’s unverified Book total is excluded to prevent double-counting KDP sales; non-KDP 2025 Book sales may be missing.';
+    if(type==='all'){
+      const bookDirect=SALES_REPORTS.filter(r=>!r.annual).reduce((n,r)=>{
+        const v=r.products?.['Book of Dungeon'];
+        if(v){n.units+=Number(v.units||0);['amazon','etsy','website','other'].forEach(k=>n[k]+=Number(v[k]||0));}
+        return n;
+      },{units:0,amazon:0,etsy:0,website:0,other:0});
+      if(bookDirect.units)units['Book of Dungeon (2026 Etsy/website)']={...bookDirect,channelsKnown:true};
+    }
   }else if(units['Book of Dungeon']){
     units['Book of Dungeon (Etsy/website)']=units['Book of Dungeon'];
     delete units['Book of Dungeon'];
@@ -577,7 +591,9 @@ function renderSales(){
   let kdpSelected=[];
   const kdpMonthStart=m=>new Date(m+'-01T00:00:00');
   const kdpMonthEnd=m=>new Date(Number(m.slice(0,4)),Number(m.slice(5,7)),0);
-  if(type==='year'){
+  if(type==='all'){
+    kdpSelected=KDP_MONTHLY_BOOK_SALES.slice();
+  }else if(type==='year'){
     kdpSelected=KDP_MONTHLY_BOOK_SALES.filter(x=>x[0].slice(0,4)===periodValue);
   }else if(type==='month'){
     kdpSelected=KDP_MONTHLY_BOOK_SALES.filter(x=>x[0]===periodValue);
@@ -612,7 +628,9 @@ function renderSales(){
     return '<div class="sales-bar-wrap"><div class="sales-bar-value">'+(mode==='daily'?value.toFixed(1):Math.round(value).toLocaleString('en-GB'))+'</div><div class="sales-bar" style="height:'+height+'px"></div><div class="sales-bar-label">'+short+'</div></div>';
   }).join(''):'<div class="sales-chart-empty">No chart data for this selection.</div>';
   const annualOnly=rows.length===1&&rows[0].annual;
-  document.getElementById('salesCoverage').textContent=annualOnly
+  document.getElementById('salesCoverage').textContent=type==='all'
+    ? 'All available records: annual product totals for 2023–2025, dated sales reports from February to November 2026 (with gaps), and KDP monthly paperback units from November 2025. Monetary KPIs cover 2026 dated reports only, NOT lifetime revenue or profit. The 2025 Book total is excluded to avoid KDP double-counting; some non-KDP book sales may be missing. Average/day uses report coverage, not continuous lifetime history. '+bookSalesNote
+    : annualOnly
     ? 'Annual product totals from GS 2023–2025 Sales, except KDP book units imported from the supplied KDP workbook. The annual summary does not include gross, expenses or proceeds. '+bookSalesNote
     : rows.length?'Reports included: '+rows.length+' · coverage '+rows[0].start+' to '+rows[rows.length-1].end+(type!=='year'?' · selections use Mick’s report dates, not individual transaction dates.':'')+' · '+bookSalesNote:'No reports found.';
 }
