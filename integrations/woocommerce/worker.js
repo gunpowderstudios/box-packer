@@ -2,8 +2,12 @@
 // Keep WC_CONSUMER_KEY and WC_CONSUMER_SECRET in Worker secrets only.
 export default {
   async fetch(request, env) {
-    const json = (value, status = 200) => new Response(JSON.stringify(value, null, 2), {
-      status, headers: {"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}
+    const origin = request.headers.get("Origin");
+    const allowedOrigin = origin === "https://gunpowderstudios.github.io" ? origin : null;
+    const cors = allowedOrigin ? {"Access-Control-Allow-Origin":allowedOrigin,"Access-Control-Allow-Credentials":"true","Vary":"Origin"} : {};
+    if (request.method === "OPTIONS" && new URL(request.url).pathname === "/") return new Response(null,{status:204,headers:{...cors,"Access-Control-Allow-Methods":"GET, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Access-Control-Max-Age":"3600"}});
+    const json = (value, status = 200) => new Response(JSON.stringify(value), {
+      status, headers: {"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","X-Content-Type-Options":"nosniff",...cors}
     });
     if (request.method !== "GET" || new URL(request.url).pathname !== "/")
       return json({error:"Not found"},404);
