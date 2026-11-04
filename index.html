@@ -37,8 +37,8 @@
 .sales-kpi{background:#181818;border:1px solid var(--b);border-radius:12px;padding:14px}
 .sales-kpi small{display:block;margin-bottom:4px}.sales-kpi strong{font-size:22px}
 .sales-note{font-size:12px;color:var(--m);margin-top:10px}
-/* Highlight the Total units column in the Sales table. */
-.sales-table th:nth-child(2),.sales-table td:nth-child(2){background:#A4F45A;color:#15220b;font-weight:900}
+/* Gross sales figures and heading in green, without a column background. */
+.sales-table th:nth-child(6),.sales-table td:nth-child(6){color:#A4F45A;font-weight:900}
 
 @media(max-width:750px){.sales-controls{grid-template-columns:1fr}.sales-kpis{grid-template-columns:1fr 1fr}.sales-table{font-size:13px}}
 @media(max-width:850px){.product-record{grid-template-columns:1fr}.product-id-grid{grid-template-columns:1fr 1fr}#view-products .product-thumb{width:96px;height:96px;flex-basis:96px}.product-id-toggle{display:flex;align-items:center;justify-content:space-between;background:#4a4a4a;color:#fff;border-radius:10px;padding:12px 14px;font-weight:900;cursor:pointer}.product-id-toggle:after{content:'＋';font-size:20px}.product-record-right.mobile-collapsed .product-id-grid,.product-record-right.mobile-collapsed .product-id-note,.product-record-right.mobile-collapsed>.product-id-title{display:none}.product-record-right:not(.mobile-collapsed) .product-id-toggle:after{content:'−'}}
