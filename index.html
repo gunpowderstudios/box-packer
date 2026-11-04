@@ -274,7 +274,7 @@
       </div>
       <div style="overflow-x:auto">
         <table class="sales-table">
-          <thead><tr><th>Product</th><th>Total units</th><th>Amazon</th><th>Etsy</th><th>Website</th><th title="Per-product revenue is not provided by the source reports">Sales (£)</th></tr></thead>
+          <thead><tr><th>Product</th><th>Total units</th><th>Amazon</th><th>Etsy</th><th>Website</th><th title="Estimated gross sales: units × UK RRP, before discounts, fees and VAT adjustments">Sales (£) est.</th></tr></thead>
           <tbody id="salesRows"></tbody>
         </table>
       </div>
@@ -613,9 +613,25 @@ function renderSales(){
     if(spa)units['Book of Dungeon — KDP (Spanish)']={units:spa,amazon:spa,etsy:0,website:0,other:0,channelsKnown:true};
     bookSalesNote+=' KDP selected: '+(eng+spa).toLocaleString('en-GB')+' net paperbacks (English '+eng.toLocaleString('en-GB')+', Spanish '+spa.toLocaleString('en-GB')+').';
   }
+  // Indicative UK RRP only; not actual realised revenue or net receipts.
+  const SALES_RRP_GBP={
+    'Bag of Dungeon':44.99,'Bag of Dungeon 2':44.99,
+    'Legends 1':19.99,'Legends 2':29.99,
+    '7 Moons':29.99,'Rabbito':19.99,
+    'Who Stole My Cheese?':16.99,'Kastles':14.99,
+    'Book of Dungeon':16.99,
+    'Book of Dungeon (2026 Etsy/website)':16.99,
+    'Book of Dungeon (Etsy/website)':16.99,
+    'Book of Dungeon — KDP (English)':16.99,
+    'Book of Dungeon — KDP (Spanish)':16.99
+  };
+  const estimatedProductSales=(name,v)=>{
+    const rrp=SALES_RRP_GBP[name];
+    return rrp==null?'—':fmtGBP(Number(v.units||0)*rrp/divisor);
+  };
   const sorted=Object.entries(units).sort((a,b)=>b[1].units-a[1].units);
   document.getElementById('salesRows').innerHTML=sorted.map(([name,v])=>
-    '<tr><td><strong>'+name+'</strong></td><td>'+num(v.units)+'</td><td>'+(v.channelsKnown?num(v.amazon):'—')+'</td><td>'+(v.channelsKnown?num(v.etsy):'—')+'</td><td>'+(v.channelsKnown?num(v.website):'—')+'</td><td title="Per-product revenue not available">—</td></tr>'
+    '<tr><td><strong>'+name+'</strong></td><td>'+num(v.units)+'</td><td>'+(v.channelsKnown?num(v.amazon):'—')+'</td><td>'+(v.channelsKnown?num(v.etsy):'—')+'</td><td>'+(v.channelsKnown?num(v.website):'—')+'</td><td title="Estimated gross value at UK RRP; excludes discounts, fees, VAT adjustments and channel price differences">'+estimatedProductSales(name,v)+'</td></tr>'
   ).join('')||'<tr><td colspan="6">No sales data for this selection.</td></tr>';
   const max=sorted.length?Math.max(...sorted.map(x=>x[1].units),1):1;
   const totalUnits=sorted.reduce((n,x)=>n+x[1].units,0);
@@ -628,7 +644,7 @@ function renderSales(){
     return '<div class="sales-bar-wrap"><div class="sales-bar-value">'+(mode==='daily'?value.toFixed(1):Math.round(value).toLocaleString('en-GB'))+'</div><div class="sales-bar" style="height:'+height+'px"></div><div class="sales-bar-label">'+short+'</div></div>';
   }).join(''):'<div class="sales-chart-empty">No chart data for this selection.</div>';
   const annualOnly=rows.length===1&&rows[0].annual;
-  document.getElementById('salesCoverage').textContent='Sales (£) by product is unavailable in the source reports; the monetary totals above are report-level figures, not individual product revenue. '+(type==='all'
+  document.getElementById('salesCoverage').textContent='Sales (£) est. = product units × UK RRP (7 Moons uses £29.99 current promotional price). Indicative gross value only, not actual revenue; discounts, retailer/wholesale rates, channel prices, VAT and fees are not reflected. Monetary KPIs above remain report-based. '+(type==='all'
     ? 'All available records: annual product totals for 2023–2025, dated sales reports from February to November 2026 (with gaps), and KDP monthly paperback units from November 2025. Monetary KPIs cover 2026 dated reports only, NOT lifetime revenue or profit. The 2025 Book total is excluded to avoid KDP double-counting; some non-KDP book sales may be missing. Average/day uses report coverage, not continuous lifetime history. '+bookSalesNote
     : annualOnly
     ? 'Annual product totals from GS 2023–2025 Sales, except KDP book units imported from the supplied KDP workbook. The annual summary does not include gross, expenses or proceeds. '+bookSalesNote
