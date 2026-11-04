@@ -127,6 +127,7 @@
     <div style="font-weight:900;font-size:18px">Box Packer</div>
     <div class="gate-hint">Hint: Our old dog...</div>
     <input id="gatePassword" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')unlockGate()">
+    <label style="display:flex;align-items:center;gap:8px;justify-content:center;margin:12px 0;color:#fff;font-size:14px"><input id="gateRemember" type="checkbox" style="width:auto;margin:0"> Remember me on this device</label>
     <button onclick="unlockGate()">Enter</button>
     <div id="gateError" class="gate-error"></div>
   </div>
@@ -356,14 +357,14 @@ function unlockGate(){
   const input=document.getElementById('gatePassword');
   const err=document.getElementById('gateError');
   if(input && input.value.toLowerCase()==='dingo'){
-    sessionStorage.setItem('boxPackerUnlocked','1');
+    if(document.getElementById('gateRemember')?.checked){localStorage.setItem('boxPackerRemembered','1')}else{localStorage.removeItem('boxPackerRemembered');sessionStorage.setItem('boxPackerUnlocked','1')}
     document.getElementById('passwordGate').style.display='none';
     if(err)err.textContent='';
   }else{
     if(err)err.textContent='Incorrect password';
   }
 }
-if(sessionStorage.getItem('boxPackerUnlocked')==='1'){
+if(localStorage.getItem('boxPackerRemembered')==='1'||sessionStorage.getItem('boxPackerUnlocked')==='1'){
   document.addEventListener('DOMContentLoaded',()=>{
     const gate=document.getElementById('passwordGate');
     if(gate)gate.style.display='none';
