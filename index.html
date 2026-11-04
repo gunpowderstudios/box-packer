@@ -273,6 +273,14 @@
       </div>
       <div id="salesRangeNote" class="sales-range-note"></div>
       <div id="salesKpis" class="sales-kpis"></div>
+      <div id="wcTestPanel" class="panel" style="margin:14px 0;padding:16px">
+        <h3>WooCommerce — test feed</h3>
+        <p class="sales-note">Test branch only. Export the JSON from your Cloudflare Access-protected Worker and import it here. Files stay in this browser session; no customer data is uploaded. Does not alter Mick's sales figures.</p>
+        <label for="wcJsonFile">Import WooCommerce JSON</label>
+        <input type="file" id="wcJsonFile" accept=".json,application/json" onchange="importWooSales(event)">
+        <div id="wcImportStatus" class="sales-note" role="status">No WooCommerce file imported.</div>
+        <div id="wcSummary"></div>
+      </div>
       <div class="sales-chart">
         <div class="sales-chart-head"><div><h3>Product sales</h3><div id="salesChartSub" class="sales-chart-sub"></div></div><strong id="salesChartTotal"></strong></div>
         <div id="salesBars" class="sales-bars"></div>
@@ -944,6 +952,32 @@ function printInvoice(){
  invoicePrint.innerHTML=`<h1>COMMERCIAL / CUSTOMS INVOICE</h1><div class="inv-grid"><div><strong>Exporter / Sender</strong><br>${esc(exporter.value)}</div><div><strong>Consignee / Ship-to</strong><br>${esc(consignee.value)||'____________________________'}</div></div><p><strong>Invoice:</strong> ${esc(invoiceNo.value)||'________________'} &nbsp; <strong>Date:</strong> ${esc(invoiceDate.value)}<br><strong>Destination:</strong> ${esc(d.name)} &nbsp; <strong>Reason:</strong> ${esc(reason.value)} &nbsp; <strong>Currency:</strong> ${cur}</p><table><thead><tr><th>Description</th><th>Qty</th><th>${esc(d.codeLabel)}</th><th>Origin</th><th>Unit value</th><th>Line value</th></tr></thead><tbody>${rows}<tr><td colspan="5"><strong>TOTAL DECLARED GOODS VALUE</strong></td><td><strong>${sym}${Number(total).toFixed(decimals(cur))}</strong></td></tr></tbody></table><p><strong>Shipment summary:</strong> ${units} units${cartons?` · ${cartons} master cartons`:''} · approx. ${kg.toFixed(1)} kg goods gross.</p><p><strong>Declaration:</strong> Values shown are declared for customs purposes. ${esc(reason.value)==='Stock transfer / not a sale'?'This shipment is a stock transfer and is not a sale to the consignee.':''}</p><p style="margin-top:25mm">Signed: ______________________________ &nbsp;&nbsp; Date: __________________</p>`;
  window.print();
 }
+
+let wcTestData=null;
+async function importWooSales(event){
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  const status=document.getElementById('wcImportStatus');
+  try{
+    if(file.size>5*1024*1024)throw Error('JSON file exceeds 5 MB');
+    const data=JSON.parse(await file.text());
+    if(data.connected!==true||data.complete!==true||!Array.isArray(data.currencies)||!Array.isArray(data.products)||!Array.isArray(data.months))throw Error('Not a complete WooCommerce sales export');
+    wcTestData=data;
+    status.textContent='Imported '+Number(data.ordersScanned||0).toLocaleString('en-GB')+' orders scanned · generated '+(data.generatedAt||'unknown date')+'.';
+    renderWooTest();
+  }catch(err){wcTestData=null;document.getElementById('wcSummary').textContent='';status.textContent='Import failed: '+err.message;}
+  event.target.value='';
+}
+function renderWooTest(){
+  if(!wcTestData)return;
+  const data=wcTestData;
+  const escapeHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const money=(n,c)=>new Intl.NumberFormat('en-GB',{style:'currency',currency:c||'GBP'}).format(Number(n||0));
+  const summary=data.currencies.map(c=>'<tr><td>'+escapeHtml(c.currency)+'</td><td>'+Number(c.orders||0).toLocaleString('en-GB')+'</td><td>'+Number(c.units||0).toLocaleString('en-GB')+'</td><td>'+money(c.orderTotal,c.currency)+'</td></tr>').join('');
+  const products=data.products.slice(0,25).map(p=>'<tr><td>'+escapeHtml(p.name)+'</td><td>'+escapeHtml(p.sku)+'</td><td>'+escapeHtml(p.currency)+'</td><td>'+Number(p.units||0).toLocaleString('en-GB')+'</td><td>'+money(p.lineTotal,p.currency)+'</td></tr>').join('');
+  document.getElementById('wcSummary').innerHTML='<h4>Sales by currency (historical test)</h4><div style="overflow-x:auto"><table class="sales-table"><thead><tr><th>Currency</th><th>Orders</th><th>Units</th><th>Order total</th></tr></thead><tbody>'+summary+'</tbody></table></div><h4>Top 25 product entries by units</h4><div style="overflow-x:auto"><table class="sales-table"><thead><tr><th>WooCommerce product</th><th>SKU</th><th>Currency</th><th>Units</th><th>Line sales</th></tr></thead><tbody>'+products+'</tbody></table></div><p class="sales-note">Product entries are matched by WooCommerce product ID, variation, SKU and currency; they have not yet been reconciled with Box Packer product names. Refunds not reconciled; totals are not bank proceeds. No currency conversion.</p>';
+}
+
 invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();make();draw();updateFCOptions();initSales();loadViewFromHash();
 </script>
 </body>
