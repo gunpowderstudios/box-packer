@@ -274,7 +274,7 @@
       </div>
       <div style="overflow-x:auto">
         <table class="sales-table">
-          <thead><tr><th>Product</th><th>Total units</th><th>Amazon</th><th>Etsy</th><th>Website</th><th>Other</th></tr></thead>
+          <thead><tr><th>Product</th><th>Total units</th><th>Amazon</th><th>Etsy</th><th>Website</th><th title="Per-product revenue is not provided by the source reports">Sales (£)</th></tr></thead>
           <tbody id="salesRows"></tbody>
         </table>
       </div>
@@ -615,7 +615,7 @@ function renderSales(){
   }
   const sorted=Object.entries(units).sort((a,b)=>b[1].units-a[1].units);
   document.getElementById('salesRows').innerHTML=sorted.map(([name,v])=>
-    '<tr><td><strong>'+name+'</strong></td><td>'+num(v.units)+'</td><td>'+(v.channelsKnown?num(v.amazon):'—')+'</td><td>'+(v.channelsKnown?num(v.etsy):'—')+'</td><td>'+(v.channelsKnown?num(v.website):'—')+'</td><td>'+(v.channelsKnown?num(v.other):'—')+'</td></tr>'
+    '<tr><td><strong>'+name+'</strong></td><td>'+num(v.units)+'</td><td>'+(v.channelsKnown?num(v.amazon):'—')+'</td><td>'+(v.channelsKnown?num(v.etsy):'—')+'</td><td>'+(v.channelsKnown?num(v.website):'—')+'</td><td title="Per-product revenue not available">—</td></tr>'
   ).join('')||'<tr><td colspan="6">No sales data for this selection.</td></tr>';
   const max=sorted.length?Math.max(...sorted.map(x=>x[1].units),1):1;
   const totalUnits=sorted.reduce((n,x)=>n+x[1].units,0);
@@ -628,11 +628,11 @@ function renderSales(){
     return '<div class="sales-bar-wrap"><div class="sales-bar-value">'+(mode==='daily'?value.toFixed(1):Math.round(value).toLocaleString('en-GB'))+'</div><div class="sales-bar" style="height:'+height+'px"></div><div class="sales-bar-label">'+short+'</div></div>';
   }).join(''):'<div class="sales-chart-empty">No chart data for this selection.</div>';
   const annualOnly=rows.length===1&&rows[0].annual;
-  document.getElementById('salesCoverage').textContent=type==='all'
+  document.getElementById('salesCoverage').textContent='Sales (£) by product is unavailable in the source reports; the monetary totals above are report-level figures, not individual product revenue. '+(type==='all'
     ? 'All available records: annual product totals for 2023–2025, dated sales reports from February to November 2026 (with gaps), and KDP monthly paperback units from November 2025. Monetary KPIs cover 2026 dated reports only, NOT lifetime revenue or profit. The 2025 Book total is excluded to avoid KDP double-counting; some non-KDP book sales may be missing. Average/day uses report coverage, not continuous lifetime history. '+bookSalesNote
     : annualOnly
     ? 'Annual product totals from GS 2023–2025 Sales, except KDP book units imported from the supplied KDP workbook. The annual summary does not include gross, expenses or proceeds. '+bookSalesNote
-    : rows.length?'Reports included: '+rows.length+' · coverage '+rows[0].start+' to '+rows[rows.length-1].end+(type!=='year'?' · selections use Mick’s report dates, not individual transaction dates.':'')+' · '+bookSalesNote:'No reports found.';
+    : rows.length?'Reports included: '+rows.length+' · coverage '+rows[0].start+' to '+rows[rows.length-1].end+(type!=='year'?' · selections use Mick’s report dates, not individual transaction dates.':'')+' · '+bookSalesNote:'No reports found.');
 }
 function setAppView(view,skipHash){
   ['products','shipping','compliance','gardners','sales','contacts'].forEach(v=>{
