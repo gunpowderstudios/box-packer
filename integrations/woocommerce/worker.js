@@ -10,7 +10,7 @@ export default {
     if (!env.WC_BASE_URL || !env.WC_CONSUMER_KEY || !env.WC_CONSUMER_SECRET)
       return json({error:"Missing WooCommerce configuration"},500);
     const auth = "Basic " + btoa(env.WC_CONSUMER_KEY + ":" + env.WC_CONSUMER_SECRET);
-    const groups = new Map(), products = new Map(), months = new Map();
+    const groups = new Map(), products = new Map(), months = new Map(), productMonths = new Map();
     const amount = v => Math.round(Number(v || 0) * 100);
     const money = cents => Number((cents / 100).toFixed(2));
     let scanned = 0, included = 0, complete = false;
@@ -44,6 +44,7 @@ export default {
             if (!products.has(key)) products.set(key,{productId:id,variationId,sku:item.sku||"",name:item.name||"Unnamed product",currency,units:0,lineTotalCents:0});
             const p=products.get(key), qty=Number(item.quantity||0);
             p.units+=qty;p.lineTotalCents+=amount(item.total);g.units+=qty;
+            if (month) { const pmKey=month+"|"+key; if(!productMonths.has(pmKey))productMonths.set(pmKey,{month,productId:id,variationId,sku:item.sku||"",name:item.name||"Unnamed product",currency,units:0,lineTotalCents:0}); const pm=productMonths.get(pmKey);pm.units+=qty;pm.lineTotalCents+=amount(item.total); }
             if (month) months.get(mk).units+=qty;
           }
         }
@@ -51,9 +52,10 @@ export default {
       }
       if (!complete) return json({connected:true,complete:false,error:"More than 5000 orders; use scheduled import",ordersScanned:scanned},422);
       const currencies=[...groups.values()].map(({orderTotalCents,discountsCents,shippingCents,taxCents,...g})=>({...g,orderTotal:money(orderTotalCents),discounts:money(discountsCents),shipping:money(shippingCents),tax:money(taxCents)}));
-      const result={schema:"box-packer-woocommerce-v1",connected:true,complete:true,source:"WooCommerce",generatedAt:new Date().toISOString(),ordersScanned:scanned,paidStatusOrders:included,currencies,
+      const result={schema:"box-packer-woocommerce-v2",connected:true,complete:true,source:"WooCommerce",generatedAt:new Date().toISOString(),ordersScanned:scanned,paidStatusOrders:included,currencies,
         products:[...products.values()].map(({lineTotalCents,...p})=>({...p,lineTotal:money(lineTotalCents)})).sort((a,b)=>b.units-a.units),
         months:[...months.values()].map(({orderTotalCents,...m})=>({...m,orderTotal:money(orderTotalCents)})).sort((a,b)=>b.month.localeCompare(a.month)),
+        productMonths:[...productMonths.values()].map(({lineTotalCents,...p})=>({...p,lineTotal:money(lineTotalCents)})),
         notes:["Only processing and completed orders","Refunds not reconciled","Currencies not converted","Order totals include shipping and tax where charged","Not bank proceeds"]};
       return json(result);
     } catch {return json({error:"WooCommerce fetch failed"},500);}
