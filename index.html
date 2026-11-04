@@ -501,7 +501,7 @@ function initSales(){resetSalesView()}
 function updateSalesRangeOptions(){
   const t=document.getElementById('salesRangeType')?.value||'all',select=document.getElementById('salesRangeValue'),label=document.getElementById('salesRangeLabel');
   if(!select)return;
-  const months=(wcTestData?.months||[]).map(m=>m.month).filter(m=>/^\\d{4}-\\d{2}$/.test(m));
+  const months=(wcTestData?.months||[]).map(m=>m.month).filter(m=>/^\d{4}-\d{2}$/.test(m));
   const unique=[...new Set(months)].sort().reverse();
   const opts=t==='all'?[['all','All time']]:t==='year'?[...new Set(unique.map(m=>m.slice(0,4)))].map(y=>[y,y]):t==='month'?unique.map(m=>[m,m]):t==='days'?[7,14,30,60,90,180,365].map(n=>[String(n),'Last '+n+' days']):[1,3,6,12,24,36].map(n=>[String(n),'Last '+n+' months']);
   if(label)label.textContent=t==='year'?'Year':t==='month'?'Month':'Period';
