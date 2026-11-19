@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-<title>Gunpowder Studios Box Packer v16.17</title>
+<title>Gunpowder Studios Box Packer v16.18</title>
 <style>
 :root{--p:#242424;--t:#ffffff;--m:#d7d7d7;--g:#5a5a5a;--ok:#ffffff;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:22px 0;text-align:center;background:#101010}h1{margin:18px 0 0}.site-logo-link{display:block;width:max-content;background:#101010;cursor:pointer}.version-badge{position:fixed;top:4px;right:6px;z-index:20000;font-size:11px;font-weight:600;line-height:1;color:#aaa;opacity:.7;pointer-events:none}\n.site-logo{display:block;width:auto;max-width:300px;height:auto;max-height:300px;object-fit:contain;margin:0;padding:10px 0 0 18px}.muted,small{color:var(--m)}.brand-text{color:#F9B233}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:#fff;margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#fff;background:#555;border-color:#777}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:#fff;border-color:#777}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#2b2b2b;border:1px solid #555;border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#fff}.howto-wrap{margin:0 0 16px}.howto-wrap summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#4a4a4a;color:#fff;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer}.howto-wrap summary::-webkit-details-marker{display:none}.howto-wrap summary:after{content:"＋";font-size:20px;line-height:1}.howto-wrap[open] summary:after{content:"−"}.weekly-update{background:#2a2a2a;border:1px solid #555;border-radius:0 0 14px 14px;padding:16px 18px;margin:0;box-shadow:0 0 0 1px rgba(255,215,106,.08) inset}.weekly-update .weekly-title{font-size:18px;font-weight:900;color:#fff;margin-bottom:6px}.weekly-update .weekly-date{font-size:13px;color:#f4f1e8;margin-top:10px}.weekly-update .weekly-date strong{color:#fff}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#fff;font-weight:bold}button{background:#555;color:#fff;border:1px solid #777;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}.product-cell{display:flex;align-items:flex-start;gap:10px;min-width:190px}.product-thumb{width:58px;height:58px;object-fit:contain;flex:0 0 58px;background:#111;border:1px solid #3c3c3c;border-radius:8px;padding:3px}.product-info{min-width:0}
@@ -838,6 +838,7 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
   'use strict';
   const $=id=>document.getElementById('bp-'+id);
   const types={invoice:['Invoice','INV'],order:['Purchase order','PO'],delivery:['Delivery note','DN']};
+  const firstInvoiceNumber=1050;
   const defaultCompany={name:'Gunpowder Studios Ltd',email:'tim@gunpowderstudios.co.uk',address:document.getElementById('exporter').value.split('\nVAT:')[0].split('\n').slice(1).join('\n'),vat:'GB327677077',company:'11961488',payment:'',bankName:'',accountHolder:'',sortCode:'',accountNumber:'',iban:'',bic:'',bankAddress:''};
   const carriers={
     'DPD UK':n=>'https://track.dpd.co.uk/parcels/'+n,
@@ -879,13 +880,17 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
       seen.add(docId);
       if(number){
         numbers.add(number);
-        const match=/^GPS-(INV|PO|DN)-(\d{4})-(\d{4,})$/.exec(number);
-        if(!match||match[1]!==types[d.type][1]||!Number.isSafeInteger(Number(match[3])))throw Error('The backup has an invalid document number.');
-        const bucket=match[1]+'-'+match[2];seq[bucket]=Math.max(seq[bucket]||0,Number(match[3]));
+        if(d.type==='invoice'&&/^[1-9]\d*$/.test(number)&&Number.isSafeInteger(Number(number))&&Number(number)>=firstInvoiceNumber){
+          seq.INVOICE=Math.max(seq.INVOICE||0,Number(number));
+        }else{
+          const match=/^GPS-(INV|PO|DN)-(\d{4})-(\d{4,})$/.exec(number);
+          if(!match||match[1]!==types[d.type][1]||!Number.isSafeInteger(Number(match[3])))throw Error('The backup has an invalid document number.');
+          const bucket=match[1]+'-'+match[2];seq[bucket]=Math.max(seq[bucket]||0,Number(match[3]));
+        }
       }
       return {...d,id:docId,number,paidDate:number&&d.type==='invoice'?date(raw.paidDate):'',seller:number?company(raw.seller):null,updated:plain(raw.updated,40)};
     });
-    for(const [k,v] of Object.entries(x.seq??{}))if(/^(INV|PO|DN)-\d{4}$/.test(k)&&Number.isSafeInteger(v)&&v>=0)seq[k]=Math.max(seq[k]||0,v);
+    for(const [k,v] of Object.entries(x.seq??{}))if((k==='INVOICE'||/^(INV|PO|DN)-\d{4}$/.test(k))&&Number.isSafeInteger(v)&&v>=0)seq[k]=Math.max(seq[k]||0,v);
     return {version:1,company:company(x.company),docs,seq};
   }
   let db=empty(), blocked=false, dirty=false, current=null, baseline=null;
@@ -996,17 +1001,24 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
     if(d.type!=='delivery'&&d.items.some(x=>x.unitPrice===null||x.vat===null))throw Error('Choose a VAT rate and enter a unit price on each line.');
     if(d.tracking.some(t=>!t.number||(t.url&&!urlFor(t))))throw Error('Enter a tracking number for each parcel and use a valid HTTPS link if you supply one.');
   }
+  function issueNumber(d,seq){
+    if(d.type==='invoice'){
+      const next=Math.max(firstInvoiceNumber-1,seq.INVOICE||0)+1;
+      if(!Number.isSafeInteger(next))throw Error('The invoice numbering limit has been reached.');
+      seq.INVOICE=next;
+      return String(next);
+    }
+    const bucket=types[d.type][1]+'-'+d.date.slice(0,4);
+    seq[bucket]=(seq[bucket]||0)+1;
+    return 'GPS-'+bucket+'-'+String(seq[bucket]).padStart(4,'0');
+  }
   function save(issue){
     if(current?.number)return;
     if(!form.reportValidity())return;
     const d=read(), companySnapshot={...db.company};
     if(issue)validate(d,companySnapshot);
     const seq={...db.seq};
-    let number='';
-    if(issue){
-      const bucket=types[d.type][1]+'-'+d.date.slice(0,4);
-      seq[bucket]=(seq[bucket]||0)+1; number='GPS-'+bucket+'-'+String(seq[bucket]).padStart(4,'0');
-    }
+    const number=issue?issueNumber(d,seq):'';
     const next={...d,id:current?.id||id(),number,updated:new Date().toISOString(),seller:issue?companySnapshot:null,paidDate:''};
     write({...db,seq,docs:[...db.docs.filter(x=>x.id!==next.id),next]});render(next);history();tell(issue?'Issued '+number+'.':'Draft saved.');
   }
