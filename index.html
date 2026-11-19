@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-<title>Gunpowder Studios Box Packer v16.15</title>
+<title>Gunpowder Studios Box Packer v16.16</title>
 <style>
 :root{--p:#242424;--t:#ffffff;--m:#d7d7d7;--g:#5a5a5a;--ok:#ffffff;--bad:#ef6461;--b:#464646}
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#151515;color:var(--t);line-height:1.45}header{padding:22px 0;text-align:center;background:#101010}h1{margin:18px 0 0}.site-logo-link{display:block;width:max-content;background:#101010;cursor:pointer}.version-badge{position:fixed;top:4px;right:6px;z-index:20000;font-size:20px;font-weight:700;line-height:1;color:#aaa;opacity:.7;pointer-events:none}\n.site-logo{display:block;width:auto;max-width:300px;height:auto;max-height:300px;object-fit:contain;margin:0;padding:10px 0 0 18px}.muted,small{color:var(--m)}.brand-text{color:#F9B233}.wrap{max-width:1350px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr .85fr;gap:20px}.panel,.card{background:var(--p);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:16px}.card{background:#181818}h2,h3{color:#fff;margin-top:0}.app-tabs{max-width:1350px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.app-tab{padding:14px 18px;text-align:center;background:#202020;border:1px solid var(--b);border-radius:12px;cursor:pointer;font-weight:900;font-size:15px}.app-tab.active{color:#fff;background:#555;border-color:#777}.app-view{display:none}.app-view.active{display:block}.compliance-wrap{max-width:1350px;margin:auto;padding:20px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{padding:12px;text-align:center;background:#2b2b2b;border:1px solid var(--b);border-radius:10px;cursor:pointer}.tab.active{color:#fff;border-color:#777}table{width:100%;border-collapse:collapse}th,td{padding:8px 6px;border-bottom:1px solid var(--b);text-align:left;vertical-align:top}th{color:var(--g)}input,select,textarea{background:#111;color:var(--t);border:1px solid #555;border-radius:7px;padding:8px;width:100%}input:disabled{opacity:.4;cursor:not-allowed}.qty,.money{width:88px}.controls,.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.dest-grid{grid-template-columns:repeat(3,1fr)}.control{background:#303030;padding:10px;border-radius:10px}label{display:block;color:var(--m);font-size:13px;font-weight:bold;margin-bottom:5px}.big{font-size:36px;font-weight:900}.ok{color:var(--ok)}.bad{color:var(--bad)}.pill{display:inline-block;background:#2b2b2b;border:1px solid var(--b);border-radius:999px;padding:4px 8px;margin:3px;font-size:12px}.line{padding:8px 0;border-bottom:1px solid #333}.warning{background:#2b2b2b;border:1px solid #555;border-radius:10px;padding:12px;margin:10px 0}.warning strong{color:#fff}.howto-wrap{margin:0 0 16px}.howto-wrap summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#4a4a4a;color:#fff;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer}.howto-wrap summary::-webkit-details-marker{display:none}.howto-wrap summary:after{content:"＋";font-size:20px;line-height:1}.howto-wrap[open] summary:after{content:"−"}.weekly-update{background:#2a2a2a;border:1px solid #555;border-radius:0 0 14px 14px;padding:16px 18px;margin:0;box-shadow:0 0 0 1px rgba(255,215,106,.08) inset}.weekly-update .weekly-title{font-size:18px;font-weight:900;color:#fff;margin-bottom:6px}.weekly-update .weekly-date{font-size:13px;color:#f4f1e8;margin-top:10px}.weekly-update .weekly-date strong{color:#fff}.duty-total{font-size:22px;font-weight:900;color:var(--g);margin:7px 0}.mode-note{margin:10px 0 4px;color:#fff;font-weight:bold}button{background:#555;color:#fff;border:1px solid #777;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer;margin:6px 5px 0 0}.copy-status{color:var(--ok);font-size:13px;margin-left:8px}.invoice-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.invoice-help{font-size:12px;color:var(--m);margin-top:8px}.unit-spec{margin-top:6px;padding:6px 8px;background:#202020;border-left:3px solid var(--g);border-radius:5px;line-height:1.4}.unit-spec strong{color:#f4f1e8}.unit-spec .secondary{color:var(--m)}.product-cell{display:flex;align-items:flex-start;gap:10px;min-width:190px}.product-thumb{width:58px;height:58px;object-fit:contain;flex:0 0 58px;background:#111;border:1px solid #3c3c3c;border-radius:8px;padding:3px}.product-info{min-width:0}
@@ -119,25 +119,52 @@ kground. */
 .billing #bp-message[data-error=true]{color:#ffafab}.billing #bp-message:empty{display:none}
 #billingPrint{display:none}
 @media(max-width:700px){.billing .bill-grid,.billing .bill-row,.billing .bill-track,.billing form[data-type=delivery] .bill-item{grid-template-columns:1fr 1fr}.billing .bill-item label:first-child,.billing .bill-track label:nth-child(3){grid-column:1/-1}.billing .bill-heading>div{min-width:0}}
+
+.compliance-wrap.billing{max-width:1480px}
+.billing .bp-invoice-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:18px;align-items:start}
+.billing .bp-editor{container-type:inline-size;min-width:0}
+.billing .bp-preview{position:sticky;top:12px;min-width:0;margin-top:0;padding:14px 16px 16px;background:#202020}
+.billing .bp-preview-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.billing .bp-preview-head h2{font-size:1.05rem}.billing .bp-preview-head p,.billing .bp-preview-note{color:#c5c5c5;margin:3px 0 0;font-size:.78rem}
+.billing .bp-preview-note{margin-top:8px}
+.billing .bp-paper-size{border:1px solid #676767;border-radius:5px;padding:2px 7px;color:#eee;font-size:.75rem;font-weight:700;letter-spacing:.05em}
+.billing #bp-preview-frame{position:relative;width:100%;aspect-ratio:210 / 297;background:#fff;overflow:hidden;border-radius:2px;box-shadow:0 8px 26px #0006}
+.billing #bp-preview-page{position:absolute;top:0;left:0;width:210mm;min-height:297mm;padding:15mm 13mm;transform-origin:top left}
+.billing #bp-preview-jump{display:none}
+.bp-paper{background:#fff;color:#111;font:10pt/1.45 Arial,sans-serif}
+ .bp-paper .bp-paper-head{display:flex;justify-content:space-between;align-items:center;gap:12mm;border-bottom:1px solid #555;padding-bottom:6mm;margin-bottom:6mm}
+ .bp-paper img{width:49mm;height:25mm;object-fit:contain;object-position:left center;filter:brightness(0)}
+ .bp-paper h1{font-size:25pt;line-height:1.1;margin:0 0 2mm}.bp-paper h2{font-size:10pt;text-transform:uppercase;letter-spacing:.07em;margin:0 0 1mm}
+ .bp-paper .bp-paper-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:12mm;row-gap:4mm;margin-bottom:5mm}
+ .bp-paper .bp-paper-block{break-inside:avoid;overflow-wrap:anywhere}.bp-paper .bp-paper-right{text-align:right;overflow-wrap:anywhere;min-width:0}
+ .bp-paper table{border-collapse:collapse;width:100%;table-layout:auto;margin:4mm 0;background:#fff!important;color:#111!important}
+ .bp-paper th,.bp-paper td{border:0;border-bottom:1px solid #bbb;background:#fff!important;color:#111!important;padding:2.5mm 1.5mm;text-align:left;overflow-wrap:anywhere}
+ .bp-paper thead{display:table-header-group}.bp-paper tr{break-inside:avoid}.bp-paper .num{text-align:right;white-space:nowrap}
+ .bp-paper a{color:#111!important;text-decoration:underline}.bp-paper p{margin:0 0 3mm}
+@container (max-width:510px){
+ .billing .bill-row,.billing .bill-track{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .billing .bill-item label:first-child:not(.bill-money),.billing .bill-track label:nth-child(3){grid-column:1/-1}
+ .billing .bill-item .bill-money label:first-child{grid-column:auto}
+ .billing .bill-item button,.billing .bill-track button{justify-self:start}
+ .billing form[data-type=delivery] .bill-item{grid-template-columns:minmax(0,1fr) auto}
+}
+@media(max-width:930px){
+ .billing .bp-invoice-layout{grid-template-columns:minmax(0,1fr)}
+ .billing .bp-preview{position:static}
+ .billing #bp-preview-frame{max-width:650px;margin-inline:auto}
+ .billing #bp-preview-jump{display:inline-block}
+}
 @media print{
  body.bp-billing-print #invoicePrint{display:none!important}
  body.bp-billing-print #billingPrint{display:block!important;background:#fff!important;color:#111!important;padding:5mm 3mm;font:10pt/1.45 Arial,sans-serif;overflow:visible}
- #billingPrint .bp-paper-head{display:flex;justify-content:space-between;align-items:center;gap:12mm;border-bottom:1px solid #555;padding-bottom:6mm;margin-bottom:6mm}
- #billingPrint img{width:49mm;height:25mm;object-fit:contain;object-position:left center;filter:brightness(0)}
- #billingPrint h1{font-size:25pt;line-height:1.1;margin:0 0 2mm}#billingPrint h2{font-size:10pt;text-transform:uppercase;letter-spacing:.07em;margin:0 0 1mm}
- #billingPrint .bp-paper-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:12mm;row-gap:4mm;margin-bottom:5mm}
- #billingPrint .bp-paper-block{break-inside:avoid;overflow-wrap:anywhere}#billingPrint .bp-paper-right{text-align:right}
- #billingPrint table{border-collapse:collapse;width:100%;table-layout:auto;margin:4mm 0;background:#fff!important;color:#111!important}
- #billingPrint th,#billingPrint td{border:0;border-bottom:1px solid #bbb;background:#fff!important;color:#111!important;padding:2.5mm 1.5mm;text-align:left;overflow-wrap:anywhere}
- #billingPrint thead{display:table-header-group}#billingPrint tr{break-inside:avoid}#billingPrint .num{text-align:right;white-space:nowrap}
- #billingPrint a{color:#111!important;text-decoration:underline}#billingPrint p{margin:0 0 3mm}
 }
+
 
 </style>
 </head>
 <body>
 <header>
-<div class="version-badge">v16.15</div>
+<div class="version-badge">v16.16</div>
 <div class="header-line"><span class="brand-text">Gunpowder Studios</span> Box Packer - Products · Shipping · Compliance</div>
 </header>
 <nav class="app-tabs" aria-label="Box Packer sections">
@@ -262,9 +289,10 @@ kground. */
 </div>
 
 <div id="view-invoicing" class="app-view">
-  <main class="compliance-wrap billing" style="max-width:1200px">
-    <section class="panel">
-      <div class="bill-heading"><div><h2>Invoicing</h2><p class="muted">Create invoices, purchase orders and delivery notes. Records are saved only in this browser.</p></div><button type="button" id="bp-new">New document</button></div>
+  <main class="compliance-wrap billing">
+    <div class="bp-invoice-layout">
+    <section class="panel bp-editor">
+      <div class="bill-heading"><div><h2>Invoicing</h2><p class="muted">Create invoices, purchase orders and delivery notes. Records are saved only in this browser.</p></div><div class="bill-actions"><button type="button" id="bp-preview-jump">View preview</button><button type="button" id="bp-new">New document</button></div></div>
       <details id="bp-settings"><summary>Your company details</summary><div class="bill-grid" id="bp-profile">
         <label>Company name<input data-company="name"></label><label>Business email<input data-company="email" type="email"></label>
         <label>Business address<textarea data-company="address" rows="4"></textarea></label>
@@ -304,6 +332,15 @@ kground. */
       </form>
       <p id="bp-message" role="status" aria-live="polite"></p>
     </section>
+    <aside class="bp-preview panel" aria-labelledby="bp-preview-heading">
+      <div class="bp-preview-head">
+        <div><h2 id="bp-preview-heading">Live preview</h2><p>Updates as you edit</p></div>
+        <span class="bp-paper-size">A4</span>
+      </div>
+      <div id="bp-preview-frame"><div id="bp-preview-page" class="bp-paper"></div></div>
+      <p id="bp-preview-overflow" class="bp-preview-note" hidden>Long document. Printing splits it across A4 pages.</p>
+    </aside>
+    </div>
     <section class="panel">
       <div class="bill-heading"><h2>Saved documents</h2><div class="bill-actions"><button type="button" id="bp-backup">Download backup</button><label class="bill-file">Restore backup<input type="file" id="bp-restore" accept=".json,application/json"></label></div></div>
       <label>Find a document<input id="bp-search" type="search" placeholder="Search by company, number, PO or status"></label>
@@ -370,7 +407,7 @@ kground. */
   </main>
 </div>
 <section id="invoicePrint" aria-hidden="true"></section>
-<div id="billingPrint"></div>
+<div id="billingPrint" class="bp-paper"></div>
 <script>
 
 function loadViewFromHash(){
@@ -880,6 +917,23 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
       sum.net+=net;sum.vat+=vat;return sum;
     },{net:0,vat:0});
   }
+  function fitPreview(){
+    const frame=$('preview-frame'), page=$('preview-page');
+    if(!frame.clientWidth||!page.offsetWidth)return;
+    const scale=frame.clientWidth/page.offsetWidth;
+    const pageHeight=page.offsetHeight;
+    page.style.transform='scale('+scale+')';
+    const height=Math.ceil(pageHeight*scale);
+    if(frame.style.height!==height+'px')frame.style.height=height+'px';
+    $('preview-overflow').hidden=pageHeight<=Math.ceil(page.offsetWidth*297/210)+1;
+  }
+  function editorCompany(){
+    return company(Object.fromEntries(Array.from($('profile').querySelectorAll('[data-company]'),el=>[el.dataset.company,el.value])));
+  }
+  function renderPreview(d){
+    $('preview-page').innerHTML=printable({...d,seller:d.seller||editorCompany()});
+    fitPreview();
+  }
   function refresh(){
     const d=read(), isIssued=Boolean(current?.number), total=amounts(d);
     form.dataset.type=d.type;
@@ -898,6 +952,7 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
     $('print').disabled=isIssued&&dirty;
     $('paid').hidden=$('payment-date').hidden=!isIssued||d.type!=='invoice';
     $('paid').textContent=current?.paidDate?'Update payment date':'Mark paid';
+    renderPreview(isIssued?{...current,tracking:d.tracking}:d);
   }
   function render(d=null){
     current=d?.id?d:null;const data=clean(d);
@@ -956,7 +1011,7 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
       (invoice?block('Payment instructions',lines(s.payment)):'')+block('Tracking',refs)+block('Notes',lines(d.notes));
   }
   async function print(){
-    const d=current?.number?current:read();
+    const d=current?.number?current:{...read(),seller:editorCompany()};
     const area=document.getElementById('billingPrint');area.innerHTML=printable(d);
     try{await area.querySelector('img').decode();}catch{}
     const previous=document.title; document.title=d.number||('Draft '+types[d.type][0]);
@@ -975,7 +1030,7 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
   $('profile-save').onclick=guard(()=>{
     const inputs=Array.from($('profile').querySelectorAll('[data-company]'));
     if(inputs.some(x=>!x.reportValidity()))return;
-    write({...db,company:company(Object.fromEntries(inputs.map(x=>[x.dataset.company,x.value])))});renderCompany();tell('Company details saved on this browser.');
+    write({...db,company:company(Object.fromEntries(inputs.map(x=>[x.dataset.company,x.value])))});renderCompany();refresh();tell('Company details saved on this browser.');
   });
   $('add-line').onclick=()=>{if($('items').childElementCount<200){addItem();dirty=true;refresh();}};
   $('add-tracking').onclick=()=>{if($('tracking').childElementCount<100){addTrack();dirty=true;refresh();}};
@@ -1025,6 +1080,11 @@ invoiceDate.value=new Date().toISOString().slice(0,10);renderProductOverview();m
     render(clean(obj));dirty=true;$('import-box').open=false;tell('Imported as a new draft. Check the details and save it.');
   });
   $('products').innerHTML=Object.keys(MASTER_SKUS).map(n=>'<option value="'+h(n)+'">'+h(MASTER_SKUS[n])+'</option>').join('');
+  $('profile').addEventListener('input',()=>refresh());
+  $('preview-jump').onclick=()=>$('preview-heading').scrollIntoView({behavior:'smooth',block:'start'});
+  const previewObserver=new ResizeObserver(fitPreview);
+  previewObserver.observe($('preview-frame'));
+  previewObserver.observe($('preview-page'));
   renderCompany();render();history();
   if(blocked)tell('Could not read your saved records. No records were changed.',true);
 })();
